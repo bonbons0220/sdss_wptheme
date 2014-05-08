@@ -17,6 +17,16 @@
     }
   ?>
 
+<?php 
+if (is_front_page()):  ?> 
+  <div class="wrap" role="document">
+    <div class="content row">
+      <main class="main <?php echo roots_main_class(); ?>" role="main">
+        <?php include roots_template_path(); ?>
+      </main><!-- /.main -->
+    </div><!-- /.content -->
+  </div><!-- /.wrap -->
+<?php else: ?>
   <div class="wrap container" role="document">
     <div class="content row">
       <main class="main <?php echo roots_main_class(); ?>" role="main">
@@ -29,8 +39,8 @@
       <?php endif; ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
-
+  <?php endif; ?>
+  <?php get_template_part('templates/sitemap'); ?>
   <?php get_template_part('templates/footer'); ?>
-
 </body>
 </html>
