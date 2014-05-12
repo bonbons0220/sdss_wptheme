@@ -5,7 +5,7 @@
              <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
                 </button>
-                <a class="navbar-brand" href="<?php echo home_url(); ?>/"><img src="/wp-content/uploads/2014/05/sixforsdss.png" alt="sdsslogo" style="width:200px"></a>
+                <a class="navbar-brand" href="<?php echo home_url(); ?>/"><img src="/wp-content/uploads/2014/05/logo-sdss-1b.png" alt="sdsslogo" style="width:200px"></a>
             </div>
               <div class="navbar-collapse collapse"  role="navigation">
                 <?php
