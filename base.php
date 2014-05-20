@@ -29,6 +29,14 @@ if (is_front_page()):  ?>
 <?php else: ?>
   <div class="wrap container" role="document">
     <div class="content row">
+       <?php if (is_page( array (202, 334, 341, 345, 361, 366, 386, 217, 'imaging-data', 'Imaging Data' )) ): ?> 
+            <?php
+              if (has_nav_menu('secondary_navigation')) :
+                wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
+              endif;
+            ?>
+
+          <?php endif; ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
