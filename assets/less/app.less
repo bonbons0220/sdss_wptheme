@@ -203,8 +203,11 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
 }
 
-@media (max-width: @screen-sm-max) {.navbar-inverse {  background:rgba(0,0,0,.9); } .navbar-collapse ul { text-align: center;  width:100%; padding-bottom:10px; }
-  .navbar-collapse ul .btn{ max-width:50%; margin:0 auto; } }
+@media (max-width: @screen-sm-max) {
+.navbar-inverse { background:rgba(0,0,0,.9); } 
+.navbar-collapse ul { text-align: center;  width:100%; padding-bottom:10px; }
+.navbar-collapse ul .btn{ max-width:50%; margin:0 auto; } 
+}
 
 @media (min-width: @screen-xs-min) and (max-width: @screen-sm-min) { }
 
