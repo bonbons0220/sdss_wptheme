@@ -22,6 +22,13 @@ var Roots = {
   // All pages
   common: {
     init: function() {
+      $('body').scrollspy({ target: '.toc' });
+      $('#spyOnThis').scrollspy();
+      $('body').scrollspy({ target: '.navbar-example' });
+      // grab an element
+      var myElement = document.querySelector(".navbar-fixed-top");
+      var headroom  = new Headroom(myElement);
+      headroom.init();
       // JavaScript to be fired on all pages
     }
   },
@@ -61,3 +68,6 @@ var UTIL = {
 $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+
+
