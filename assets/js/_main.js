@@ -60,6 +60,26 @@ var Roots = {
   home: {
     init: function() {
       // JavaScript to be fired on the home page
+                $('.panner').kinetic();
+                $('#left').click(function(){
+                    $('.panner').kinetic('start', { velocity: -10 });
+                });
+                $('#right').click(function(){
+                    $('.panner').kinetic('start', { velocity: 10 });
+                });
+                $('#end').click(function(){
+                    $('.panner').kinetic('end');
+                });
+                $('#stop').click(function(){
+                    $('.panner').kinetic('stop');
+                });
+                $('#detach').click(function(){
+                    $('.panner').kinetic('detach');
+                });
+                $('#attach').click(function(){
+                    $('.panner').kinetic('attach');
+                });
+
     }
   },
   // About us page, note the change from about-us to about_us.
