@@ -1,5 +1,5 @@
 <header role="banner">
-  <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+  <div class="navbar navbar-inverse navbar-static-top" >
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -9,11 +9,7 @@
                     </button>
                     <div class="hidden-xs">
                     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
-                        <?php if (is_front_page() && !is_paged()) : ?>
                           <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" class="img-responsive col-sm-12">
-                        <?php else: ?>
-                          <img src="/wp-content/uploads/2014/05/sdsslogo.png" alt="sdsslogo" class="img-responsive col-sm-12">
-                        <?php endif; ?>
                    </a>
                    </div>
                    <div class="visible-xs">

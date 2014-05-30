@@ -28,6 +28,11 @@ var Roots = {
           }
         });
 
+        //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
+           $(function() {
+        //Calls the tocify method on your HTML div.
+           var toc = $("#toc").tocify({ extendPage: false,}).data("toc-tocify");
+                });
         /* activate scrollspy menu */
         var $body   = $(document.body);
         var navHeight = $('.navbar').outerHeight(true) + 10;
@@ -35,6 +40,10 @@ var Roots = {
         $body.scrollspy({
           target: '#leftCol',
           offset: navHeight
+        });
+
+        $('[data-spy="scroll"]').each(function () {
+          var $spy = $(this).scrollspy('refresh');
         });
         /* smooth scrolling sections */
         $('a[href*=#]:not([href=#])').click(function() {
@@ -49,10 +58,6 @@ var Roots = {
               }
             }
         });
-      // grab an element
-      var myElement = document.querySelector(".navbar-fixed-top");
-      var headroom  = new Headroom(myElement);
-      headroom.init();
       // JavaScript to be fired on all pages
     }
   },
