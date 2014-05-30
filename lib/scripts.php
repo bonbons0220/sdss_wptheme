@@ -31,8 +31,6 @@ function roots_scripts() {
   
   //register external scripts
   wp_register_script('kinetic', get_template_directory_uri() . '/assets/js/jquery.kinetic.js',  false, null, false);
-  wp_register_script('headroom', get_template_directory_uri() . '/assets/js/vendor/headroom.js', false, null, false);
-  wp_register_script('jquery.headroom', get_template_directory_uri() . '/assets/js/vendor/jQuery.headroom.js', false, null, false);
   wp_register_script('jquery-ui', get_template_directory_uri() . '/assets/js/vendor/jquery-ui-1.10.4.custom.min.js', false, null, false);
   wp_register_script('tocify', get_template_directory_uri() . '/assets/js/vendor/jquery.tocify.js', false, null, false);
 
@@ -40,8 +38,6 @@ function roots_scripts() {
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');
   wp_enqueue_script('kinetic');
-  wp_enqueue_script('headroom');
-  wp_enqueue_script('jquery.headroom');
   wp_enqueue_script('jquery-ui');
   wp_enqueue_script('tocify');
 
