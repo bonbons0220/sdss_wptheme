@@ -25,14 +25,11 @@ var Roots = {
       $('#sidebar').affix({
           offset: {
             top: 235
+            , bottom: function () {
+        return (this.bottom = $('.sitemap').outerHeight(true))
+      }
           }
         });
-
-        //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
-           $(function() {
-        //Calls the tocify method on your HTML div.
-           var toc = $("#toc").tocify({ extendPage: false,}).data("toc-tocify");
-                });
         /* activate scrollspy menu */
         var $body   = $(document.body);
         var navHeight = $('.navbar').outerHeight(true) + 10;
@@ -45,6 +42,13 @@ var Roots = {
         $('[data-spy="scroll"]').each(function () {
           var $spy = $(this).scrollspy('refresh');
         });
+
+        //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
+           $(function() {
+        //Calls the tocify method on your HTML div.
+         var toc = $("#toc").tocify({ extendPage: false,});
+                });
+
         /* smooth scrolling sections */
         $('a[href*=#]:not([href=#])').click(function() {
             if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
