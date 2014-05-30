@@ -230,10 +230,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     overflow: auto;
     margin-left: 2%;
     position: fixed;
-    border: 1px solid #ccc;
-    webkit-border-radius: 6px;
-    moz-border-radius: 6px;
-    border-radius: 6px;
 }
 
 /* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
@@ -242,7 +238,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     margin: 0;
     padding: 0;
     border: none;
-    line-height: 30px;
+    /*line-height: 30px;*/
 }
 
 /* Top level header elements */
@@ -256,11 +252,10 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     display: none;
 }
 
-/* Makes the font smaller for all subheader elements. 
+/* Makes the font smaller for all subheader elements. */
 .tocify-subheader li {
-    font-size: 12px;
-}*/
-
+    font-size: 14px;
+}
 /* Further indents second level subheader elements. */
 .tocify-subheader .tocify-subheader {
     text-indent: 30px;
@@ -269,6 +264,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 /* Further indents third level subheader elements. You can continue this pattern if you have more nested elements. */
 .tocify-subheader .tocify-subheader .tocify-subheader {
     text-indent: 40px;
+    font-size: 13px;
 }
 
 /* Twitter Bootstrap Override Style */
@@ -281,8 +277,16 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     padding: 5px;
 }
 
+li.tocify-item a {
+color: #777777;
+}
 
-
+li.tocify-item a:hover {
+color: #ffffff;
+background: rgba(0,0,0,0.9);
+transition: background 0.5s ease;
+border-left: 5px solid #6600ff;
+}
 
 /* ==========================================================================
    Media Queries
