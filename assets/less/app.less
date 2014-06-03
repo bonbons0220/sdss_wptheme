@@ -148,30 +148,46 @@ html, body {
    ========================================================================== */
 
 .sidebar { }
+#sidebar li.active {
+  border:0 #eee solid;
+  border-right-width:5px;
+}
+
+.doc-sidebar .affix {position:relative}
+.nav-doc {display:inline-block;margin-top:2rem;border:1px solid #ddd;border-radius:4px;list-style:none}
+.nav-doc>li:first-child {border-top-left-radius:4px;border-top-right-radius:4px}
+.nav-doc>li:last-child {border-bottom:0;border-bottom-right-radius:4px;border-bottom-left-radius:4px}
+.nav-doc>li a:hover {background:0}
+.nav-doc>li.active {background:#27ae60}
+.nav-doc>li.active a {color:#fff;font-weight:400;}
+@media (min-width:992px) {.doc-sidebar .affix {position:fixed;top:20px}
+}
+
 .affix-top,.affix{
  position: static;
+}
+
+#sidebar li.active {
+  border:0 #eee solid;
+  border-right-width:5px;
 }
 @media (min-width: 979px) {
   #sidebar.affix-top {
     position: static;
     margin-top:30px;
-    width:228px;
+    /*width:228px;*/
   }
   #sidebar.affix {
     position: fixed;
     top:70px;
-    width:228px;
+    /*width:228px;*/
   }
 
   #sidebar.affix-bottom {
    position: fixed;
-   bottom: 800px;
+   bottom: 400px;
   }
 
-}
-#sidebar li.active {
-  border:0 #eee solid;
-  border-right-width:5px;
 }
 
 /* ==========================================================================
