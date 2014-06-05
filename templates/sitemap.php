@@ -1,8 +1,8 @@
 <div class="sitemap">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 column">
+			<div class="col-xs-12 col-md-8">
+				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 			  		<h5>Explore</h5>
 						<ul class="nav nav-pills nav-stacked">
 							<li><a href="/dr12">Latest Data Release</a>  </li> 
@@ -11,7 +11,7 @@
 							<li><a href="http://www.sdss3.org/dr10/irspec/">SDSS-III Infrared Spectroscopic Data</a></li>
 						</ul>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 column">
+				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 					<h5>Learn</h5>
 						<ul class="nav nav-pills nav-stacked">
 							<li><a href="/surveys">Surveys</a></li>
@@ -20,7 +20,7 @@
 							<li><a href="/results-science">Results & Science</a></li>
 						  </ul>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-4 column">
+				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 					<h5>About</h5>
 						<ul class="nav nav-pills nav-stacked">
 							<li><a href="/collaboration">Collaboration</a></li>
@@ -30,7 +30,7 @@
 						</ul>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-xs-12 col-md-4">
 				<h5>SDSS is supported by</h5>
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sloan.org/"><img src="http://cinema.usc.edu/archivedassets/038/9424.jpg" alt="sloan logo" class="img-responsive"></a></div>
