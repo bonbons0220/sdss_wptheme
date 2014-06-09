@@ -22,53 +22,25 @@ var Roots = {
   // All pages
   common: {
     init: function() {
-
-$('#sidebar').affix({
-          offset: {
-            top: 235
-            ,bottom: 400
-            //top: 100,
-      //bottom: function () {
-          // return (this.bottom === $('.sitemap').outerHeight(true));
-      //}
-          }
-        });
-
-        /* activate scrollspy menu */
-        var $body   = $(document.body);
-        var navHeight = $('.navbar').outerHeight(true) + 10;
-
-        $body.scrollspy({
-          target: '#sidebar', //change back to #leftCol 
-          offset: navHeight
-        });
-
-        //$('[data-spy="scroll"]').each(function () {
-          //var $spy = $(this).scrollspy('refresh');
-        //});
-
-        /* smooth scrolling sections */
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
-              var target = $(this.hash);
-              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-              if (target.length) {
-                $('html,body').animate({
-                  scrollTop: target.offset().top - 50
-                }, 1000);
-                return false;
-              }
-            }
-        });
-         //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
-           $(function() {
-        //Calls the tocify method on your HTML div.
-         var toc = $("#toc").tocify().data("toc-tocify");
-
-                  // Sets the showEffect, scrollTo, and smoothScroll options
-                  toc.setOptions({ scrollTo: 50, extendPage: false });
-                });
-      // JavaScript to be fired on all pages
+       // JavaScript to be fired on all pages
+    $('body').scrollspy({ target: '.bs-docs-sidebar' });
+    $('.bs-docs-sidebar').affix({
+      offset: {
+        top: 150,
+        bottom: function () {
+           return (this.bottom === $('.footer').outerHeight(true));
+        }
+      }
+    });
+       
+    //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
+       $(function() {
+    //Calls the tocify method on your HTML div.
+       var toc = $("#toc").tocify().data("toc-tocify");
+              // Sets the showEffect, scrollTo, and smoothScroll options
+              toc.setOptions({ scrollTo: 50, extendPage: false });
+       });
+     
     }
   },
   // Home page
