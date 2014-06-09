@@ -23,10 +23,14 @@ var Roots = {
   common: {
     init: function() {
 
-$('#leftCol').affix({
+$('#sidebar').affix({
           offset: {
             top: 235
             ,bottom: 400
+            //top: 100,
+      //bottom: function () {
+          // return (this.bottom === $('.sitemap').outerHeight(true));
+      //}
           }
         });
 
@@ -35,7 +39,7 @@ $('#leftCol').affix({
         var navHeight = $('.navbar').outerHeight(true) + 10;
 
         $body.scrollspy({
-          target: '#leftCol',
+          target: '#sidebar', //change back to #leftCol 
           offset: navHeight
         });
 
