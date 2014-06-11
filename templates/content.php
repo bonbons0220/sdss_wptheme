@@ -2,16 +2,12 @@
 
 
 <article <?php post_class(); ?>>
-  <header>
-    <h2 class="entry-title"><?php the_title(); ?></h2>
+  <section class="sdss-docs-section">
+    <h2 class="entry-title" id="<?php $text=get_the_title(); $text=explode(' ',$text); echo strtolower($text[0]); ?>"><?php the_title(); ?></h2>
     <!--Remove meta data
     <?php get_template_part('templates/entry-meta'); ?>-->
-  </header>
-  <section>
-  <div class="entry-summary">
     <?php the_content(); ?>
-  </div>
-</section>
+  </section>
 </article>
 
 
