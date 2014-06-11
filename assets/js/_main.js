@@ -23,8 +23,8 @@ var Roots = {
   common: {
     init: function() {
        // JavaScript to be fired on all pages
-    $('body').scrollspy({ target: '.bs-docs-sidebar' });
-    $('.bs-docs-sidebar').affix({
+    $('body').scrollspy({ target: '.docs-sidebar' });
+    $('.docs-sidebar').affix({
       offset: {
         top: 150,
         bottom: function () {
