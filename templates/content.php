@@ -7,9 +7,11 @@
     <!--Remove meta data
     <?php get_template_part('templates/entry-meta'); ?>-->
   </header>
+  <section>
   <div class="entry-summary">
     <?php the_content(); ?>
   </div>
+</section>
 </article>
 
 
