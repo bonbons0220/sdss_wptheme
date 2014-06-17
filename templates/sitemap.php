@@ -24,8 +24,8 @@
 					<h5>About</h5>
 						<ul class="nav nav-pills nav-stacked">
 							<li><a href="/collaboration">Collaboration</a></li>
-							<li><a href="/collaboration/image-use-policy">Image Use Policy</a></li>
-							<li><a href="/collaboration/publication-policy">Publication Policy</a></li>
+							<li><a href="/collaboration/#image-use">Image Use Policy</a></li>
+							<li><a href="/collaboration/#publication-policy">Publication Policy</a></li>
 							<li><a href="/contact">Contact Us</a></li>
 						</ul>
 				</div>
