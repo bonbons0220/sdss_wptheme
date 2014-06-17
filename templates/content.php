@@ -13,14 +13,21 @@
 
  <?php else: ?>
 
-<article <?php post_class(); ?>>
-  <header>
-    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <?php get_template_part('templates/entry-meta'); ?>
-  </header>
-  <div class="entry-summary">
-    <?php the_excerpt(); ?>
-  </div>
-</article>
-
+<div class="col-sm-6">
+  <article <?php post_class('press'); ?>>
+        <div class="press-img-content">
+         <?php the_post_thumbnail('large', array('class' => 'img-responsive'));  ?>
+        </div>
+        <div class="content">
+          <h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+          <div class="author">
+              <?php get_template_part('templates/entry-meta'); ?>
+          </div>
+          <div class="entry-summary">
+              <?php the_excerpt(); ?>
+              <a href="<?php the_permalink(); ?>" class="btn btn-sm btn-sdss">Read More</a>
+          </div>
+        </div>
+  </article>
+</div>
  <?php endif; ?>
