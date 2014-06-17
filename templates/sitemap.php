@@ -5,7 +5,7 @@
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 			  		<h5>Explore</h5>
 						<ul class="nav nav-pills nav-stacked">
-							<li><a href="/dr12">Latest Data Release</a>  </li> 
+							<li><a href="/data">Latest Data Release</a>  </li> 
 							<li><a href="http://www.sdss3.org/dr10/imaging/">SDSS-III Imaging Data</a></li>
 							<li><a href="http://www.sdss3.org/dr10/spectro/">SDSS-III Optical Data</a></li>
 							<li><a href="http://www.sdss3.org/dr10/irspec/">SDSS-III Infrared Spectroscopic Data</a></li>
