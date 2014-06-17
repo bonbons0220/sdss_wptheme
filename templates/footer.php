@@ -7,7 +7,7 @@
 					</div>
 					<div class="col-lg-6">
 						<div class="pull-right">
-						<p>Connect with us: <a href="https://www.facebook.com/SDSSurveys"><i class="fa fa-facebook-square fa-2x"></i></a> <a href="https://twitter.com/sdss3status"><i class="fa fa-twitter-square fa-2x"></i></a></p>
+						<p>Connect with us: <a href="https://www.facebook.com/SDSSurveys"><i class="fa fa-facebook-square fa-2x"></i></a> <a href="https://twitter.com/sdssurveys"><i class="fa fa-twitter-square fa-2x"></i></a></p>
 						</div>
 					</div> 
 				</div>
