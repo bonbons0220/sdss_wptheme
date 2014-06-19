@@ -31,11 +31,11 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-4">
-				<h5>SDSS is supported by</h5>
+				<h5>SDSS has been supported by</h5>
 				<div class="row">
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sloan.org/"><img src="http://cinema.usc.edu/archivedassets/038/9424.jpg" alt="sloan logo" class="img-responsive"></a></div>
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_nsf.jpg"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/03/NSF_Logo.jpg/600px-NSF_Logo.jpg" alt="nsf logo" class="img-responsive"></a></div> 
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_energy.jpg"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/US-DeptOfEnergy-Seal.svg/900px-US-DeptOfEnergy-Seal.svg.png" alt="doe-logo" class="img-responsive"></a></div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sloan.org/"><img src="/wp-content/uploads/2014/06/sloan.png" alt="sloan logo" class="img-responsive"></a></div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_nsf.jpg"><img src="/wp-content/uploads/2014/06/nsf1.png" alt="nsf logo" class="img-responsive"></a></div> 
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_energy.jpg"><img src="/wp-content/uploads/2014/06/US-DeptOfEnergy-Seal.svg_.png" alt="doe-logo" class="img-responsive"></a></div>
 				</div>
 					<small>Funding for SDSS has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science.</small>
 			</div>
