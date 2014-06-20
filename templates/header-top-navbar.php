@@ -9,7 +9,7 @@
                     </button>
                     <div class="hidden-xs">
                     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
-                          <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" class="img-responsive col-sm-12">
+                          <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" class="img-responsive">
                    </a>
                    </div>
                    <div class="visible-xs">

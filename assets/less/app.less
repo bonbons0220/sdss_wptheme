@@ -104,10 +104,12 @@ body {font-size:100%; }
 .panner img { width: 400%; max-width: 2000px; margin-top:-1.1em;}
 .branding {background: rgba(0,0,0,0.7); color: #fff; display: block; padding: 0 1%; width: 100%; text-decoration: none; font-size: 1.2em; transition: background-color 0.3s ease; } 
 .branding>p {font-size: 18px; } .surveys {margin-bottom: 2em; } 
-#surveys {display:table; width: 100%; height: 400px; background:url('/wp-content/uploads/2014/05/sdss-telescope-small.png')no-repeat top center fixed; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-color: #000; 
- h3, p { color: #fff; 
+#links {display:table; width: 100%; height: 400px; background:url('/wp-content/uploads/2014/05/sdss-telescope-small.png')no-repeat top center fixed; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-color: #000; 
+ h4 { color: #fff; 
       text-shadow: 2px 2px 3px rgba(0,0,0,.9); } 
+ .well {background-color: rgba(236, 240, 241, .9); }     
       }
+
 .flex-caption {color: @body-bg; width: 40%; padding: 10px; margin: 0 0 60px 60px; background-color: #222; background: rgba(0,0,0,.8); position: absolute; display: block; left: 0; bottom: 0; border-left: 4px solid @brand-sdss; }
 .sdss-docs-section {padding-left: 1em; margin-bottom: 3.5em;}
 figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
@@ -124,6 +126,21 @@ font-size: 85%;
    ========================================================================== */
 
 .main { }
+
+
+.survey{width:250px; height:250px; margin:10px auto; border-radius:250px; border:5px solid #fff; box-shadow:0px 0px 3px #aaa; text-align:center; -webkit-transition:border 1s ease; -moz-transition:border 1s ease; -o-transition:border 1s ease; transition:border 1s ease;  }
+
+.survey-img-1 {background: url(/wp-content/uploads/2014/06/apogee.jpg) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 30% 50%;}
+.survey-img-2 {background: url(/wp-content/uploads/2014/06/boss.jpg) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 30% 50%;}
+.survey-img-3 {background: url(/wp-content/uploads/2014/06/feature_manga_2.jpg) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 30% 50%;}
+.survey-img-4 {background: url(/wp-content/uploads/2014/06/faceplat.jpg) no-repeat top center; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; }
+
+.survey:hover{border: 5px solid @brand-sdss; -webkit-transition:border 1s ease; -moz-transition:border 1s ease; -o-transition:border 1s ease; transition:border 1s ease; }
+.survey-description{width:95%; margin:20% auto; padding-top:15px; color: #fff; text-shadow: 2px 2px 3px rgba(0,0,0,.9); 
+.btn {text-shadow: none;}
+
+}
+
 
 /* Gallery Shortcode */
 .gallery-row { padding: 15px 0; }
@@ -347,6 +364,9 @@ border-left: 5px solid #6600ff;
 
 @media (max-width: @screen-xs-max) {
   .navbar-inverse { background:rgba(0,0,0,.9); }
+  .sitemap img {
+max-width: 75%;
+}
 }
 
 @media (min-width: @screen-sm-min) {
@@ -360,8 +380,15 @@ border-left: 5px solid #6600ff;
 
 @media (min-width: @screen-xs-min) and (max-width: @screen-sm-min) { }
 
+@media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {.nav {
+  font-size: (@font-size-base * .8375); }
+  .nav>li>a {padding: 5px;}
+  }
+
 @media (min-width: @screen-md-min) and (max-width: @screen-lg-min) {.nav {
-  font-size: (@font-size-base * 1.02); }}
+  font-size: (@font-size-base * .965); }
+  .nav>li>a {padding: 5px;}
+  }
 
 @media (min-width: @screen-md-min) {
 .sdss-docs-sidebar .nav>.active>ul {display:block } 
