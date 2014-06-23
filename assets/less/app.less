@@ -39,7 +39,6 @@ body {font-size:100%; }
 .navbar-inverse .navbar-nav > .active > a { background:none; color:white; }
 
 .navbar-inverse .navbar-brand {font-size: 24px; color:white; padding:0 0 0 15px; margin:12px 0 0 0; }
-.navbar-inverse .navbar-brand img { margin-top:-8px;}
 
 .navbar-nav {margin: 1em;}
 
@@ -371,6 +370,7 @@ max-width: 75%;
 
 @media (min-width: @screen-sm-min) {
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
+.navbar-inverse .navbar-brand img {max-width: 150px}
 }
 
 @media (max-width: @screen-sm-max) { 
@@ -395,7 +395,8 @@ max-width: 75%;
 .sdss-docs-sidebar.affix,.sdss-docs-sidebar.affix-bottom {width:213px } 
 .sdss-docs-sidebar.affix {position:fixed; top:50px } 
 .sdss-docs-sidebar.affix-bottom {position:absolute } 
-.sdss-docs-sidebar.affix-bottom .sdss-docs-sidenav,.sdss-docs-sidebar.affix .sdss-docs-sidenav {margin-top:0; margin-bottom:0 } }
+.sdss-docs-sidebar.affix-bottom .sdss-docs-sidenav,.sdss-docs-sidebar.affix .sdss-docs-sidenav {margin-top:0; margin-bottom:0 } 
+.navbar-inverse .navbar-brand img {max-width: 200px; margin-top: -5px;}}
 
 @media (min-width: @screen-lg-min) {
 .sdss-docs-sidebar.affix-bottom,.sdss-docs-sidebar.affix {width:263px }  }
