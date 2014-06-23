@@ -23,7 +23,7 @@
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 					<h5>About</h5>
 						<ul class="nav nav-pills nav-stacked">
-							<li><a href="/collaboration">Collaboration</a></li>
+							<li><a href="/acknowledging-sdss">Acknowledging SDSS</a></li>
 							<li><a href="/collaboration/#image-use">Image Use Policy</a></li>
 							<li><a href="/collaboration/#publication-policy">Publication Policy</a></li>
 							<li><a href="/contact">Contact Us</a></li>
