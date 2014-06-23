@@ -14,7 +14,7 @@
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-4 column">
 					<h5>Learn</h5>
 						<ul class="nav nav-pills nav-stacked">
-							<li><a href="/surveys">Surveys</a></li>
+							<li><a href="/sdss-surveys">Surveys</a></li>
 							<li><a href="/instruments">Instruments</a></li>
 							<li><a href="/education">Education</a></li>
 							<li><a href="/results-science">Results & Science</a></li>
