@@ -131,7 +131,7 @@ font-size: 85%;
 
 .survey-img-1 {background: url(/wp-content/uploads/2014/06/apogee.jpg) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 30% 50%;}
 .survey-img-2 {background: url(/wp-content/uploads/2014/06/boss.jpg) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 30% 50%;}
-.survey-img-3 {background: url(/wp-content/uploads/2014/06/feature_manga_2-1.png) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 55% 1%;}
+.survey-img-3 {background: url(/wp-content/uploads/2014/06/feature_manga_2-1.png) no-repeat; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-bakground-size: cover; background-position: 55% 1%;}
 .survey-img-4 {background: url(/wp-content/uploads/2014/06/faceplat.jpg) no-repeat top center; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; }
 
 .survey:hover{border: 5px solid @brand-sdss; -webkit-transition:border 1s ease; -moz-transition:border 1s ease; -o-transition:border 1s ease; transition:border 1s ease; }
@@ -387,7 +387,7 @@ max-width: 75%;
   }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-lg-min) {.nav {
-  font-size: (@font-size-base * .965); }
+  font-size: (@font-size-base * 1.05); }
   .nav>li>a {padding: 5px;}
   }
 
@@ -401,7 +401,9 @@ max-width: 75%;
 }
 
 @media (min-width: @screen-lg-min) {
-.sdss-docs-sidebar.affix-bottom,.sdss-docs-sidebar.affix {width:263px }  }
+.sdss-docs-sidebar.affix-bottom,.sdss-docs-sidebar.affix {width:263px } 
+ .nav {font-size: (@font-size-base * 1.15); }
+ }
 
 @media (min-width: 400px) {
   body { font-size: 75%; }
