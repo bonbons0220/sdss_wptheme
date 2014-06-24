@@ -10,4 +10,13 @@
   <li><?php _e('an out-of-date link', 'roots'); ?></li>
 </ul>
 
+<div class="row">
+	<div class="col-sm-6">
+<div class="alert alert-info">Arrive at this page via the original SDSS (now classic.sdss.org) website? If so please fill out the form to inform us the link and page you were looking for.</div>
+<?php echo do_shortcode( '[contact-form-7 id="1472" title="404 Error Form"]' ); ?>
+</div>
+<div class="col-sm-6">
+<div class="alert alert-info">Otherwise please use the following search form to find your content</div>
 <?php get_search_form(); ?>
+</div>
+</div>
