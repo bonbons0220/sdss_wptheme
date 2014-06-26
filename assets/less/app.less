@@ -348,9 +348,24 @@ border-left: 5px solid @brand-sdss;
 
 @media (max-width: @screen-xs-max) {
   .navbar-inverse { background:rgba(0,0,0,.9); }
-  .sitemap img {
-max-width: 75%;
-}
+  .sitemap img { max-width: 75%;}
+
+.navbar-nav {
+    > li > a {
+      &:hover,
+      &:focus {
+        border-bottom: none !important;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        border-bottom: none !important;
+      }
+    }
+  }
+
 }
 
 @media (min-width: @screen-sm-min) {
