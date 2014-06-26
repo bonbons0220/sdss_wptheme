@@ -24,20 +24,6 @@ body {font-size:100%; }
 .navbar-inverse { border-radius: 0; background:rgba(0, 0, 0, .9); border-bottom:1px solid rgba(255, 255, 255, 0.15); min-height:5em; margin-bottom:0;}
 .navbar-inverse *:focus { outline: 0; }
 
-.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a { color:rgba(255, 255, 255, 1); transition: color 0.5s ease; }
-
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover, 
-.navbar-inverse .navbar-nav > .active > a:focus { color: #fff; background:none ; border-bottom:3px solid @brand-sdss; padding-bottom: .5em;}
-.navbar-inverse .navbar-nav > .open > a{ background:none; color:white; }
-
-.navbar-inverse .navbar-nav>li>a:hover, 
-.navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover, 
-.navbar-inverse .navbar-nav>.open>a:focus { background:none; color:white; border-bottom:3px solid @brand-sdss; padding-bottom: .5em;}
-
-.navbar-inverse .navbar-nav > .active > a { background:none; color:white; }
-
 .navbar-inverse .navbar-brand {font-size: 24px; color:white; padding:0 0 0 15px; margin:12px 0 0 0; }
 
 .navbar-nav {margin: 1em;}
@@ -63,21 +49,19 @@ body {font-size:100%; }
 .navbar-fixed-bottom { border-radius: 0; }
 
 .nav-pills>li>a {color: #777777;}
-.nav-pills>li>a:hover {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid #6600ff;}
-.nav-pills>li.active>a,  .nav-pills>li.active>a:focus{color: inherit; background: inherit; border-left: 5px solid #6600ff;}
+.nav-pills>li>a:hover {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
+.nav-pills>li.active>a,  .nav-pills>li.active>a:focus{color: inherit; background: inherit; border-left: 5px solid @brand-sdss;}
 .nav-pills>li.active>a:hover {background: rgba(0,0,0,.9);}
 
-.btn-sdss:hover{color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid #6600ff;}
+.btn-sdss:hover{color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
 
-.btn-sdss:hover, .btn-sdss:focus, .btn-sdss:active, .btn-sdss.active, .open .dropdown-toggle.btn-sdss {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid #6600ff;}
+.btn-sdss:hover, .btn-sdss:focus, .btn-sdss:active, .btn-sdss.active, .open .dropdown-toggle.btn-sdss {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
 
 /* ==========================================================================
    Header
    ========================================================================== */
 
 .banner {}
-
-.navbar-default {background-color: @brand-sdss-clouds; border: 3px solid darken(@brand-sdss-clouds, 20%); border-width: 0 1px 4px 1px;}
 
 /* Autohide navbar */
 .slideUp { top:-100px; }
@@ -165,7 +149,7 @@ font-size: 85%;
      & .ch-info-front {box-shadow: inset 0 0 0 16px rgba(0,0,0,0.3); }
      & .ch-info-back {-webkit-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg); -moz-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg); -o-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg); -ms-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg); transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg); background: #000; opacity: 0; }
      & h3 {letter-spacing: 2px; margin: 0 15px; padding: 40% 0 0 0; height: 110px; text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3); }
-     & a:hover {color: #6600FF; color: rgba(102, 0, 255, .8); }
+     & a:hover {color: @brand-sdss; color: rgba(102, 0, 255, .8); }
      & > div {display: block; position: absolute; width: 100%; height: 100%; border-radius: 50%; background-position: center center; -webkit-transition: all 0.4s linear; -moz-transition: all 0.4s linear; -o-transition: all 0.4s linear; -ms-transition: all 0.4s linear; transition: all 0.4s linear; -webkit-transform-origin: 50% 0%; -moz-transform-origin: 50% 0%; -o-transform-origin: 50% 0%; -ms-transform-origin: 50% 0%; transform-origin: 50% 0%; }
 }
 
@@ -351,11 +335,11 @@ li.tocify-item a:hover {
 color: #ffffff;
 background: rgba(0,0,0,0.9);
 transition: background 0.5s ease;
-border-left: 5px solid #6600ff;
+border-left: 5px solid @brand-sdss;
 }
 
 .nav.nav-list>.active>a {
-  border-left: 5px solid #6600ff;
+  border-left: 5px solid @brand-sdss;
 }
 
 /* ==========================================================================
