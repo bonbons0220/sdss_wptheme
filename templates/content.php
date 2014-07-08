@@ -1,10 +1,11 @@
-  <?php if (is_tax()): ?> 
-
+<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) )): ?>
 
 <article <?php post_class(); ?>>
   <section class="sdss-docs-section">
-    <h2 class="entry-title" id="<?php $text=get_the_title(); $text=explode(' ',$text); echo strtolower($text[0]); ?>"><?php the_title(); ?></h2>
-    <?php the_content(); ?>
+    <h3 class="entry-title" id="<?php $text=get_the_title(); $text=explode(' ',$text); echo strtolower($text[0]); ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+  <div class="entry-summary">
+    <?php the_excerpt(); ?>
+  </div>
   </section>
 </article>
 
