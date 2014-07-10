@@ -1,4 +1,4 @@
-<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) ) ): ?>
+<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels', ) ) ): ?>
 
 
 <!--<time class="published" datetime="<?php echo get_the_time('c'); ?>"><i class="fa fa-clock-o"></i> <?php echo get_the_date(); ?></time>-->
