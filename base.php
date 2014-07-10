@@ -24,7 +24,7 @@
     <div class="wrap container" role="document">
 <?php endif; ?>    
 <div class="content row">
-<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) ) || is_page( array (202, 345, 607, 1803,)) ): ?>
+<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels', ) ) || is_page( array (202, 345, 607, 1803,)) ): ?>
             <?php
               if (has_nav_menu('secondary_navigation')) :
                 wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
