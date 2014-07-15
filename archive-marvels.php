@@ -1,11 +1,10 @@
+<?php query_posts($query_string . '&orderby=menu_order title&order=desc'); ?>
 <?php get_template_part('templates/page', 'header'); ?>
 
-<p>Below is a list of of SDSS press releases.</p>
+<p>This is a the archive page for DR12 MARVELS Data.</p>
 
-<p>SDSS-III press releases can be found on the <a href="http://www.sdss3.org/press/">SDSS-III website</a>, and SDSS-I/II press releases can be found on the <a href="http://www.sdss.org/news/">classic SDSS</a> website.</p>
-
+<p>For an overview on using DR12 MARVELS Data, please visit the Overview page. Otherwise navigate to your specific page below or by using the navigation on the right.</p>
 <div class="col-sm-12">
-
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
     <?php _e('Sorry, no results were found.', 'roots'); ?>
@@ -28,5 +27,4 @@
   </nav>
 </div>
 <?php endif; ?>
-
 </div>

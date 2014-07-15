@@ -69,6 +69,19 @@ add_filter('nav_menu_css_class', 'roots_nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
+ * Fix nav menu active classes for custom post types
+ */
+function roots_cpt_active_menu($menu) {
+  if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) )) {
+    $menu = str_replace('active', '', $menu);
+    $menu = str_replace('active menu-parent', 'menu-parent active', $menu);
+  }
+  return $menu;
+}
+add_filter('nav_menu_css_class', 'roots_cpt_active_menu', 400);
+
+
+/**
  * Clean up wp_nav_menu_args
  *
  * Remove the container
