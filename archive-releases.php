@@ -4,8 +4,6 @@
 
 <p>SDSS-III press releases can be found on the <a href="http://www.sdss3.org/press/">SDSS-III website</a>, and SDSS-I/II press releases can be found on the <a href="http://www.sdss.org/news/">classic SDSS</a> website.</p>
 
-<div class="col-sm-12">
-
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
     <?php _e('Sorry, no results were found.', 'roots'); ?>
@@ -15,6 +13,9 @@
 
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', get_post_format()); ?>
+  <?php if(($wp_query->current_post + 1) % 2 == 0) : ?>
+    <div class="clearfix hidden-xs"></div>
+  <?php endif; ?>
 <?php endwhile; ?>
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
@@ -28,5 +29,3 @@
   </nav>
 </div>
 <?php endif; ?>
-
-</div>

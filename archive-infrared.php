@@ -5,8 +5,6 @@
 
 <p>For an overview on using DR12 Infrared Data, please visit the Overview page. Otherwise navigate to your specific page below or by using the navigation on the right.</p>
 
-<div class="col-sm-12">
-
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
     <?php _e('Sorry, no results were found.', 'roots'); ?>
@@ -16,6 +14,9 @@
 
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('templates/content', get_post_format()); ?>
+  <?php if(($wp_query->current_post + 1) % 2 == 0) : ?>
+    <div class="clearfix hidden-xs"></div>
+  <?php endif; ?>
 <?php endwhile; ?>
 
 
@@ -30,5 +31,3 @@
   </nav>
   </div>
 <?php endif; ?>
-
-</div>
