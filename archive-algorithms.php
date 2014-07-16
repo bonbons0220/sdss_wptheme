@@ -1,4 +1,4 @@
-<?php query_posts($query_string . '&orderby=menu_order title&order=desc'); ?>
+<?php query_posts($query_string . '&orderby=title&order=asc'); ?>
 <?php get_template_part('templates/page', 'header'); ?>
 
 <p>This is a the archive page for DR12 Algorithms.</p>
