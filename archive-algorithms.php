@@ -1,9 +1,9 @@
 <?php query_posts($query_string . '&orderby=menu_order title&order=desc'); ?>
 <?php get_template_part('templates/page', 'header'); ?>
 
-<p>This is a the archive page for DR12 Data Access.</p>
+<p>This is a the archive page for DR12 Algorithms.</p>
 
-<p>For an overview on using DR12 Data, please visit the Data Access Overview page. Otherwise navigate to your specific page below or by using the navigation on the right.</p>
+<p>For an overview on using DR12 Algorithms, please visit the Overview page. Otherwise navigate to your specific page below (listed alphabetically) or by using the navigation on the right.</p>
 
   
 <?php if (!have_posts()) : ?>
