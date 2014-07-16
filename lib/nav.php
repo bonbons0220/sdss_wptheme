@@ -71,14 +71,82 @@ add_filter('nav_menu_item_id', '__return_null');
 /**
  * Fix nav menu active classes for custom post types
  */
-function roots_cpt_active_menu($menu) {
-  if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) )) {
-    $menu = str_replace('active', '', $menu);
-    $menu = str_replace('active menu-parent', 'menu-parent active', $menu);
-  }
-  return $menu;
+// Remove active class from menu
+function remove_active_class($class) {
+return ( $class == 'active' ) ? FALSE : TRUE;
 }
-add_filter('nav_menu_css_class', 'roots_cpt_active_menu', 400);
+
+// Add active class to menu of post type single template
+function add_class_to_wp_nav_menu($classes) {
+
+if( is_singular( 'data' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-datasets', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'algorithms' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-algorithms', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'imaging' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-imaging-data', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'infrared' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-infrared-apogee', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'opticalspectra' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-optical-sdss-ibosssegue', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'software' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-software', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'help' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-help', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'tutorials' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-tutorials', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'marvels' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-interferometry-marvels', $classes) ) {
+      $classes[] = 'active';
+    }
+} 
+
+return $classes;
+}
+add_filter('nav_menu_css_class', 'add_class_to_wp_nav_menu');
 
 
 /**
