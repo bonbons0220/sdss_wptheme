@@ -98,8 +98,45 @@ module.exports = function(grunt) {
         'assets/css/main.min.css',
         'assets/js/scripts.min.js'
       ]
+    },
+    imagemin: {
+    png: {
+      options: {
+        optimizationLevel: 7
+      },
+      files: [
+        {
+          // Set to true to enable the following options…
+          expand: true,
+          // cwd is 'current working directory'
+          cwd: 'assets/img/2014/06',
+          src: ['**/*.png'],
+          // Could also match cwd line above. i.e. project-directory/img/
+          dest: 'assets/img/compressed/',
+          ext: '.png'
+        }
+      ]
+    },
+    jpg: {
+      options: {
+        progressive: true
+      },
+      files: [
+        {
+          // Set to true to enable the following options…
+          expand: true,
+          // cwd is 'current working directory'
+          cwd: 'assets/img/2014/06',
+          src: ['**/*.jpg'],
+          // Could also match cwd. i.e. project-directory/img/
+          dest: 'assets/img/compressed/',
+          ext: '.jpg'
+        }
+      ]
     }
+  }
   });
+
 
   // Load tasks
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -114,10 +151,10 @@ module.exports = function(grunt) {
     'clean',
     'less',
     'uglify',
-    'version'
+    'version',
+    'imagemin',
   ]);
   grunt.registerTask('dev', [
     'watch'
   ]);
-
 };

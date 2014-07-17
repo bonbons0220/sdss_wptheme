@@ -25,7 +25,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     if ($item->is_dropdown && ($depth === 0)) {
       $item_html = str_replace('<a', '<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"', $item_html);
-      $item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html);
+      //$item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html);
     }
     elseif (stristr($item_html, 'li class="divider')) {
       $item_html = preg_replace('/<a[^>]*>.*?<\/a>/iU', '', $item_html);
@@ -69,6 +69,87 @@ add_filter('nav_menu_css_class', 'roots_nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
+ * Fix nav menu active classes for custom post types
+ */
+// Remove active class from menu
+function remove_active_class($class) {
+return ( $class == 'active' ) ? FALSE : TRUE;
+}
+
+// Add active class to menu of post type single template
+function add_class_to_wp_nav_menu($classes) {
+
+if( is_singular( 'data' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-datasets', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'algorithms' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-algorithms', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'imaging' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-imaging-data', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'infrared' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-infrared-apogee', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'opticalspectra' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-optical-sdss-ibosssegue', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'software' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-software', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'help' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-help', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'tutorials' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-tutorials', $classes) ) {
+      $classes[] = 'active';
+    }
+} elseif( is_singular( 'marvels' ) ) {
+
+    $classes = array_filter( $classes, 'remove_active_class' );
+
+    if( in_array( 'menu-interferometry-marvels', $classes) ) {
+      $classes[] = 'active';
+    }
+} 
+
+return $classes;
+}
+add_filter('nav_menu_css_class', 'add_class_to_wp_nav_menu');
+
+
+/**
  * Clean up wp_nav_menu_args
  *
  * Remove the container
@@ -82,7 +163,7 @@ function roots_nav_menu_args($args = '') {
   }
 
   if (current_theme_supports('bootstrap-top-navbar') && !$args['depth']) {
-    $roots_nav_menu_args['depth'] = 2;
+    $roots_nav_menu_args['depth'] = 1;
   }
 
   if (!$args['walker']) {

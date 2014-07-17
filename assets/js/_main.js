@@ -22,13 +22,51 @@ var Roots = {
   // All pages
   common: {
     init: function() {
-      // JavaScript to be fired on all pages
+       // JavaScript to be fired on all pages
+    $('body').scrollspy({ target: '.sdss-docs-sidebar' });
+    $('.sdss-docs-sidebar').affix({
+      offset: {
+        top: 150,
+        bottom: function () {
+           return (this.bottom === $('.footer').outerHeight(true));
+        }
+      }
+    });
+
+    //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
+       $(function() {
+    //Calls the tocify method on your HTML div.
+       var toc = $("#toc").tocify().data("toc-tocify");
+              // Sets the showEffect, scrollTo, and smoothScroll options
+              toc.setOptions({ scrollTo: 50, extendPage: false });
+       });
+     
     }
   },
   // Home page
   home: {
     init: function() {
       // JavaScript to be fired on the home page
+                $('.panner').kinetic();
+                $('#left').click(function(){
+                    $('.panner').kinetic('start', { velocity: -10 });
+                });
+                $('#right').click(function(){
+                    $('.panner').kinetic('start', { velocity: 10 });
+                });
+                $('#end').click(function(){
+                    $('.panner').kinetic('end');
+                });
+                $('#stop').click(function(){
+                    $('.panner').kinetic('stop');
+                });
+                $('#detach').click(function(){
+                    $('.panner').kinetic('detach');
+                });
+                $('#attach').click(function(){
+                    $('.panner').kinetic('attach');
+                });
+
     }
   },
   // About us page, note the change from about-us to about_us.
@@ -61,3 +99,6 @@ var UTIL = {
 $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+
+

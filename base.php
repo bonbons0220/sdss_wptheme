@@ -17,19 +17,14 @@
     }
   ?>
 
-<?php 
-if (is_front_page()):  ?> 
-  <div class="wrap" role="document">
-    <div class="content row">
-      <main class="main <?php echo roots_main_class(); ?>" role="main">
-        <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
-<?php else: ?>
-  <div class="wrap container" role="document">
-    <div class="content row">
-       <?php if (is_page( array (202, 334, 341, 345, 361, 366, 386, 217, 'imaging-data', 'Imaging Data' )) ): ?> 
+<?php if 
+(is_front_page()): ?>
+ <div class="wrap container-fluid" role="document">
+  <?php else: ?>
+    <div class="wrap container" role="document">
+<?php endif; ?>    
+<div class="content row">
+<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_page( array (202, 345, 607, 1803,)) ): ?>
             <?php
               if (has_nav_menu('secondary_navigation')) :
                 wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
@@ -47,7 +42,6 @@ if (is_front_page()):  ?>
       <?php endif; ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
-  <?php endif; ?>
   <?php get_template_part('templates/sitemap'); ?>
   <?php get_template_part('templates/footer'); ?>
 </body>

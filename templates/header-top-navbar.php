@@ -1,34 +1,39 @@
 <header role="banner">
-  <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+  <div class="navbar navbar-inverse navbar-static-top" >
     <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
             <div class="navbar-header">
-             <!-- Button for smallest screens -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
-                </button>
-                <a class="navbar-brand" href="<?php echo home_url(); ?>/">
-<?php if (is_front_page() && !is_paged()) : ?>
-
-  <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" style="width:200px">
-<?php else: ?>
-  <img src="/wp-content/uploads/2014/05/sdsslogo.png" alt="sdsslogo" style="width:200px">
-
-<?php endif; ?>
- 
-                 </a>
+                 <!-- Button for smallest screens -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
+                    </button>
+                    <div class="hidden-xs">
+                    <a class="navbar-brand" href="<?php echo home_url(); ?>/">
+                          <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" class="img-responsive">
+                   </a>
+                   </div>
+                   <div class="visible-xs">
+                          <img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" style="width:200px">
+                   </div>
             </div>
-              <div class="navbar-collapse collapse"  role="navigation">
-                <?php
-                  if (has_nav_menu('primary_navigation')) :
-                    wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav pull-right'));
-                  endif;
-                ?>
-
+        </div>
+      <div class="col-sm-9">
+                <div class="navbar-collapse collapse"  role="navigation">
+                  <?php
+                    if (has_nav_menu('primary_navigation')) :
+                      wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav pull-right'));
+                    endif;
+                  ?>
+                </div>
               </div>
+      <?php if (!is_front_page()): ?>      
+      <div class="row">
+          <div class="col-sm-2 col-sm-offset-10">
+            <?php qtrans_generateLanguageSelectCode('image'); ?>
+          </div>
+      </div>
+    <?php endif; ?>
+          </div>
       </div>
     </div>
-  <script  type="text/javascript"  src="https://rawgithub.com/WickyNilliams/headroom.js/master/dist/headroom.js"></script>      
-   <script  type="text/javascript"  src="https://rawgithub.com/WickyNilliams/headroom.js/master/src/jQuery.headroom.js"></script>
-    <script type="text/javascript">
-        $(".navbar-fixed-top").headroom();
-    </script>  
 </header>
