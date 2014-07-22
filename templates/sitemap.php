@@ -34,8 +34,8 @@
 				<h5>SDSS has been supported by</h5>
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sloan.org/"><img src="/wp-content/uploads/2014/06/sloan.png" alt="sloan logo" class="img-responsive"></a></div>
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_nsf.jpg"><img src="/wp-content/uploads/2014/06/nsf1.png" alt="nsf logo" class="img-responsive"></a></div> 
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.sdss3.org/images/home/logo_energy.jpg"><img src="/wp-content/uploads/2014/06/US-DeptOfEnergy-Seal.svg_.png" alt="doe-logo" class="img-responsive"></a></div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.nsf.gov/"><img src="/wp-content/uploads/2014/06/nsf1.png" alt="nsf logo" class="img-responsive"></a></div> 
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column"><a href="http://www.energy.gov/"><img src="/wp-content/uploads/2014/06/US-DeptOfEnergy-Seal.svg_.png" alt="doe-logo" class="img-responsive"></a></div>
 				</div>
 					<small>Funding for SDSS has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science.</small>
 			</div>
