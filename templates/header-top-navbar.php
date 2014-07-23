@@ -26,13 +26,14 @@
                   ?>
                 </div>
               </div>
-      <?php if (!is_front_page()): ?>      
-      <div class="row">
-          <div class="col-sm-2 col-sm-offset-10">
-            <?php qtrans_generateLanguageSelectCode('image'); ?>
-          </div>
-      </div>
-    <?php endif; ?>
+       <?php /*if (!is_front_page()){
+  When ready for translation, turn on mqTranslate plugin and then uncomment this code:
+      echo '<div class="row">';   
+      echo '<div class="col-sm-2 col-sm-offset-10">';
+            qtrans_generateLanguageSelectCode('image');
+      echo '</div>';
+      echo '</div>';
+    }*/?>
           </div>
       </div>
     </div>
