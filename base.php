@@ -17,21 +17,31 @@
     }
   ?>
 
-<?php if 
-(is_front_page()): ?>
+<?php if (is_front_page()): ?>
  <div class="wrap container-fluid" role="document">
-  <?php else: ?>
+<?php else: ?>
     <div class="wrap container" role="document">
 <?php endif; ?>    
-<div class="content row">
-<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_page( array (202, 345, 607, 1803,)) ): ?>
-            <?php
-              if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-              endif;
-            ?>
 
-          <?php endif; ?>
+<div class="content row">
+<?php 
+$dr12_name = 'dr12';
+$dr12_id = ( get_cat_ID( $dr12_name ) > 0 ) ? get_cat_ID( $dr12_name ) : -1;
+
+if ( in_category( $dr12_id ) || is_category( $dr12_id )) :
+
+    if (has_nav_menu('secondary_navigation')) :
+        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
+    endif;
+
+elseif (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) ): 
+
+    if (has_nav_menu('secondary_navigation')) :
+        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
+    endif;
+
+endif; 
+?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
