@@ -25,6 +25,7 @@
 
 <div class="content row">
 <?php 
+//show secondary nav menu
 $dr12_name = 'dr12';
 $dr12_id = ( get_cat_ID( $dr12_name ) > 0 ) ? get_cat_ID( $dr12_name ) : -1;
 
@@ -42,17 +43,17 @@ elseif (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', '
 
 endif; 
 ?>
-      <main class="main <?php echo roots_main_class(); ?>" role="main">
-        <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-          <?php include roots_sidebar_path(); ?>
-        </aside><!-- /.sidebar -->
-      <?php endif; ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
-  <?php get_template_part('templates/sitemap'); ?>
-  <?php get_template_part('templates/footer'); ?>
+<main class="main <?php echo roots_main_class(); ?>" role="main">
+<?php include roots_template_path(); ?>
+</main><!-- /.main -->
+<?php if (roots_display_sidebar()) : ?>
+<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+<?php include roots_sidebar_path(); ?>
+</aside><!-- /.sidebar -->
+<?php endif; ?>
+</div><!-- /.content -->
+</div><!-- /.wrap -->
+<?php get_template_part('templates/sitemap'); ?>
+<?php get_template_part('templates/footer'); ?>
 </body>
 </html>
