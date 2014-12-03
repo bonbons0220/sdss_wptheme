@@ -146,7 +146,9 @@ if( is_singular( 'data' ) ) {
 
 return $classes;
 }
-add_filter('nav_menu_css_class', 'add_class_to_wp_nav_menu');
+//remove filter - no custom classes
+//bonnie souter 12/03/14
+//add_filter('nav_menu_css_class', 'add_class_to_wp_nav_menu');
 
 
 /**
