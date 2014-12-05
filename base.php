@@ -26,34 +26,36 @@
 <div class="content row">
 <?php 
 //show secondary nav menu
-$dr12_name = 'dr12';
-$dr12_id = ( get_cat_ID( $dr12_name ) > 0 ) ? get_cat_ID( $dr12_name ) : -1;
+$secondtier_menu = new sdss_nav_menus();
 
-if ( in_category( $dr12_id ) || is_category( $dr12_id )) :
+if ( $secondtier_menu->show( 'secondtier' ) ) {
 
-    if (has_nav_menu('secondary_navigation')) :
-        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-    endif;
+	wp_nav_menu(array('theme_location' => $secondtier_menu->currentlocation, 'menu_class' => 'nav nav-pills nav-justified')); 
 
-elseif (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) ): 
-
-    if (has_nav_menu('secondary_navigation')) :
-        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-    endif;
-
-endif; 
+}
+	
 ?>
 <main class="main <?php echo roots_main_class(); ?>" role="main">
 <?php include roots_template_path(); ?>
 </main><!-- /.main -->
 <?php if (roots_display_sidebar()) : ?>
 <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-<?php include roots_sidebar_path(); ?>
+<?php include roots_sidebar_path(); 
+
+$sidebar_menu = new sdss_nav_menus();
+if ( $sidebar_menu->show( 'sidebar' ) ) {
+
+	wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
+
+}
+
+?>
 </aside><!-- /.sidebar -->
 <?php endif; ?>
 </div><!-- /.content -->
 </div><!-- /.wrap -->
 <?php get_template_part('templates/sitemap'); ?>
 <?php get_template_part('templates/footer'); ?>
+
 </body>
 </html>

@@ -9,7 +9,22 @@ function roots_setup() {
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
     'primary_navigation' => __('Primary Navigation', 'roots'),
-    'secondary_navigation' => __('Secondary Navigation', 'roots'),
+    'secondtier_first' => __('Secondary Tier First', 'roots'),
+    'secondtier_second' => __('Secondary Tier Second', 'roots'),
+    'secondtier_third' => __('Secondary Tier Third', 'roots'),
+    'secondtier_fourth' => __('Secondary Tier Fourth', 'roots'),
+    'secondtier_fifth' => __('Secondary Tier Fifth', 'roots'),
+    'secondtier_sixth' => __('Secondary Tier Sixth', 'roots'),
+    'secondtier_seventh' => __('Secondary Tier Seventh', 'roots'),
+    'secondtier_eighth' => __('Secondary Tier Eighth', 'roots'),
+    'sidebarmenu_first' => __('Sidebar Menu First', 'roots'),
+    'sidebarmenu_second' => __('Sidebar Menu Second', 'roots'),
+    'sidebarmenu_third' => __('Sidebar Menu Third', 'roots'),
+    'sidebarmenu_fourth' => __('Sidebar Menu Fourth', 'roots'),
+    'sidebarmenu_fifth' => __('Sidebar Menu Fifth', 'roots'),
+    'sidebarmenu_sixth' => __('Sidebar Menu Sixth', 'roots'),
+    'sidebarmenu_seventh' => __('Sidebar Menu Seventh', 'roots'),
+    'sidebarmenu_eighth' => __('Sidebar Menu Eighth', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)

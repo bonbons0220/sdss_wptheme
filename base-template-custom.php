@@ -21,22 +21,16 @@
     <div class="content row">
 <?php 
 //show secondary nav menu
-$dr12_name = 'dr12';
-$dr12_id = ( get_cat_ID( $dr12_name ) > 0 ) ? get_cat_ID( $dr12_name ) : -1;
+$secondtier_menu = new sdss_nav_menus();
 
-if ( in_category( $dr12_id ) || is_category( $dr12_id )) :
+if ( $secondtier_menu->show( 'secondtier' ) ) {
 
-    if (has_nav_menu('secondary_navigation')) :
-        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-    endif;
+	if (DEBUG) echo "<!-- " . $secondtier_menu->currentlocation . " -->";
 
-elseif (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) ): 
+	wp_nav_menu(array('theme_location' => $secondtier_menu->currentlocation, 'menu_class' => 'nav nav-pills nav-justified')); 
 
-    if (has_nav_menu('secondary_navigation')) :
-        wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-    endif;
+}
 
-endif; 
 ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">    
         <?php include roots_template_path(); ?>
