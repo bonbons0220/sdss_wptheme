@@ -44,8 +44,9 @@ if ( $secondtier_menu->show( 'secondtier' ) ) {
 
 $sidebar_menu = new sdss_nav_menus();
 if ( $sidebar_menu->show( 'sidebar' ) ) {
-
+	echo "<div class='sdss-docs-sidebar'>";
 	wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
+	echo "</div>";
 
 }
 

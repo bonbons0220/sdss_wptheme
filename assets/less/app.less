@@ -26,6 +26,8 @@ body {font-size:100%; }
 
 .navbar-inverse .navbar-brand {font-size: 24px; color:white; padding:0 0 0 15px; margin:12px 0 0 0; }
 
+.navbar-inverse .navbar-nav> .retroactive>a {color: #ccc;  box-shadow: 0 -2px #333 inset;}
+
 .navbar-nav {margin: 1em;}
 
 .navbar-nav .dropdown-menu {left:-5px; font-size: 13px; background-color: rgba(0, 0, 0, .7); border: 0px none; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -48,10 +50,12 @@ body {font-size:100%; }
 .navbar-fixed-top,
 .navbar-fixed-bottom { border-radius: 0; }
 
-.nav-pills>li>a {color: #777777; border-left: 5px solid transparent;}
+.nav-pills>li>a {color: #777777; border-left: 5px solid transparent; padding-top:2px; padding-bottom:2px;}
 .nav-pills>li>a:hover {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
 .nav-pills>li.active>a,  .nav-pills>li.active>a:focus{color: inherit; background: inherit; border-left: 5px solid @brand-sdss;}
 .nav-pills>li.active>a:hover {background: rgba(0,0,0,.9);}
+
+.nav-pills>li.retroactive>a {color: inherit; border-left: 5px solid transparent; box-shadow: 0 -2px #333 inset;}
 
 .btn-sdss:hover{color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
 
@@ -197,7 +201,7 @@ font-size: 85%;
 .sdss-docs-sidebar .nav>li>a {display:block; font-size:1em; font-weight:500; color:#999; padding:4px 20px } 
 .sdss-docs-sidebar .nav>li>a:hover,.sdss-docs-sidebar .nav>li>a:focus {padding-left:19px; color:@brand-sdss; text-decoration:none; background-color:transparent; border-left:1px solid @brand-sdss; } 
 .sdss-docs-sidebar .nav>.active>a,.sdss-docs-sidebar .nav>.active:hover>a,.sdss-docs-sidebar .nav>.active:focus>a {padding-left:18px; font-weight:700; color:@brand-sdss; background-color:transparent; border-left:2px solid @brand-sdss }
- .sdss-docs-sidebar .nav .nav {display:none; padding-bottom:10px } 
+.sdss-docs-sidebar .nav .nav {display:none; padding-bottom:10px } 
 .sdss-docs-sidebar .nav .nav>li>a {padding-top:1px; padding-bottom:1px; padding-left:30px; font-size:.9em; font-weight:400 } 
 .sdss-docs-sidebar .nav .nav>li>a:hover,.sdss-docs-sidebar .nav .nav>li>a:focus {padding-left:29px } 
 .sdss-docs-sidebar .nav .nav>.active>a,.sdss-docs-sidebar .nav .nav>.active:hover>a,.sdss-docs-sidebar .nav .nav>.active:focus>a {font-weight:500; padding-left:28px }

@@ -24,14 +24,17 @@ var Roots = {
     init: function() {
        // JavaScript to be fired on all pages
     $('body').scrollspy({ target: '.sdss-docs-sidebar' });
-    $('.sdss-docs-sidebar').affix({
+	//Bonnie Souter removed 12/08/14. 
+	//Affixing sidebar is a problem for long menus
+	//Also runs into footer.
+	/*$('.sdss-docs-sidebar').affix({
       offset: {
         top: 150,
         bottom: function () {
            return (this.bottom === $('.footer').outerHeight(true));
         }
       }
-    });
+    });*/
 
     //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
        $(function() {

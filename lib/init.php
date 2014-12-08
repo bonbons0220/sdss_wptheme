@@ -25,6 +25,10 @@ function roots_setup() {
     'sidebarmenu_sixth' => __('Sidebar Menu Sixth', 'roots'),
     'sidebarmenu_seventh' => __('Sidebar Menu Seventh', 'roots'),
     'sidebarmenu_eighth' => __('Sidebar Menu Eighth', 'roots'),
+    'sidebarmenu_ninth' => __('Sidebar Menu Ninth', 'roots'),
+    'sidebarmenu_tenth' => __('Sidebar Menu Tenth', 'roots'),
+    'sidebarmenu_eleventh' => __('Sidebar Menu Eleventh', 'roots'),
+    'sidebarmenu_twelfth' => __('Sidebar Menu Twelfth', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
