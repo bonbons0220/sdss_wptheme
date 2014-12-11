@@ -37,13 +37,13 @@ var Roots = {
     });*/
 
     //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
-       $(function() {
-    //Calls the tocify method on your HTML div.
-       var toc = $("#toc").tocify().data("toc-tocify");
-              // Sets the showEffect, scrollTo, and smoothScroll options
-              toc.setOptions({ scrollTo: 50, extendPage: false });
-       });
-     
+	$(function() {
+		//Calls the tocify method on your HTML div.
+		//var toc = $("#toc").tocify().data("toc-tocify");
+		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h2,h3' });
+		// Sets the showEffect, scrollTo, and smoothScroll options
+		//toc.setOptions({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h1, h2, h3,h4'});
+	});
     }
   },
   // Home page
