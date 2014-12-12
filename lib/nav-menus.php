@@ -116,4 +116,51 @@ function sdss_menu_message() {
 		return $thispermalink;
 	}
 }	
+
+//Add menu and nav shortcode support
+//add_action( 'after_setup_theme', 'sdss_nav_shortcode_setup' );
+
+/* Add shortcodes 
+ *	[SDSS_TOC selectors="h2, h3"] Shows a table of contents containing all h2 and h3 selectors
+ *	[SDSS_TOTOP] Shows an up arrow and "Back to top" that takes you to the top of the current page.
+ */
+//function sdss_nav_shortcode_setup() {
+add_shortcode('SDSS_TOC','sdss_toc_inject');
+add_shortcode('SDSS_TOTOP','sdss_totop_inject');
+//}
+
+function sdss_totop_inject(  ) {
+
+	$injection = '<div class="totop-wrapper">'."\n";
+	$injection .= '<a href="#">'."\n";
+	$injection .= '<span class="glyphicon glyphicon-arrow-up">'."\n";
+	$injection .= '</span></a><span><a href="#">Back to Top</a></span>'."\n";
+	$injection .= '</div>'."\n";
+
+	return $injection;	
+}
+
+function sdss_toc_inject( $atts ){
+
+	if (empty($atts['selectors'])) {
+		$selectors = '' ;
+	} 
+	else {
+		$selectors = explode(",",$atts['selectors']);
+		foreach ($selector as $thisselector) $thisselector = trim($thisselector);
+		$selectors = ' class="toc-' . implode("-",$selectors) . '" ';
+	}
+	$injection = '<div id="toc-wrapper">'."\n";
+	$injection .= '<div class="tocify-title">'."\n";
+	$injection .= '<a class="accordion-toggle" data-toggle="collapse" href="#toc-body" ';
+	$injection .= 'aria-expanded="true" aria-controls="toc-body">Table&nbsp;of&nbsp;Contents</a>'."\n";
+	$injection .= '</div>'."\n";
+	$injection .= '<div id="toc-body" class="collapse in">'."\n";
+	$injection .= '<div id="toc"' . $selectors . ">";
+	$injection .= '</div>'."\n";
+	$injection .= '</div>'."\n";
+	$injection .= '</div>'."\n";
+	
+	return $injection;
+} 
 ?>

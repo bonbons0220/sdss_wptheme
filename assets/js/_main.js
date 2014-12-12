@@ -38,9 +38,19 @@ var Roots = {
 
     //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
 	$(function() {
+		var useselectors;
+		if ($("#toc").attr("class") === undefined) {
+			useselectors = "h2,h3"; //defaults
+		} else {
+			useselectors = $("#toc").attr("class").trim().match(/toc-[a-zA-Z\-0-9]+/)[0].replace(/toc-/,'').split("-").join(",");
+		}
+		console.log(useselectors);
+		
 		//Calls the tocify method on your HTML div.
+		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: true, selectors: useselectors });
+
+		//var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h2,h3' });
 		//var toc = $("#toc").tocify().data("toc-tocify");
-		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h2,h3' });
 		// Sets the showEffect, scrollTo, and smoothScroll options
 		//toc.setOptions({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h1, h2, h3,h4'});
 	});

@@ -306,14 +306,42 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
  * Author: @gregfranko
  */
 
+/* The Table of Contents Wrapper */
+#toc-wrapper {
+    min-width: 200px;
+	background: rgba(0,0,0,0.1);
+	margin: 0px 5px 5px 0px;
+	float: left; 
+}
 /* The Table of Contents container element */
 .tocify {
     //width: 20%;
-    width: 90%;
-    max-height: 90%;
+    width: 96%;
+    max-height: 100%;
     overflow: auto;
     margin-left: 2%;
-    //position: fixed;
+}
+.tocify-title {
+    width: 96%;
+    margin-left: 2%;
+    padding: 2px;
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 700;
+	//text-align:center;
+	& a {
+		text-decoration:none;
+		color: @brand-sdss-dark;
+	}
+	& .accordion-toggle:before {
+		Font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+		content: "\e082";    /* adjust as needed, taken from bootstrap.css */
+		float: left;        /* adjust as needed */
+		padding-right:10px;
+		//color: #333;         /* adjust as needed */
+	}
+	.accordion-toggle.collapsed:before {
+		content: "\e081";    /* adjust as needed, taken from bootstrap.css */
+	}
 }
 
 /* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
@@ -369,20 +397,36 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
 li.tocify-item a {
 color: #333;
-font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-background: rgba(0,0,0,0.05);
+font-family: @font-family-sans-serif;
 }
 
 li.tocify-item a:hover {
 //color: #ffffff;
 background: rgba(0,0,0,0.2);
 transition: background 0.5s ease;
-//border-left: 5px solid @brand-sdss-lighter;
+//border-left: 5px solid @brand-sdss-dark;
 text-decoration:none;
 }
 
 .nav.nav-list>.active>a {
-//  border-left: 5px solid @brand-sdss;
+//  border-left: 5px solid @brand-sdss-dark;
+}
+
+/*
+ * back to top wrapper and elements
+ */
+.totop-wrapper {
+	font-family: @font-family-sans-serif;
+	margin-left: 0; margin-right: 0;
+	width:100%;
+	font-size: 1.1em;
+	& a {
+		color: @brand-sdss-dark;
+		text-decoration:none;
+	}
+	& .glyphicon {
+		padding: 0px 10px 0px 0px;
+	}
 }
 
 /* ==========================================================================
@@ -467,5 +511,3 @@ text-decoration:none;
 @media (min-width: 1450px) {
   body {font-size: 100%; }
 }
-
-
