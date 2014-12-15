@@ -49,10 +49,6 @@ var Roots = {
 		//Calls the tocify method on your HTML div.
 		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: true, selectors: useselectors });
 
-		//var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h2,h3' });
-		//var toc = $("#toc").tocify().data("toc-tocify");
-		// Sets the showEffect, scrollTo, and smoothScroll options
-		//toc.setOptions({ scrollTo: 50, extendPage: false, showAndHide: false, selectors: 'h1, h2, h3,h4'});
 	});
     }
   },
