@@ -201,10 +201,10 @@ function sdss_figure_style( $atts, $content = null ){
 	if (empty($atts['image'])) return $content; //no image ?!?!?
 	
 	$fig_align = (empty($atts['align'])) ? ' sdss-fig-right ' : ' sdss-fig-' . esc_attr($atts['align']) . ' ' ;
-	$fig_width = (empty($atts['width'])) ? ' width="450px" ' : ' width="' . intval($atts['width']) . 'px" ' ;
+	$fig_width = (empty($atts['width'])) ? ' style="max-width:450px" ' : ' style="max-width:' . intval($atts['width']) . 'px" ' ;
 	$fig_title = (empty($atts['title'])) ? '' : '<div class="panel-heading">' . esc_attr($atts['title']) . '</div>' ;
 	$fig_alt = (!empty($atts['alt'])) ? ' alt="' . esc_attr($atts['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
-	$fig_content = '<img class="img-responsive" src="' . $atts['image'] . '" ' . $fig_width . $fig_alt .  '/>';
+	$fig_content = '<img class="img-responsive" src="' . $atts['image'] . '" '  . $fig_alt .  '/>';
 	$fig_content = (!empty($atts['link'])) ? '<a href="' . $atts['link'] . '" target="_blank" >' . $fig_content . '</a>' : $fig_content ;
 	$fig_content = (!empty($content)) ? '<div class="panel-body">' . $fig_content . '</div>' : '' ;
 	$fig_caption = (!empty($content)) ? '<div class="panel-body">' . $content . '</div>' : '' ;
