@@ -237,7 +237,7 @@ function sdss_figure_style( $attr, $content = null ){
 	
 	//set alignment, number of columns and alt text
 	$fig_columns = (empty($attr['columns'])) ? ' col-md-6 ' : ' col-md-' . intval($attr['columns']) . ' ' ;
-	$fig_align = (empty($attr['align'])) ? ' sdss-fig-right ' : ' sdss-fig-' . esc_attr($attr['align']) . ' ' ;
+	$fig_align = (empty($attr['align'])) ? '' : ' sdss-fig-' . esc_attr($attr['align']) . ' ' ;
 	$fig_alt = (!empty($attr['alt'])) ? ' alt="' . esc_attr($attr['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
 	
 	//wrap title
