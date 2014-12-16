@@ -213,14 +213,17 @@ function sdss_story_style( $attr, $content = null ){
 	if (empty($content)) $content = "No Content"; //no story?
 	
 	//formatting width and alignment
+	$num_columns =  (empty($attr['columns'])) ? 6 : intval($attr['columns']) ;
+	$story_columns =  ' col-md-' . $num_columns . ' ' ;
+	$story_columns .= (4 >= $num_columns ) ? ' col-sm-6 ' : '' ;	
+	$story_columns .= ' col-xs-12 ' ;	
 	$story_align = (empty($attr['align'])) ? '' : ' sdss-story-' . esc_attr($attr['align']) . ' ' ;
-	$story_columns = (empty($attr['columns'])) ? ' col-md-6 ' : ' col-md-' . intval($attr['columns']) . ' ' ;
 	
 	//title/heading - can contain html like <h3></h3> etc
 	$story_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
 
 	//content
-	$story_content = (!empty($content)) ? '<div class="panel-body">' . $content . '</div>' : '' ;
+	$story_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
 
 	//wrap bodies 
 	$story_content = '<div class="panel panel-default sdss-story " >' . $story_title . $story_content . '</div>' ; 
@@ -236,7 +239,10 @@ function sdss_figure_style( $attr, $content = null ){
 	if (empty($attr['image'])) return $content; //no image ?!?!?
 	
 	//set alignment, number of columns and alt text
-	$fig_columns = (empty($attr['columns'])) ? ' col-md-6 ' : ' col-md-' . intval($attr['columns']) . ' ' ;
+	$num_columns =  (empty($attr['columns'])) ? 6 : intval($attr['columns']) ;
+	$fig_columns =  ' col-md-' . $num_columns . ' ' ;
+	$fig_columns .= (4 >= $num_columns ) ? ' col-sm-6 ' : '' ;	
+	$fig_columns .= ' col-xs-12 ' ;	
 	$fig_align = (empty($attr['align'])) ? '' : ' sdss-fig-' . esc_attr($attr['align']) . ' ' ;
 	$fig_alt = (!empty($attr['alt'])) ? ' alt="' . esc_attr($attr['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
 	
