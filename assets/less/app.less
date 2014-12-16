@@ -315,16 +315,37 @@ margin-top: 1em;}
 .alignright { float: right; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
 
+/* ==========================================================================
+   Figures and Stories
+   ========================================================================== */
+.sdss-wrapper {
+}
+
+.sdss-story {
+	margin-left: 5px; 
+	margin-right: 5px; 
+	& .panel-heading { background-color: inherit;}
+}
+
+.sdss-story-right {
+	float: right; 
+}
+
+.sdss-story-left {
+	float: left; 
+}
+
 .sdss-fig-right {
 	float: right; 
-	margin: 0px 0px 10px 10px; 
 }
 
 .sdss-fig-left {
 	float: left; 
-	margin-right: 0px 10px 0px 10px; 
 }
 
+/* ==========================================================================
+   Table of Contents Shortcode/Plugin
+   ========================================================================== */
 /*
  * jquery.tocify.css 1.9.0
  * Author: @gregfranko
@@ -436,9 +457,9 @@ text-decoration:none;
 //  border-left: 5px solid @brand-sdss-dark;
 }
 
-/*
- * back to top wrapper and elements
- */
+/* ==========================================================================
+ * Back To Top wrapper and elements
+   ========================================================================== */
 .totop-wrapper {
 	font-family: @font-family-sans-serif;
 	margin-left: 0; margin-right: 0;

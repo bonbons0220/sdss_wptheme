@@ -182,6 +182,8 @@ function sdss_menu_message() {
 add_shortcode('SDSS_TOC','sdss_toc_inject');
 add_shortcode('SDSS_TOTOP','sdss_totop_inject');
 add_shortcode('SDSS_FIGURE','sdss_figure_style');
+add_shortcode('SDSS_STORY','sdss_story_style');
+add_shortcode('SDSS_CLEAR','sdss_clear');
 //}
 
 function sdss_totop_inject(  ) {
@@ -196,37 +198,81 @@ function sdss_totop_inject(  ) {
 	return $injection;	
 }
 
-function sdss_figure_style( $atts, $content = null ){
+/**
+ * Wrap a story in a panel, align left or right, set max width and title
+ **/
+function sdss_clear(  ){
+	return '<div class="clearfix"></div>';
+}
+
+/**
+ * Wrap a story in a panel, align left or right, set max width and title
+ **/
+function sdss_story_style( $attr, $content = null ){
 	
-	if (empty($atts['image'])) return $content; //no image ?!?!?
+	if (empty($content)) $content = "No Content"; //no story?
 	
-	$fig_align = (empty($atts['align'])) ? ' sdss-fig-right ' : ' sdss-fig-' . esc_attr($atts['align']) . ' ' ;
-	$fig_width = (empty($atts['width'])) ? ' style="max-width:450px" ' : ' style="max-width:' . intval($atts['width']) . 'px" ' ;
-	$fig_title = (empty($atts['title'])) ? '' : '<div class="panel-heading">' . esc_attr($atts['title']) . '</div>' ;
-	$fig_alt = (!empty($atts['alt'])) ? ' alt="' . esc_attr($atts['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
-	$fig_content = '<img class="img-responsive" src="' . $atts['image'] . '" '  . $fig_alt .  '/>';
-	$fig_content = (!empty($atts['link'])) ? '<a href="' . $atts['link'] . '" target="_blank" >' . $fig_content . '</a>' : $fig_content ;
-	$fig_content = (!empty($content)) ? '<div class="panel-body">' . $fig_content . '</div>' : '' ;
+	//formatting width and alignment
+	$story_align = (empty($attr['align'])) ? '' : ' sdss-story-' . esc_attr($attr['align']) . ' ' ;
+	$story_columns = (empty($attr['columns'])) ? ' col-md-6 ' : ' col-md-' . intval($attr['columns']) . ' ' ;
+	
+	//title/heading - can contain html like <h3></h3> etc
+	$story_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+
+	//content
+	$story_content = (!empty($content)) ? '<div class="panel-body">' . $content . '</div>' : '' ;
+
+	//wrap bodies 
+	$story_content = '<div class="panel panel-default sdss-story " >' . $story_title . $story_content . '</div>' ; 
+	
+	//assemble in wrapper
+	$story_content = '<div class="sdss-wrapper ' . $story_align . $story_columns  . '" >' . $story_content . '</div>';
+	return $story_content;
+	
+}
+
+function sdss_figure_style( $attr, $content = null ){
+	
+	if (empty($attr['image'])) return $content; //no image ?!?!?
+	
+	//set alignment, number of columns and alt text
+	$fig_columns = (empty($attr['columns'])) ? ' col-md-6 ' : ' col-md-' . intval($attr['columns']) . ' ' ;
+	$fig_align = (empty($attr['align'])) ? ' sdss-fig-right ' : ' sdss-fig-' . esc_attr($attr['align']) . ' ' ;
+	$fig_alt = (!empty($attr['alt'])) ? ' alt="' . esc_attr($attr['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
+	
+	//wrap title
+	$fig_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+	
+	//set up image tag
+	$fig_content = '<img class="img-responsive" src="' . $attr['image'] . '" '  . $fig_alt .  '/>';
+	$fig_content = (!empty($attr['link'])) ? '<a href="' . $attr['link'] . '" target="_blank" >' . $fig_content . '</a>' : $fig_content ;
+	
+	//wrap bodies 
+	$fig_content = '<div class="panel-body">' . $fig_content . '</div>' ;
 	$fig_caption = (!empty($content)) ? '<div class="panel-body">' . $content . '</div>' : '' ;
-	$fig_content = '<div class="panel panel-default ' . $fig_align . ' "' . $fig_width . '>' . $fig_title . $fig_content  . $fig_caption  . '</div>' ; 
+	$fig_content = '<div class="panel panel-default sdss-story" >' . $fig_title . $fig_content  . $fig_caption  . '</div>' ; 
+	
+	//assemble in wrapper
+	$fig_content = '<div class="sdss-wrapper ' . $fig_align . $fig_columns . '">' . $fig_content . '</div>';
 	return $fig_content;
 	
 }
 
 
-function sdss_toc_inject( $atts = array()){
 
-	if (empty($atts['selectors'])) {
+function sdss_toc_inject( $attr = array()){
+
+	if (empty($attr['selectors'])) {
 		$selectors = '' ;
 	} else {
-		$selectors = explode(",",$atts['selectors']);
+		$selectors = explode(",",$attr['selectors']);
 		foreach ($selector as $thisselector) $thisselector = trim($thisselector);
 		$selectors = ' class="toc-' . implode("-",$selectors) . '" ';
 	}
 	
 	//set up string variables for opened/closed table of contents, and clear afterwards
-	$open = (in_array('open',$atts)) ? array( '' , 'in' ) : array( 'collapsed' , '') ;
-	$clear = (in_array('clear',$atts)) ? '<span class="clearfix"></span>' : '' ;
+	$open = (in_array('open',$attr)) ? array( '' , 'in' ) : array( 'collapsed' , '') ;
+	$clear = (in_array('clear',$attr)) ? '<span class="clearfix"></span>' : '' ;
 	$injection = '<div id="toc-wrapper">'."\n";
 	$injection .= '<div class="tocify-title">'."\n";
 	$injection .= '<a class="accordion-toggle ' . $open[0] . ' " data-toggle="collapse" href="#toc-body" ';
