@@ -235,7 +235,7 @@ function sdss_video_style( $attr, $content = null ){
 	return $video_content;
 }
 
-/**
+/** 
  * Wrap a story in a panel, align left or right, set max width and title
  **/
 function sdss_story_style( $attr, $content = null ){
