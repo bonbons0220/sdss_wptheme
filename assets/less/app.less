@@ -351,6 +351,10 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 .sdss-figure {
 	& .panel { background-color: inherit;}
 	& .panel-heading { background-color: inherit;}
+	& img {
+		margin-right:auto;
+		margin-left:auto;
+	}
 }
 
 .sdss-story-right {
@@ -523,12 +527,10 @@ text-decoration:none;
 @media (min-width: @screen-sm-min) {
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
 .navbar-inverse .navbar-brand img {max-width: 150px}
-/*better formatting for dl-horizontal in Stories and Figures*/ 
+/* formatting for dl-horizontal in Stories and Figures */ 
 	.sdss-wrapper .dl-horizontal {
 		& dt {
 			width:49%;
-			overflow: visible;
-			white-space:normal;
 		}
 		& dd {
 			margin-left: 50%;
