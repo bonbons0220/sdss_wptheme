@@ -48,7 +48,7 @@ To create a non-navigable item, with a slightly heavier font, assign it the CSS 
 </dl>
 <h3>Shortcodes</h3>
 <p>The following shortcodes are currently supported:</p>
-<dl><dt>Table of Contents: [SDSS_TOC]</dt>
+<dl><dt>Table of Contents: <br>[SDSS_TOC]</dt>
 <dd>Create a table of Contents from h2, h3, h4 selectors. Optionally specify which <strong>selectors</strong> to use, whether to start out <strong>open</strong> (default is closed), and whether to <strong>clear</strong> (display subsequent content below instead of to the right).<br><br>
 <strong>Examples of usage: </strong>
 <ul>
@@ -66,7 +66,19 @@ To create a non-navigable item, with a slightly heavier font, assign it the CSS 
 <dt>To Top Link: [SDSS_TOTOP]</dt>
 <dd>Displays an up arrow and link to top of page. Useful for long pages. Place above headings or at and of page.
 </dd>
+<dt>PANELS can be nested<br>
+Story panel: <br>
+[SDSS_STORY]<br>
+[/SDSS_STORY]</dt>
+<dd>Put a title above and a frame around a story. Specify # columns.
+</dd>
+<dt>Figure panel: <br>
+[SDSS_FIGURE]<br>
+[/SDSS_FIGURE]</dt>
+<dd>Put a title above and frame around and a caption below a figure. Specify # columns.
+</dd>
 </dl>
+
 <?php
 }
 
@@ -183,6 +195,7 @@ add_shortcode('SDSS_TOC','sdss_toc_inject');
 add_shortcode('SDSS_TOTOP','sdss_totop_inject');
 add_shortcode('SDSS_FIGURE','sdss_figure_style');
 add_shortcode('SDSS_STORY','sdss_story_style');
+add_shortcode('SDSS_VIDEO','sdss_video_style');
 add_shortcode('SDSS_CLEAR','sdss_clear');
 //}
 
@@ -208,6 +221,23 @@ function sdss_clear(  ){
 /**
  * Wrap a story in a panel, align left or right, set max width and title
  **/
+function sdss_video_style( $attr, $content = null ){
+
+	if (empty($content)) $content = "No Content"; //no video?
+
+	$video_content = '<div class="visible-lg"><iframe width="1136px" height="639px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$video_content .= '<div class="visible-md"><iframe width="938px" height="528px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$video_content .= '
+	<div class="visible-sm"><iframe width="720px" height="405px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$video_content .= '
+	<div class="visible-xs"><iframe width="400px" height="225px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	
+	return $video_content;
+}
+
+/**
+ * Wrap a story in a panel, align left or right, set max width and title
+ **/
 function sdss_story_style( $attr, $content = null ){
 	
 	if (empty($content)) $content = "No Content"; //no story?
@@ -221,12 +251,13 @@ function sdss_story_style( $attr, $content = null ){
 	
 	//title/heading - can contain html like <h3></h3> etc
 	$story_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+	//$story_title = (empty($attr['title'])) ? '' : $attr['title'] ;
 
 	//content
 	$story_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
 
 	//wrap bodies 
-	$story_content = '<div class="panel panel-default sdss-story " >' . $story_title . $story_content . '</div>' ; 
+	$story_content =  '<div class="panel panel-default sdss-story " >' . $story_title . $story_content . '</div>' ; 
 	
 	//assemble in wrapper
 	$story_content = '<div class="sdss-wrapper ' . $story_align . $story_columns  . '" >' . $story_content . '</div>';
@@ -255,16 +286,14 @@ function sdss_figure_style( $attr, $content = null ){
 	
 	//wrap bodies 
 	$fig_content = '<div class="panel-body">' . $fig_content . '</div>' ;
-	$fig_caption = (!empty($content)) ? '<div class="panel-body">' . $content . '</div>' : '' ;
-	$fig_content = '<div class="panel panel-default sdss-story" >' . $fig_title . $fig_content  . $fig_caption  . '</div>' ; 
+	$fig_caption = (!empty($content)) ? '<div class="panel-body caption">' . $content . '</div>' : '' ;
+	$fig_content = '<div class="panel panel-default sdss-figure" >' . $fig_title . $fig_content  . $fig_caption  . '</div>' ; 
 	
 	//assemble in wrapper
 	$fig_content = '<div class="sdss-wrapper ' . $fig_align . $fig_columns . '">' . $fig_content . '</div>';
 	return $fig_content;
 	
 }
-
-
 
 function sdss_toc_inject( $attr = array()){
 

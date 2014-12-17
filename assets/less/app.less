@@ -319,9 +319,37 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Figures and Stories
    ========================================================================== */
 .sdss-wrapper {
+	& .caption {background-color: #ecf0f1;}
+	& h1, .h1, h2, .h2, h3, .h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;}
+	& ul {
+		list-style-type: none;
+		margin-left: -1em;
+	}
+	& li { 
+		font-family:sans-serif;
+		margin-bottom: .5em;
+		text-indent: -10px;
+	}
+	& li:before { 
+		font-family: FontAwesome;
+		font-weight: normal;
+		font-style: normal;
+		display: inline-block;
+		text-decoration: inherit;
+		content: "\f006\00A0";
+	}
 }
 
 .sdss-story {
+	//border-color: transparent;
+	& .panel { background-color: inherit;}
+	& .panel-heading { background-color: inherit;}
+}
+
+.sdss-figure {
+	& .panel { background-color: inherit;}
 	& .panel-heading { background-color: inherit;}
 }
 
@@ -495,12 +523,23 @@ text-decoration:none;
 @media (min-width: @screen-sm-min) {
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
 .navbar-inverse .navbar-brand img {max-width: 150px}
+/*better formatting for dl-horizontal in Stories and Figures*/ 
+	.sdss-wrapper .dl-horizontal {
+		& dt {
+			width:49%;
+			overflow: visible;
+			white-space:normal;
+		}
+		& dd {
+			margin-left: 50%;
+		}
+	}
 }
 
 
 @media (max-width: @screen-sm-max) { 
 .navbar-collapse ul { text-align: center;  width:100%; padding-bottom:10px; }
-.navbar-collapse ul .btn{ max-width:50%; margin:0 auto; } 
+.navbar-collapse ul .btn{ max-width:50%; margin:0 auto; }
 }
 
 @media (max-width: @screen-sm-min) { 
