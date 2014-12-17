@@ -225,10 +225,10 @@ function sdss_video_style( $attr, $content = null ){
 
 	if (empty($content)) $content = "No Content"; //no video?
 
-	$video_content = '<div class="visible-lg"><iframe width="1136px" height="639px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	$video_content .= '<div class="visible-md"><iframe width="938px" height="528px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$video_content = '<div class="visible-lg"><iframe width="1072px" height="603px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$video_content .= '<div class="visible-md"><iframe width="864px" height="486px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
 	$video_content .= '
-	<div class="visible-sm"><iframe width="720px" height="405px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	<div class="visible-sm"><iframe width="656px" height="369px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
 	$video_content .= '
 	<div class="visible-xs"><iframe width="400px" height="225px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
 	
