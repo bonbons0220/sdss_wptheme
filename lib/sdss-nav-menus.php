@@ -231,7 +231,7 @@ function sdss_video_style( $attr, $content = null ){
 	$video_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
 	$video_content = '<div class="responsive-video"><iframe src="' . $content . '" width="100%" height="auto" frameborder="0" allowfullscreen></iframe></div>';
 	$video_content =  '<div class="panel-body">' . $video_content . '</div>';
-	$video_content =  '<div class="panel panel-default sdss-wrapper">' . $video_title . $video_content . '</div>';
+	$video_content =  '<div class="panel panel-default sdss-wrapper ' . $video_columns . '">' . $video_title . $video_content . '</div>';
 	
 	
 	//$video_content = '<div class="visible-lg"><iframe width="1072px" height="603px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
