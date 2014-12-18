@@ -194,6 +194,7 @@ function sdss_menu_message() {
 add_shortcode('SDSS_TOC','sdss_toc_inject');
 add_shortcode('SDSS_TOTOP','sdss_totop_inject');
 add_shortcode('SDSS_FIGURE','sdss_figure_style');
+add_shortcode('SDSS_GROUP','sdss_group_style');
 add_shortcode('SDSS_STORY','sdss_story_style');
 add_shortcode('SDSS_VIDEO','sdss_video_style');
 add_shortcode('SDSS_CLEAR','sdss_clear');
@@ -201,12 +202,12 @@ add_shortcode('SDSS_CLEAR','sdss_clear');
 
 function sdss_totop_inject(  ) {
 
-	$injection = '<div class="totop-wrapper" >'."\n";
+	$injection .= '<div class="totop-wrapper" >'."\n";
 	$injection .= '<span class="well well-sm" >'."\n";
 	$injection .= '<a href="#">'."\n";
 	$injection .= '<span class="glyphicon glyphicon-circle-arrow-up">'."\n";
 	$injection .= '</span></a><span><a href="#">Back to Top</a></span>'."\n";
-	$injection .= '</span></div>'."\n";
+	$injection .= '</span></div>'."\n"."\n";
 
 	return $injection;	
 }
@@ -225,14 +226,49 @@ function sdss_video_style( $attr, $content = null ){
 
 	if (empty($content)) $content = "No Content"; //no video?
 
-	$video_content = '<div class="visible-lg"><iframe width="1072px" height="603px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	$video_content .= '<div class="visible-md"><iframe width="864px" height="486px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	$video_content .= '
-	<div class="visible-sm"><iframe width="656px" height="369px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	$video_content .= '
-	<div class="visible-xs"><iframe width="400px" height="225px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	$num_columns =  (empty($attr['columns'])) ? 12 : intval($attr['columns']) ;
+	$video_columns =  ' col-md-' . $num_columns . ' ' . ' col-xs-12 ' ;
+	$video_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+	$video_content = '<div class="responsive-video"><iframe src="' . $content . '" width="100%" height="auto" frameborder="0" allowfullscreen></iframe></div>';
+	$video_content =  '<div class="panel-body">' . $video_content . '</div>';
+	$video_content =  '<div class="panel panel-default sdss-wrapper">' . $video_title . $video_content . '</div>';
+	
+	
+	//$video_content = '<div class="visible-lg"><iframe width="1072px" height="603px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	//$video_content .= '<div class="visible-md"><iframe width="864px" height="486px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	//$video_content .= '
+	//<div class="visible-sm"><iframe width="656px" height="369px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
+	//$video_content .= '
+	//<div class="visible-xs"><iframe width="400px" height="225px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
 	
 	return $video_content;
+}
+
+/** 
+ * Wrap a story in a panel, align left or right, set max width and title
+ **/
+function sdss_group_style( $attr, $content = null ){
+	
+	if (empty($content)) $content = "No Content"; //no group?
+	
+	//formatting width and alignment
+	$num_columns =  (empty($attr['columns'])) ? 12 : intval($attr['columns']) ;
+	$group_columns =  ' col-md-' . $num_columns . ' col-xs-12 ' ;	
+	$group_align = (empty($attr['align'])) ? '' : ' align' . esc_attr($attr['align']) . ' ' ;
+	
+	//title/heading - can contain html like <h3></h3> etc
+	$group_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+
+	//content
+	$group_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
+
+	//wrap bodies 
+	$group_content =  '<div class="panel panel-default sdss-group " >' . $group_title . $group_content . '</div>' ; 
+	
+	//assemble in wrapper
+	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . $group_content . '</div>';
+	return $group_content;
+	
 }
 
 /** 
