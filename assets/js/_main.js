@@ -44,7 +44,7 @@ var Roots = {
 		} else {
 			useselectors = $("#toc").attr("class").trim().match(/toc-[a-zA-Z\-0-9]+/)[0].replace(/toc-/,'').split("-").join(",");
 		}
-		console.log(useselectors);
+		//console.log(useselectors);
 		
 		//Calls the tocify method on your HTML div.
 		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: true, selectors: useselectors });
