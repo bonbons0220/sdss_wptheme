@@ -200,23 +200,24 @@ add_shortcode('SDSS_VIDEO','sdss_video_style');
 add_shortcode('SDSS_CLEAR','sdss_clear');
 //}
 
-function sdss_totop_inject(  ) {
-
-	$injection .= '<div class="totop-wrapper" >'."\n";
-	$injection .= '<span class="well well-sm" >'."\n";
-	$injection .= '<a href="#">'."\n";
-	$injection .= '<span class="glyphicon glyphicon-circle-arrow-up">'."\n";
-	$injection .= '</span></a><span><a href="#">Back to Top</a></span>'."\n";
-	$injection .= '</span></div>'."\n"."\n";
-
-	return $injection;	
-}
-
 /**
  * Wrap a story in a panel, align left or right, set max width and title
  **/
 function sdss_clear(  ){
 	return '<div class="clearfix"></div>';
+}
+
+
+function sdss_totop_inject(  ) {
+
+	$injection =  sdss_clear() . '<div class="totop-wrapper" >'."\n";
+	$injection .= '<span class="well well-sm" >'."\n";
+	$injection .= '<a href="#">'."\n";
+	$injection .= '<span class="glyphicon glyphicon-circle-arrow-up">'."\n";
+	$injection .= '</span></a><span><a href="#">Back to Top</a></span>'."\n";
+	$injection .= '</span></div>' . sdss_clear();
+
+	return $injection;	
 }
 
 /**
