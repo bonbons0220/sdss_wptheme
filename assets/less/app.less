@@ -608,9 +608,10 @@ text-decoration:none;
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
 .navbar-inverse .navbar-brand img {max-width: 150px}
 /* formatting for dl-horizontal in Stories and Figures */ 
-	.sdss-wrapper p { 
+/*	.sdss-wrapper p { 
 		clear:both;
-	}
+	}*/
+	
 	.sdss-wrapper dl.dl-horizontal {
 		& >dt {
 			width:49%;
@@ -660,6 +661,62 @@ text-decoration:none;
 		}
 	}
 	.sdss-wrapper dl.dl-horizontal-threequarters {
+		& >dt {
+			width:73%;
+		}
+		& >dd {
+			width:25%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal {
+		& >dt {
+			width:49%;
+			float:left;
+			clear:both;
+			text-align:right;
+			white-space:normal;
+			overflow:visible;
+		}
+		& >dd {
+			margin-left: 1%;
+			width:49%;
+			float:right;
+			text-align:left;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-reverse {
+		& >dt {
+			font-weight:normal;
+		}
+		& >dd {
+			font-weight:bold;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-quarter {
+		& >dt {
+			width:25%;
+		}
+		& >dd {
+			width: 73%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-third {
+		& >dt {
+			width:33%;
+		}
+		& >dd {
+			width:65%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-twothirds {
+		& >dt {
+			width:65%;
+		}
+		& >dd {
+			width:33%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-threequarters {
 		& >dt {
 			width:73%;
 		}
