@@ -350,12 +350,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 div.sdss-group-wrapper {
 	padding-left: 5px; 
 	padding-right: 5px;
-	& .col-lg-12 {
-		padding: 0;
-	}
-	& .col-md-12 {
-		padding: 0;
-	}
 	& address {
 		margin-bottom:0;
 	}
@@ -365,6 +359,13 @@ div.sdss-group-wrapper {
 		}	
 	}
 }
+div.sdss-group-wrapper.col-lg-12 {
+		padding: 0;
+	}
+div.sdss-group-wrapper.col-md-12 {
+		padding: 0;
+	}
+
 div.sdss-wrapper {
 	& .sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
 	& .panel-heading {padding: 0px 10px;}
