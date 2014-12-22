@@ -234,14 +234,6 @@ function sdss_video_style( $attr, $content = null ){
 	$video_content =  '<div class="panel-body">' . $video_content . '</div>';
 	$video_content =  '<div class="panel panel-default sdss-wrapper ' . $video_columns . '">' . $video_title . $video_content . '</div>';
 	
-	
-	//$video_content = '<div class="visible-lg"><iframe width="1072px" height="603px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	//$video_content .= '<div class="visible-md"><iframe width="864px" height="486px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	//$video_content .= '
-	//<div class="visible-sm"><iframe width="656px" height="369px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	//$video_content .= '
-	//<div class="visible-xs"><iframe width="400px" height="225px" src="' . $content . '" frameborder="0" allowfullscreen></iframe></div>'."\n";
-	
 	return $video_content;
 }
 
@@ -281,9 +273,7 @@ function sdss_story_style( $attr, $content = null ){
 	
 	//formatting width and alignment
 	$num_columns =  (empty($attr['columns'])) ? 6 : intval($attr['columns']) ;
-	$story_columns =  ' col-md-' . $num_columns . ' ' ;
-	$story_columns .= (4 >= $num_columns ) ? ' col-sm-6 ' : '' ;	
-	$story_columns .= ' col-xs-12 ' ;	
+	$story_columns =  ' col-md-' . $num_columns . ' col-xs-12 ' ;	
 	$story_align = (empty($attr['align'])) ? '' : ' sdss-story-' . esc_attr($attr['align']) . ' ' ;
 	
 	//title/heading - can contain html like <h3></h3> etc
@@ -308,9 +298,7 @@ function sdss_figure_style( $attr, $content = null ){
 	
 	//set alignment, number of columns and alt text
 	$num_columns =  (empty($attr['columns'])) ? 6 : intval($attr['columns']) ;
-	$fig_columns =  ' col-md-' . $num_columns . ' ' ;
-	$fig_columns .= (4 >= $num_columns ) ? ' col-sm-6 ' : '' ;	
-	$fig_columns .= ' col-xs-12 ' ;	
+	$fig_columns =  ' col-md-' . $num_columns . ' col-xs-12 ' ;	
 	$fig_align = (empty($attr['align'])) ? '' : ' sdss-fig-' . esc_attr($attr['align']) . ' ' ;
 	$fig_alt = (!empty($attr['alt'])) ? ' alt="' . esc_attr($attr['alt']) . '" ' : ' alt="' . esc_attr($content) . '" ';
 	

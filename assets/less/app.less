@@ -120,7 +120,7 @@ h3 {
 .branding>p {font-size: 18px; } .surveys {margin-bottom: 2em; } 
 #links {display:table; width: 100%; height: 400px; background:url('/wp-content/uploads/2014/05/sdss-telescope-small.png')no-repeat top center fixed; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-color: #000; 
  h4 { color: #fff; 
-      text-shadow: 2px 2px 3px rgba(0,0,0,.9); } 
+      text-shadow: 2px 2px 3px rgba(0,0,0,.9); }
  .well {background-color: rgba(236, 240, 241, .9); }     
       }
 
@@ -135,6 +135,35 @@ figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
 #classic p {
 font-size: 85%;
 }
+
+/* ==========================================================================
+   Table-hover fix for spanning rows and columns. Insert blank rows and columns. 
+   Give them the class "rowspan start", "rowspan next" or "rowspan last".
+   <td class="rowspan 3 start">&nbsp;</td>, etc.
+   Same for colspan.
+   ========================================================================== */
+table.table-hover td.rowspan.first {
+	border-bottom-color:transparent;
+}
+table.table-hover td.rowspan.next {
+	border-top-color:transparent;
+	border-bottom-color:transparent;
+}
+table.table-hover td.rowspan.last {
+	border-top-color:transparent;
+}
+table.table-hover td.colspan.first {
+	border-right-color:transparent;
+}
+table.table-hover td.colspan.next {
+	border-left-color:transparent;
+	border-right-color:transparent;
+}
+table.table-hover td.colspan.last {
+	border-left-color:transparent;
+}
+
+
 /* ==========================================================================
    Primary Content
    ========================================================================== */
@@ -318,9 +347,25 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 /* ==========================================================================
    Figures and Stories
    ========================================================================== */
-.sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
-.sdss-wrapper {
-	padding-left: 5px; padding-right: 5px;
+div.sdss-group-wrapper {
+	padding-left: 5px; 
+	padding-right: 5px;
+	& col-lg-12 {
+		padding: 0;
+	}
+	& col-md-12 {
+		padding: 0;
+	}
+	& address {
+		margin-bottom:0;
+	}
+	& div.sdss-group>div.panel-heading {
+		h1, h2, h3, h4, h5 {
+			margin-top:-0.5em;
+		}	
+	}
+}
+div.sdss-wrapper {
 	& .sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
 	& .panel-heading {padding: 0px 10px;}
 	& .panel-body {padding: 10px;}
