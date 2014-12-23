@@ -14,6 +14,42 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
+    'name'          => __('Explore', 'roots'),
+    'id'            => 'sidebar-explore',
+    'before_widget' => '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-4 column">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h5>',
+    'after_title'   => '</h5>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Learn', 'roots'),
+    'id'            => 'sidebar-learn',
+    'before_widget' => '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-4 column">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h5>',
+    'after_title'   => '</h5>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('About', 'roots'),
+    'id'            => 'sidebar-about',
+    'before_widget' => '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-4 column">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h5>',
+    'after_title'   => '</h5>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Supported', 'roots'),
+    'id'            => 'sidebar-supported',
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '<h5>',
+    'after_title'   => '</h5>',
+  ));
+
+  register_sidebar(array(
     'name'          => __('Footer', 'roots'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget %1$s %2$s">',
@@ -27,9 +63,6 @@ function roots_widgets_init() {
 }
 add_action('widgets_init', 'roots_widgets_init');
 
-/**
- * Example vCard widget
- */
 class Roots_Vcard_Widget extends WP_Widget {
   private $fields = array(
     'title'          => 'Title (optional)',
