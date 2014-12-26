@@ -173,6 +173,25 @@ table.table-hover td.colspan.last {
 	border-left-color:transparent;
 }
 
+//Allow long strings to break within table cells.
+table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td {
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap; /* HP printers */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+	word-break: break-all;
+	min-width:90px;
+}
+table caption {
+	font-weight:300;
+	font-family:sans-serif;
+	font-size:22px;
+	margin-top:4px;
+	margin-bottom:4px;
+}
 
 /* ==========================================================================
    Primary Content
@@ -389,7 +408,7 @@ div.sdss-wrapper {
 		margin-left: -1em;
 	}
 	& li { 
-		font-family:sans-serif;
+		//font-family:sans-serif;
 		margin-bottom: .5em;
 		text-indent: -10px;
 	}
