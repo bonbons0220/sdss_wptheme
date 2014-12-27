@@ -399,7 +399,7 @@ div.sdss-group-wrapper.col-md-12 {
 		padding: 0;
 	}
 
-div.sdss-wrapper, div.sdss-group-wrapper {
+div.sdss-wrapper, div.sdss-group-wrapper{
 	& .sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
 	& .panel-heading {padding: 0px 10px;}
 	& .panel-body {padding: 10px;}
@@ -407,6 +407,11 @@ div.sdss-wrapper, div.sdss-group-wrapper {
 	& h1, .h1, h2, .h2, h3, .h3 {
 		margin-top: 0px;
 		margin-bottom: 0px;}
+	.btn-group-vertical {
+		width:100%;
+	}
+}
+div.sdss-wrapper, div.sdss-group-wrapper, div.sdss-summary{
 	& ul {
 		list-style-type: none;
 		margin-left: -1em;
@@ -445,9 +450,6 @@ div.sdss-wrapper, div.sdss-group-wrapper {
 		text-decoration: inherit;
 		content: "\f005\00A0";
 	}
-	.btn-group-vertical {
-		width:100%;
-	}
 }
 
 .sdss-story {
@@ -479,6 +481,17 @@ div.sdss-wrapper, div.sdss-group-wrapper {
 
 .sdss-fig-left {
 	float: left; 
+}
+.sdss-summary {
+	background-image: url('/wp-content/uploads/2014/05/mw.jpg');
+	background-repeat: no-repeat; 
+	margin-top: 0;
+	margin-bottom: 20px; 
+	padding-left: 110px; 
+	padding-right: 10px; 
+	border-bottom: solid medium orange;
+	font-family: sans-serif;
+	font-size: 0.9em;
 }
 .subtitle {
 	font-family:sans-serif;

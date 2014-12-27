@@ -198,6 +198,7 @@ add_shortcode('SDSS_GROUP','sdss_group_style');
 add_shortcode('SDSS_STORY','sdss_story_style');
 add_shortcode('SDSS_VIDEO','sdss_video_style');
 add_shortcode('SDSS_CLEAR','sdss_clear');
+add_shortcode('SDSS_SUMMARY','sdss_summary_style');
 //}
 
 /**
@@ -229,16 +230,17 @@ function sdss_video_style( $attr, $content = null ){
 
 	$num_columns =  (empty($attr['columns'])) ? 12 : intval($attr['columns']) ;
 	$video_columns =  ' col-md-' . $num_columns . ' ' . ' col-xs-12 ' ;
+	$video_align = (empty($attr['align'])) ? '' : ' align' . esc_attr($attr['align']) . ' ' ;
 	$video_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
 	$video_content = '<div class="responsive-video"><iframe src="' . $content . '" width="100%" height="auto" frameborder="0" allowfullscreen></iframe></div>';
 	$video_content =  '<div class="panel-body">' . $video_content . '</div>';
-	$video_content =  '<div class="panel panel-default sdss-wrapper ' . $video_columns . '">' . $video_title . $video_content . '</div>';
+	$video_content =  '<div class="panel panel-default sdss-wrapper ' . $video_align . $video_columns . '">' . $video_title . $video_content . '</div>';
 	
 	return $video_content;
 }
 
 /** 
- * Wrap a story in a panel, align left or right, set max width and title
+ * Wrap a group in a panel, align left or right, set max width and title
  **/
 function sdss_group_style( $attr, $content = null ){
 	
@@ -261,6 +263,21 @@ function sdss_group_style( $attr, $content = null ){
 	//assemble in wrapper
 	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . $group_content . '</div>';
 	return $group_content;
+	
+}
+
+/** 
+ * Wrap a summary in a panel, align left or right, set max width and title
+ **/
+function sdss_summary_style( $attr, $content = null ){
+	
+	if (empty($content)) $content = "No Content"; //no story?
+	
+	//content
+	$summary_content = '<div class="sdss-summary col-xs-11 col-xs-offset-0 col-md-10 col-md-offset-1">' . do_shortcode($content) . '</div>' ;
+	$summary_content .= sdss_clear() ;
+	
+	return $summary_content;
 	
 }
 
