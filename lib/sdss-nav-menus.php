@@ -312,7 +312,11 @@ function sdss_story_style( $attr, $content = null ){
 
 function sdss_figure_style( $attr, $content = null ){
 	
-	if (empty($attr['image'])) return $content; //no image ?!?!?
+	//allow image to be called src
+	$thisimage = (!empty($attr['image'])) ? $attr['image'] : ((!empty($attr['src'])) ? $attr['src'] : '') ;
+		
+	//allow link to be called href
+	$thislink = (!empty($attr['link'])) ? $attr['link'] : ((!empty($attr['href'])) ? $attr['href'] : '') ;
 	
 	//set alignment, number of columns and alt text
 	$num_columns =  (empty($attr['columns'])) ? 6 : intval($attr['columns']) ;
@@ -324,8 +328,8 @@ function sdss_figure_style( $attr, $content = null ){
 	$fig_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
 	
 	//set up image tag
-	$fig_content = '<img class="img-responsive" src="' . $attr['image'] . '" '  . $fig_alt .  '/>';
-	$fig_content = (!empty($attr['link'])) ? '<a href="' . $attr['link'] . '" target="_blank" >' . $fig_content . '</a>' : $fig_content ;
+	$fig_content = (!empty($thisimage)) ? '<img class="img-responsive" src="' . $thisimage . '" '  . $fig_alt .  '/>' :  '' ;
+	$fig_content = (!empty($thislink)) ? '<a href="' . $thislink . '" target="_blank" >' . $fig_content . '</a>' : $fig_content ;
 	
 	//wrap bodies 
 	$fig_content = '<div class="panel-body">' . $fig_content . '</div>' ;
