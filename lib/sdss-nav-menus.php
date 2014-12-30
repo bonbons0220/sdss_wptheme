@@ -274,7 +274,8 @@ function sdss_summary_style( $attr, $content = null ){
 	if (empty($content)) $content = "No Content"; //no story?
 	
 	//content
-	$summary_content = '<div class="sdss-summary col-xs-11 col-xs-offset-0 col-md-10 col-md-offset-1">' . do_shortcode($content) . '</div>' ;
+	//$summary_content = '<div class="sdss-summary col-xs-11 col-xs-offset-0 col-md-10 col-md-offset-1">' . do_shortcode($content) . '</div>' ;
+	$summary_content = '<div>' . do_shortcode($content) . '</div>' ;
 	$summary_content .= sdss_clear() ;
 	
 	return $summary_content;
