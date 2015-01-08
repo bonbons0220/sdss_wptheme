@@ -49,10 +49,12 @@
 
             // **ignoreSelector**: Accepts String: Any jQuery selector
             // A selector to any element that would be matched by selectors that you wish to be ignored
+            //ignoreSelector: h1,
             ignoreSelector: null,
 
             // **selectors**: Accepts an Array of Strings: Any jQuery selectors
             // The element's used to generate the table of contents.  The order is very important since it will determine the table of content's nesting structure
+            //selectors: "h1, h2, h3",
             selectors: "h1, h2, h3",
 
             // **showAndHide**: Accepts a boolean: true or false
@@ -213,23 +215,26 @@
                 ul,
                 ignoreSelector = self.options.ignoreSelector;
 
-             // If the selectors option has a comma within the string
-             if(this.options.selectors.indexOf(",") !== -1) {
-
-                 // Grabs the first selector from the string
-                 firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,"").substr(0, this.options.selectors.indexOf(",")));
-
-             }
-
-             // If the selectors option does not have a comman within the string
-             else {
-
+			// If the selectors option has a comma within the string
+			var allselectors = this.options.selectors.split(",");
+			var thisselector, firstElem, numElem;
+			do{
+				thisselector = allselectors.shift().trim();
+				firstElem = $(this.options.context).find(thisselector);
+				numElem=0;
+				firstElem.each(function() { numElem += (this.tagName == thisselector.toUpperCase());});
+			} while	((allselectors.length) && (!numElem))
+			
+            //if(this.options.selectors.indexOf(",") !== -1) {
+                 //Grabs the first selector from the string
+                 //firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,"").substr(0, this.options.selectors.indexOf(",")));
+             //}  // If the selectors option does not have a comma within the string
+             //else {
                  // Grabs the first selector from the string and makes sure there are no spaces
-                 firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,""));
-
-             }
-
-            if(!firstElem.length) {
+                 //firstElem = $(this.options.context).find(this.options.selectors.replace(/ /g,""));
+             //}
+            //if(!firstElem.length) {
+            if(!numElem) {
 
                 self.element.addClass(hideTocClassName);
 
@@ -262,7 +267,7 @@
                 // Finds all of the HTML tags between the header and subheader elements
                 $(this).nextUntil(this.nodeName.toLowerCase()).each(function() {
 
-                    // If there are no nested subheader elemements
+                    // If there are no nested subheader elements
                     if($(this).find(self.options.selectors).length === 0) {
 
                         // Loops through all of the subheader elements

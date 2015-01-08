@@ -17,32 +17,46 @@
     }
   ?>
 
-<?php if 
-(is_front_page()): ?>
+<?php if (is_front_page()): ?>
  <div class="wrap container-fluid" role="document">
-  <?php else: ?>
+<?php else: ?>
     <div class="wrap container" role="document">
 <?php endif; ?>    
-<div class="content row">
-<?php if (is_singular( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_post_type_archive( array ('algorithms', 'opticalspectra', 'data', 'imaging', 'infrared', 'software', 'help', 'tutorials', 'marvels' ) ) || is_page( array (202, 345, 607, 1803,)) ): ?>
-            <?php
-              if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(array('theme_location' => 'secondary_navigation', 'menu_class' => 'nav nav-pills nav-justified'));
-              endif;
-            ?>
 
-          <?php endif; ?>
-      <main class="main <?php echo roots_main_class(); ?>" role="main">
-        <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-          <?php include roots_sidebar_path(); ?>
-        </aside><!-- /.sidebar -->
-      <?php endif; ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
-  <?php get_template_part('templates/sitemap'); ?>
-  <?php get_template_part('templates/footer'); ?>
+<div class="content row">
+<?php 
+//show secondary nav menu
+$secondtier_menu = new sdss_nav_menus();
+
+if ( $secondtier_menu->show( 'secondtier' ) ) {
+
+	wp_nav_menu(array('theme_location' => $secondtier_menu->currentlocation, 'menu_class' => 'nav nav-pills nav-justified')); 
+
+}
+	
+?>
+<main class="main <?php echo roots_main_class(); ?>" role="main">
+<?php include roots_template_path(); ?>
+</main><!-- /.main -->
+<?php if (roots_display_sidebar()) : ?>
+<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+<?php include roots_sidebar_path(); 
+
+$sidebar_menu = new sdss_nav_menus();
+if ( $sidebar_menu->show( 'sidebar' ) ) {
+	echo "<div class='sdss-docs-sidebar'>";
+	wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
+	echo "</div>";
+
+}
+
+?>
+</aside><!-- /.sidebar -->
+<?php endif; ?>
+</div><!-- /.content -->
+</div><!-- /.wrap -->
+<?php get_template_part('templates/sitemap'); ?>
+<?php get_template_part('templates/footer'); ?>
+
 </body>
 </html>

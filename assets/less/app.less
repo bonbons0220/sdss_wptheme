@@ -7,16 +7,35 @@
 
 
 
+
 /* ==========================================================================
    Base
    ========================================================================== */
 
 body {font-size:100%; }
-.content.row {margin-bottom: 200px;}
+
+.content.row {margin-bottom: 0px;}
+
+#acknowledgements {
+	font-size: .7em;
+}
 
 .home .main {
   padding: 0;
 }
+
+/* ==========================================================================
+   Headings
+   ========================================================================== */
+h2 {
+	font-size:28px;
+	font-weight:500;
+}
+h3 {
+	font-weight:300;
+	font-size:26px;
+}
+
 
 /* ==========================================================================
    Navigation
@@ -25,6 +44,8 @@ body {font-size:100%; }
 .navbar-inverse *:focus { outline: 0; }
 
 .navbar-inverse .navbar-brand {font-size: 24px; color:white; padding:0 0 0 15px; margin:12px 0 0 0; }
+
+.navbar-inverse .navbar-nav> .retroactive>a {color: #ccc;  box-shadow: 0 -2px #333 inset;}
 
 .navbar-nav {margin: 1em;}
 
@@ -48,14 +69,34 @@ body {font-size:100%; }
 .navbar-fixed-top,
 .navbar-fixed-bottom { border-radius: 0; }
 
-.nav-pills>li>a {color: #777777;}
+.nav-pills>li.spectra1 { 
+	-webkit-border-image:url('/wp-content/themes/sdss/assets/img/spectra1.png')  100 0 0 0 stretch; /* Safari 3.1-5 */
+    -o-border-image:url('/wp-content/themes/sdss/assets/img/spectra1.png')  100 0 0 0 stretch; /* Opera 11-12.1 */
+    border-image:url('/wp-content/themes/sdss/assets/img/spectra1.png')  100 0 0 0 stretch;
+    border-top-width: 3px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+	border-style:solid;
+}
+.nav-pills>li>a {border-radius: 0px 0px 4px 4px; color: #777777; border-left: 5px solid transparent; }
 .nav-pills>li>a:hover {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
-.nav-pills>li.active>a,  .nav-pills>li.active>a:focus{color: inherit; background: inherit; border-left: 5px solid @brand-sdss;}
+.nav-pills>li.active>a,  .nav-pills>li.active>a:focus{color: inherit; background: rgba(0,0,0,0.1); border-left: 5px solid @brand-sdss;}
 .nav-pills>li.active>a:hover {background: rgba(0,0,0,.9);}
+
+.nav-pills>li.retroactive>a {color: inherit; border-left: 5px solid transparent; background: rgba(0,0,0,.1); border-bottom: 0px;}
+.nav-pills>li.retroactive>a:hover {color: #fff; background: rgba(0,0,0,.9); border-left: 5px solid @brand-sdss;}
+
+//.nav-pills .spectra1>a {padding-top: 2px;}
 
 .btn-sdss:hover{color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
 
 .btn-sdss:hover, .btn-sdss:focus, .btn-sdss:active, .btn-sdss.active, .open .dropdown-toggle.btn-sdss {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
+
+.btn-sdss-right {
+	float:right;
+	display:block;
+}
 
 /* ==========================================================================
    Header
@@ -89,7 +130,7 @@ body {font-size:100%; }
 .branding>p {font-size: 18px; } .surveys {margin-bottom: 2em; } 
 #links {display:table; width: 100%; height: 400px; background:url('/wp-content/uploads/2014/05/sdss-telescope-small.png')no-repeat top center fixed; background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-color: #000; 
  h4 { color: #fff; 
-      text-shadow: 2px 2px 3px rgba(0,0,0,.9); } 
+      text-shadow: 2px 2px 3px rgba(0,0,0,.9); }
  .well {background-color: rgba(236, 240, 241, .9); }     
       }
 
@@ -104,6 +145,56 @@ figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
 #classic p {
 font-size: 85%;
 }
+
+/* ==========================================================================
+   Table-hover fix for spanning rows and columns. Insert blank rows and columns. 
+   Give them the class "rowspan start", "rowspan next" or "rowspan last".
+   <td class="rowspan 3 start">&nbsp;</td>, etc.
+   Same for colspan.
+   ========================================================================== */
+table.table-hover td.rowspan.first {
+	border-bottom-color:transparent;
+}
+table.table-hover td.rowspan.next {
+	border-top-color:transparent;
+	border-bottom-color:transparent;
+}
+table.table-hover td.rowspan.last {
+	border-top-color:transparent;
+}
+table.table-hover td.colspan.first {
+	border-right-color:transparent;
+}
+table.table-hover td.colspan.next {
+	border-left-color:transparent;
+	border-right-color:transparent;
+}
+table.table-hover td.colspan.last {
+	border-left-color:transparent;
+}
+
+//Allow long strings to break within table cells.
+table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td {
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap; /* HP printers */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+	word-break: break-word;
+	min-width:90px;
+}
+table.table.table-narrow>thead>tr>th, table.table.table-narrow>tbody>tr>th, table.table.table-narrow>tfoot>tr>th, table.table.table-narrow>thead>tr>td, table.table.table-narrow>tbody>tr>td, table.table.table-narrow>tfoot>tr>td {
+	min-width:50px;
+}
+table caption {
+	font-family:sans-serif;
+	font-size:20px;
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
 /* ==========================================================================
    Primary Content
    ========================================================================== */
@@ -195,12 +286,16 @@ font-size: 85%;
 .sdss-docs-sidebar.affix {position:static } 
 .sdss-docs-sidenav {margin-top:20px; margin-bottom:20px } 
 .sdss-docs-sidebar .nav>li>a {display:block; font-size:1em; font-weight:500; color:#999; padding:4px 20px } 
+
+.sdss-docs-sidebar .nav .heading>a { pointer-events: none; cursor: default; color: #888; font-weight:700;} 
+
 .sdss-docs-sidebar .nav>li>a:hover,.sdss-docs-sidebar .nav>li>a:focus {padding-left:19px; color:@brand-sdss; text-decoration:none; background-color:transparent; border-left:1px solid @brand-sdss; } 
 .sdss-docs-sidebar .nav>.active>a,.sdss-docs-sidebar .nav>.active:hover>a,.sdss-docs-sidebar .nav>.active:focus>a {padding-left:18px; font-weight:700; color:@brand-sdss; background-color:transparent; border-left:2px solid @brand-sdss }
- .sdss-docs-sidebar .nav .nav {display:none; padding-bottom:10px } 
+.sdss-docs-sidebar .nav .nav {display:none; padding-bottom:10px } 
 .sdss-docs-sidebar .nav .nav>li>a {padding-top:1px; padding-bottom:1px; padding-left:30px; font-size:.9em; font-weight:400 } 
 .sdss-docs-sidebar .nav .nav>li>a:hover,.sdss-docs-sidebar .nav .nav>li>a:focus {padding-left:29px } 
 .sdss-docs-sidebar .nav .nav>.active>a,.sdss-docs-sidebar .nav .nav>.active:hover>a,.sdss-docs-sidebar .nav .nav>.active:focus>a {font-weight:500; padding-left:28px }
+.nav>li.indent {padding-left: 0px; margin-left:20px;} 
 
 .back-to-top {margin-top:10px; margin-bottom: 10px; font-size:.9em; font-weight:400; color: @brand-sdss-text; font-variant: small-caps;
 &:hover {color: @brand-sdss; text-decoration:none;}
@@ -250,7 +345,12 @@ margin-top: 1em;}
    ========================================================================== */
 
 .content-info { }
-.sitemap { background: #232323; padding: 30px 0 0 0; font-size: 12px; color: #999;
+.sitemap { 
+	background: #232323; 
+	padding: 30px 0 0 0; 
+	margin-top: 10px; 
+	font-size: 12px; 
+	color: #999;
       & a { color: #ccc; }
       & a:hover {color: #fff; }
       &  widget { margin-bottom:30px; }
@@ -280,18 +380,183 @@ margin-top: 1em;}
 .alignright { float: right; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
 
+/* ==========================================================================
+   Figures and Stories
+   ========================================================================== */
+div.sdss-group-wrapper {
+	padding-left: 5px; 
+	padding-right: 5px;
+	& address {
+		margin-bottom:0;
+	}
+	& div.sdss-group>div.panel-heading {
+		h1, h2, h3, h4, h5 {
+			margin-top:-0.5em;
+		}	
+	}
+}
+div.sdss-group-wrapper.col-lg-12 {
+		padding: 0;
+	}
+div.sdss-group-wrapper.col-md-12 {
+		padding: 0;
+	}
+
+div.sdss-wrapper, div.sdss-group-wrapper{
+	& .sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
+	& .panel-heading {padding: 0px 10px;}
+	& .panel-body {padding: 10px;}
+	& .caption {background-color: #ecf0f1;}
+	& h1, .h1, h2, .h2, h3, .h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;}
+	.btn-group-vertical {
+		width:100%;
+	}
+}
+div.sdss-wrapper, div.sdss-group-wrapper, div.sdss-summary{
+	& ul {
+		list-style-type: none;
+		margin-left: 0;
+		margin-right:10px;
+		line-height:1.2;
+	}
+	& ul>li { 
+		//font-family:sans-serif;
+		margin-bottom: .5em;
+		text-indent: -10px;
+	}
+	& ul>li:before { 
+		font-family: FontAwesome;
+		font-weight: normal;
+		font-size: 0.9em;
+		font-style: normal;
+		display: inline-block;
+		text-decoration: inherit;
+		content: "\f006\00A0";
+	}
+	& ul ul {
+		list-style-type: none;
+		margin-left: 0;
+		padding-left:15px;
+	}
+	& li ul>li { 
+		margin-top: .5em;
+		margin-bottom: .5em;
+		text-indent: -10px;
+	}
+	& li ul>li:before { 
+		font-family: FontAwesome;
+		font-weight: normal;
+		font-size:0.9em;
+		font-style: normal;
+		display: inline-block;
+		text-decoration: inherit;
+		content: "\f005\00A0";
+	}
+	& ul.none>li:before {
+		content: "";
+	}
+	& li ul.none>li:before { 
+		content: "";
+	}
+}
+
+.sdss-story {
+	//border-color: transparent;
+	& .panel { background-color: inherit;}
+	& .panel-heading { background-color: inherit;}
+}
+
+.sdss-figure {
+	& .panel { background-color: inherit;}
+	& .panel-heading { background-color: inherit;}
+	& img {
+		margin-right:auto;
+		margin-left:auto;
+	}
+}
+
+.sdss-story-right {
+	float: right; 
+}
+
+.sdss-story-left {
+	float: left; 
+}
+
+.sdss-fig-right {
+	float: right; 
+}
+
+.sdss-fig-left {
+	float: left; 
+}
+.sdss-summary {
+	background-image: url('/wp-content/uploads/2014/05/mw.jpg');
+	background-repeat: no-repeat; 
+	margin-top: 0;
+	margin-bottom: 20px; 
+	padding-left: 110px; 
+	padding-right: 10px; 
+	border-bottom: solid medium orange;
+	font-family: sans-serif;
+	font-size: 0.9em;
+}
+.subtitle {
+	font-family:sans-serif;
+	font-weight:300;
+	font-size:22px;
+	display:block;
+	margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   Table of Contents Shortcode/Plugin
+   ========================================================================== */
 /*
  * jquery.tocify.css 1.9.0
  * Author: @gregfranko
  */
 
+/* The Table of Contents Wrapper */
+#toc-wrapper {
+    min-width: 200px;
+	background: rgba(0,0,0,0.1);
+	margin: 0px 10px 5px 0px;
+	float: left; 
+	border: darkgray solid thin;
+	border-radius: 4px;
+}
 /* The Table of Contents container element */
 .tocify {
-    width: 20%;
-    max-height: 70%;
+    //width: 20%;
+    width: 96%;
+    max-height: 100%;
     overflow: auto;
     margin-left: 2%;
-    position: fixed;
+}
+.tocify-title {
+    width: 96%;
+    margin-left: 2%;
+    padding: 2px;
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 700;
+	//text-align:center;
+	& a {
+		text-decoration:none;
+		color: @brand-sdss-dark;
+	}
+	& .accordion-toggle:before {
+		Font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+		content: "\e082";    /* adjust as needed, taken from bootstrap.css */
+		float: left;        /* adjust as needed */
+		padding-right:10px;
+		//color: #333;         /* adjust as needed */
+	}
+	.accordion-toggle.collapsed:before {
+		content: "\e081";    /* adjust as needed, taken from bootstrap.css */
+	}
 }
 
 /* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
@@ -305,13 +570,15 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
 /* Top level header elements */
 .tocify-header {
-    text-indent: 10px;
+    text-indent: 0px;
+    padding-left: 10px;
 }
 
 /* Top level subheader elements.  These are the first nested items underneath a header element. */
 .tocify-subheader {
-    text-indent: 20px;
-    display: none;
+    //text-indent: 20px;
+    padding-left: 20px;
+    //display: none;
 }
 
 /* Makes the font smaller for all subheader elements. */
@@ -320,12 +587,14 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 /* Further indents second level subheader elements. */
 .tocify-subheader .tocify-subheader {
-    text-indent: 30px;
+    //text-indent: 30px;
+    padding-left: 30px;
 }
 
 /* Further indents third level subheader elements. You can continue this pattern if you have more nested elements. */
 .tocify-subheader .tocify-subheader .tocify-subheader {
-    text-indent: 40px;
+    //text-indent: 40px;
+    padding-left: 40px;
     font-size: 13px;
 }
 
@@ -336,22 +605,52 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
 /* Twitter Bootstrap Override Style */
 .nav-list > li > a {
-    padding: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 li.tocify-item a {
-color: #777777;
+color: #333;
+font-family: @font-family-sans-serif;
 }
 
 li.tocify-item a:hover {
-color: #ffffff;
-background: rgba(0,0,0,0.9);
+//color: #ffffff;
+background: rgba(0,0,0,0.2);
 transition: background 0.5s ease;
-border-left: 5px solid @brand-sdss;
+//border-left: 5px solid @brand-sdss-dark;
+text-decoration:none;
 }
 
 .nav.nav-list>.active>a {
-  border-left: 5px solid @brand-sdss;
+//  border-left: 5px solid @brand-sdss-dark;
+}
+
+/* ==========================================================================
+ * Back To Top wrapper and elements
+   ========================================================================== */
+.totop-wrapper {
+	font-family: @font-family-sans-serif;
+	margin: 10px 10px 10px 0px;
+	width:100%;
+	font-size: 1.1em;
+	& a {
+		color: @brand-sdss-dark;
+		text-decoration:none;
+	}
+	& .glyphicon {
+		padding: 0px 10px 0px 0px;
+	}
+}
+
+/* ==========================================================================
+ * Footnote Styling
+   ========================================================================== */
+.footnote {
+	vertical-align: super;
+	font-weight:bold;
+	color:@brand-info;
 }
 
 /* ==========================================================================
@@ -359,48 +658,186 @@ border-left: 5px solid @brand-sdss;
    ========================================================================== */
 
 @media (max-width: @screen-xs-max) {
-  .navbar-inverse { background:rgba(0,0,0,.9); }
-  .sitemap img { max-width: 75%;}
-
-.navbar-nav {
-    > li > a {
-      &:hover,
-      &:focus {
-        border-bottom: none !important;
-      }
-    }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        border-bottom: none !important;
-      }
-    }
-  }
-
+	.navbar-inverse {background:rgba(0,0,0,.9); }
+	.sitemap img { max-width: 75%;  }
+	.navbar-nav {
+		> li > a {
+		  &:hover,
+		  &:focus {border-bottom: none !important;}
+		}
+		> .active > a {
+		  &,
+		  &:hover,
+		  &:focus {	border-bottom: none !important;  }
+		}
+	}
 }
 
 @media (min-width: @screen-sm-min) {
 .branding {position: absolute; text-align: left; right: 0; left: 0; bottom: 2em; padding: 1em 5% 1em 1em; max-width: 30em; width: auto; transition: padding-right 0.3s ease, background-color 0.3s ease;}
 .navbar-inverse .navbar-brand img {max-width: 150px}
+/* formatting for dl-horizontal in Stories and Figures */ 
+	
+	.sdss-wrapper dl.dl-horizontal {
+		& >dt {
+			width:49%;
+			float:left;
+			clear:both;
+			text-align:right;
+			white-space:normal;
+			overflow:visible;
+			line-height: 1.2;
+			padding-bottom: 10px;
+		}
+		& >dd {
+			margin-left: 1%;
+			width:49%;
+			float:right;
+			text-align:left;
+			line-height: 1.2;
+			padding-bottom: 10px;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-reverse {
+		& >dt {
+			font-weight:normal;
+		}
+		& >dd {
+			font-weight:bold;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-left {
+		& >dt {
+			display:inline;
+			float:left;
+			clear:left;
+			text-align:left;
+			width:initial;
+		}
+		& >dd {
+			display:inline;
+			float:left;
+			text-align:left;
+			-webkit-margin-start: 3px;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-quarter {
+		& >dt {
+			width:25%;
+		}
+		& >dd {
+			width: 73%;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-third {
+		& >dt {
+			width:33%;
+		}
+		& >dd {
+			width:65%;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-twothirds {
+		& >dt {
+			width:65%;
+		}
+		& >dd {
+			width:33%;
+		}
+	}
+	.sdss-wrapper dl.dl-horizontal-threequarters {
+		& >dt {
+			width:73%;
+		}
+		& >dd {
+			width:25%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal {
+		& >dt {
+			width:49%;
+			float:left;
+			clear:both;
+			text-align:right;
+			white-space:normal;
+			overflow:visible;
+			line-height: 1.2;
+			padding-bottom: 10px;
+		}
+		& >dd {
+			margin-left: 1%;
+			width:49%;
+			float:right;
+			text-align:left;
+			line-height: 1.2;
+			padding-bottom: 10px;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-reverse {
+		& >dt {
+			font-weight:normal;
+		}
+		& >dd {
+			font-weight:bold;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-quarter {
+		& >dt {
+			width:25%;
+		}
+		& >dd {
+			width: 73%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-third {
+		& >dt {
+			width:33%;
+		}
+		& >dd {
+			width:65%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-twothirds {
+		& >dt {
+			width:65%;
+		}
+		& >dd {
+			width:33%;
+		}
+	}
+	.sdss-group-wrapper dl.dl-horizontal-threequarters {
+		& >dt {
+			width:73%;
+		}
+		& >dd {
+			width:25%;
+		}
+	}
 }
 
 @media (max-width: @screen-sm-max) { 
 .navbar-collapse ul { text-align: center;  width:100%; padding-bottom:10px; }
-.navbar-collapse ul .btn{ max-width:50%; margin:0 auto; } 
+.navbar-collapse ul .btn{ max-width:50%; margin:0 auto; }
 }
 
-@media (min-width: @screen-xs-min) and (max-width: @screen-sm-min) { }
+@media (max-width: @screen-sm-min) { 
+.nav-pills>li {border-top:3px solid black; padding-bottom:2px; margin-top: -3px; }
+}
 
-@media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {.nav {
-  font-size: (@font-size-base * .8375); }
-  .nav>li>a {padding: 5px;}
+@media (min-width: @screen-xs-min) and (max-width: @screen-sm-min) { 
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-md-max) 
+{
+//.nav {font-size: (@font-size-base * .8375); }
+.nav>li>a {padding: 5px;}
   }
 
-@media (min-width: @screen-md-min) and (max-width: @screen-lg-min) {.nav {
-  font-size: (@font-size-base * 1.05); }
-  .nav>li>a {padding: 5px;}
-  }
+@media (min-width: @screen-md-min) and (max-width: @screen-lg-min) 
+{
+//.nav { font-size: (@font-size-base * 1.05); }
+.nav>li>a {padding: 5px;}
+}
 
 @media (min-width: @screen-md-min) {
 .sdss-docs-sidebar .nav>.active>ul {display:block } 
@@ -409,30 +846,28 @@ border-left: 5px solid @brand-sdss;
 .sdss-docs-sidebar.affix-bottom {position:absolute } 
 .sdss-docs-sidebar.affix-bottom .sdss-docs-sidenav,.sdss-docs-sidebar.affix .sdss-docs-sidenav {margin-top:0; margin-bottom:0 } 
 .navbar-inverse .navbar-brand img {max-width: 200px; margin-top: -5px;}
+.nav>li> .indent {text-indent: 10px; } 
 }
 
 @media (min-width: @screen-lg-min) {
 .sdss-docs-sidebar.affix-bottom,.sdss-docs-sidebar.affix {width:263px } 
- .nav {font-size: 18px; }
- }
-
+//.nav {font-size: 18px; }
+}
 @media (min-width: 400px) {
-  body { font-size: 75%; }
+  body { font-size: 100%; }
 }
 @media (min-width: 700px) {
-  body { font-size: 90%; }
+  body { font-size: 100%; }
 }
 @media (min-width: 850px) {
   body {font-size: 100%; }
 }
 @media (min-width: 1000px) {
-  body {font-size: 110%; }
+  body {font-size: 100%; }
 }
 @media (min-width: 1100px) {
-  body {font-size: 115%;}
+  body {font-size: 100%;}
 }
 @media (min-width: 1450px) {
-  body {font-size: 125%; }
+  body {font-size: 100%; }
 }
-
-

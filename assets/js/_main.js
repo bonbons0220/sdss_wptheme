@@ -24,23 +24,32 @@ var Roots = {
     init: function() {
        // JavaScript to be fired on all pages
     $('body').scrollspy({ target: '.sdss-docs-sidebar' });
-    $('.sdss-docs-sidebar').affix({
+	//Bonnie Souter removed 12/08/14. 
+	//Affixing sidebar is a problem for long menus
+	//Also runs into footer.
+	/*$('.sdss-docs-sidebar').affix({
       offset: {
         top: 150,
         bottom: function () {
            return (this.bottom === $('.footer').outerHeight(true));
         }
       }
-    });
+    });*/
 
     //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
-       $(function() {
-    //Calls the tocify method on your HTML div.
-       var toc = $("#toc").tocify().data("toc-tocify");
-              // Sets the showEffect, scrollTo, and smoothScroll options
-              toc.setOptions({ scrollTo: 50, extendPage: false });
-       });
-     
+	$(function() {
+		var useselectors;
+		if ($("#toc").attr("class") === undefined) {
+			useselectors = "h2,h3"; //defaults
+		} else {
+			useselectors = $("#toc").attr("class").trim().match(/toc-[a-zA-Z\-0-9]+/)[0].replace(/toc-/,'').split("-").join(",");
+		}
+		//console.log(useselectors);
+		
+		//Calls the tocify method on your HTML div.
+		var toc = $("#toc").tocify({ scrollTo: 50, extendPage: false, showAndHide: true, selectors: useselectors });
+
+	});
     }
   },
   // Home page
