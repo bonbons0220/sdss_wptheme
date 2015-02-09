@@ -1,9 +1,9 @@
 <?php 
 function header_search_form( $form ) {
 	$form = '<div class="row"><div class="col-xs-12  align-right hidden">
-	<form role="search" method="get" class="search-form form-inline" action="<?php echo home_url('/'); ?>">
+	<form role="search" method="get" class="search-form form-inline" action="<?php echo home_url(\'/\'); ?>">
 		<div class="input-group">
-		<input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
+		<input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" class="search-field form-control" placeholder="<?php _e(\'Search\', \'roots\'); ?> <?php bloginfo('name'); ?>">
 		<label class="hide"><?php _e('Search for:', 'roots'); ?></label>
 		<span class="input-group-btn">
 		<button type="submit" class="search-submit btn btn-default"><?php _e('Search', 'roots'); ?></button>
