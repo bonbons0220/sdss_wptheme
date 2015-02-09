@@ -106,6 +106,7 @@ function sdss_menu_message() {
 	function get_permalink(   )
     {
 		$thispage= get_post(  );
+		if (empty($thispage->post_name)) return '';
 		$thispermalink = '/' . $thispage->post_name . '/';
 		foreach( get_ancestors( $thispage->ID , 'page' ) as $thisancestorid ) {
 			$thisancestor = get_post( $thisancestorid );

@@ -254,8 +254,9 @@ function sdss_toc_inject( $attr = array()){
 	}
 	
 	//set up string variables for opened/closed table of contents, and clear afterwards
-	$open = (in_array('open',$attr)) ? array( '' , 'in' ) : array( 'collapsed' , '') ;
-	$clear = (in_array('clear',$attr)) ? '<span class="clearfix"></span>' : '' ;
+	//$open = (in_array('open',$attr)) ? array( '' , 'in' ) : array( 'collapsed' , '') ;
+	//$clear = (in_array('clear',$attr)) ? '<span class="clearfix"></span>' : '' ;
+	$open = (empty($attr['open'])) ? array( 'collapsed' , '') : array( '' , 'in' ) ;
 	$injection = '<div id="toc-wrapper">'."\n";
 	$injection .= '<div class="tocify-title">'."\n";
 	$injection .= '<a class="accordion-toggle ' . $open[0] . ' " data-toggle="collapse" href="#toc-body" ';
@@ -263,7 +264,7 @@ function sdss_toc_inject( $attr = array()){
 	$injection .= '</div>'."\n";
 	$injection .= '<div id="toc-body" class="collapse ' . $open[1] . ' ">'."\n";
 	$injection .= '<div id="toc"' . $selectors . ">";
-	$injection .= '</div></div></div>' . $clear;
+	$injection .= '</div></div></div>';
 
 	return $injection;
 	
