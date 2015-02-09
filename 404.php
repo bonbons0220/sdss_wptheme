@@ -12,7 +12,7 @@
 
 <div class="row">
 	<div class="col-sm-6">
-<div class="alert alert-info">Please email webmaster.sdss@gmail.org if you arrived at this page via a link from classic.sdss.org or a publication.</div>
+<div class="alert alert-info">Please email webmaster@sdss.org if you arrived at this page via a link from classic.sdss.org or a publication.</div>
 <!--div class="alert alert-info">Arrive at this page via a paper or the original SDSS (now classic.sdss.org) website? If so please inform us of the link and page you were looking for.</div-->
 <?php //echo do_shortcode( '[contact-form-7 id="1472" title="404 Error Form"]' ); ?>
 </div>
