@@ -249,7 +249,7 @@ function sdss_toc_inject( $attr = array()){
 		$selectors = '' ;
 	} else {
 		$selectors = explode(",",$attr['selectors']);
-		foreach ($selector as $thisselector) $thisselector = trim($thisselector);
+		foreach ($selectors as $thisselector) $thisselector = trim($thisselector);
 		$selectors = ' class="toc-' . implode("-",$selectors) . '" ';
 	}
 	

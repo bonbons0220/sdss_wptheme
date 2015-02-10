@@ -52,21 +52,21 @@ if ( $secondtier_menu->show( 'secondtier' ) ) {
 <main class="main <?php echo roots_main_class(); ?>" role="main">
 <?php include roots_template_path(); ?>
 </main><!-- /.main -->
-<?php if (roots_display_sidebar()) : ?>
-<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-<?php include roots_sidebar_path(); 
+	<?php if (roots_display_sidebar()) : ?>
+	<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+		<?php include roots_sidebar_path(); 
 
-$sidebar_menu = new sdss_nav_menus();
-if ( $sidebar_menu->show( 'sidebar' ) ) {
-	echo "<div class='sdss-docs-sidebar'>";
-	wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
-	echo "</div>";
+		$sidebar_menu = new sdss_nav_menus();
+		if ( $sidebar_menu->show( 'sidebar' ) ) {
+			echo "<div class='sdss-docs-sidebar'>";
+			wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
+			echo "</div>";
 
-}
+		}
 
-?>
-</aside><!-- /.sidebar -->
-<?php endif; ?>
+		?>
+		</aside><!-- /.sidebar -->
+	<?php endif; ?>
 </div><!-- /.content -->
 </div><!-- /.wrap -->
 <?php get_template_part('templates/sitemap'); ?>

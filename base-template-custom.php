@@ -39,8 +39,6 @@ $secondtier_menu = new sdss_nav_menus();
 
 if ( $secondtier_menu->show( 'secondtier' ) ) {
 
-	if (defined('DEBUG')) echo "<!-- " . $secondtier_menu->currentlocation . " -->";
-
 	wp_nav_menu(array('theme_location' => $secondtier_menu->currentlocation, 'menu_class' => 'nav nav-pills nav-justified')); 
 
 }
