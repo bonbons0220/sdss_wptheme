@@ -36,6 +36,33 @@ h3 {
 	font-size:26px;
 }
 
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+.panel-update-status {
+	margin: 10px;
+}
+.panel-update-completed {
+	.panel-success;
+	.panel-update-status;
+}
+.panel-needs-update { 
+	.panel-danger;
+	.panel-update-status;
+}
+.panel-update-in-progress {
+	.panel-warning;
+	.panel-update-status;
+}
+.panel-needs-review {
+	.panel-danger;
+	.panel-update-status;
+}
+.panel-do-not-publish {
+	.panel-primary;
+	.panel-update-status;
+}
+
 
 /* ==========================================================================
    Navigation

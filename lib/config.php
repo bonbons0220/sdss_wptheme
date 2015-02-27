@@ -57,9 +57,9 @@ function roots_display_sidebar() {
       'is_404',
       'is_search',
       'is_front_page',
-      array('is_page', 202),
-      array('is_single', 1753),
-      array('is_singular', array('releases') ),
+      array('is_page', 202),		//this is the data release page
+      array('is_single', 1753),		//algorithms overview?!
+      array('is_singular', array('releases') ),		//custom post type
     ),
     /**
      * Page template checks (via is_page_template())

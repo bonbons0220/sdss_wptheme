@@ -153,33 +153,17 @@ function sdss_group_style( $attr, $content = null ){
 	$group_align = (empty($attr['align'])) ? '' : ' align' . esc_attr($attr['align']) . ' ' ;
 	
 	//title/heading - can contain html like <h3></h3> etc
-	$group_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
+	$group_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' . "\n" ;
 
 	//content
-	$group_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
+	$group_content = (!empty($content)) ? '<div class="panel-body">' . "\n" . do_shortcode($content) . '</div>' . "\n" : '' ;
 
 	//wrap bodies 
-	$group_content =  '<div class="panel panel-default sdss-group " >' . $group_title . $group_content . '</div>' ; 
+	$group_content =  '<div class="panel panel-default sdss-group " >' . "\n" . $group_title . $group_content . '</div>' . "\n" ; 
 	
 	//assemble in wrapper
-	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . $group_content . '</div>';
+	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . "\n" . $group_content . '</div>' . "\n";
 	return $group_content;
-	
-}
-
-/** 
- * Wrap a summary in a panel, align left or right, set max width and title
- **/
-function sdss_summary_style( $attr, $content = null ){
-	
-	if (empty($content)) $content = "No Content"; //no story?
-	
-	//content
-	//$summary_content = '<div class="sdss-summary col-xs-11 col-xs-offset-0 col-md-10 col-md-offset-1">' . do_shortcode($content) . '</div>' ;
-	$summary_content = '<div>' . do_shortcode($content) . '</div>' ;
-	$summary_content .= sdss_clear() ;
-	
-	return $summary_content;
 	
 }
 
@@ -196,18 +180,33 @@ function sdss_story_style( $attr, $content = null ){
 	$story_align = (empty($attr['align'])) ? '' : ' sdss-story-' . esc_attr($attr['align']) . ' ' ;
 	
 	//title/heading - can contain html like <h3></h3> etc
-	$story_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
-	//$story_title = (empty($attr['title'])) ? '' : $attr['title'] ;
+	$story_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' . "\n"  ;
 
 	//content
-	$story_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
+	$story_content = (!empty($content)) ? '<div class="panel-body">' . "\n"  . do_shortcode($content) . '</div>' . "\n"  : '' ;
 
 	//wrap bodies 
-	$story_content =  '<div class="panel panel-default sdss-story " >' . $story_title . $story_content . '</div>' ; 
+	$story_content =  '<div class="panel panel-default sdss-story " >' . "\n"  . $story_title . $story_content . '</div>' . "\n"; 
 	
 	//assemble in wrapper
-	$story_content = '<div class="sdss-wrapper ' . $story_align . $story_columns  . '" >' . $story_content . '</div>';
+	$story_content = '<div class="sdss-wrapper ' . $story_align . $story_columns  . '" >' . "\n"  . $story_content . '</div>' . "\n" ;
 	return $story_content;
+	
+}
+
+/** 
+ * Wrap a summary in a panel, align left or right, set max width and title
+ **/
+function sdss_summary_style( $attr, $content = null ){
+	
+	if (empty($content)) $content = "No Content"; //no story?
+	
+	//content
+	//$summary_content = '<div class="sdss-summary col-xs-11 col-xs-offset-0 col-md-10 col-md-offset-1">' . do_shortcode($content) . '</div>' ;
+	$summary_content = '<div>' . do_shortcode($content) . '</div>' ;
+	$summary_content .= sdss_clear() ;
+	
+	return $summary_content;
 	
 }
 
