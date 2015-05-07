@@ -59,7 +59,8 @@ function roots_display_sidebar() {
       'is_front_page',
       array('is_page', 202),		//this is the data release page
       array('is_single', 1753),		//algorithms overview?!
-      array('is_singular', array('releases') ),		//custom post type
+      array('is_singular', array('personnel') ),				//custom post type
+      array('is_post_type_archive', array('personnel' , 'personnel-tags' ) ),		//custom post type archive
     ),
     /**
      * Page template checks (via is_page_template())
