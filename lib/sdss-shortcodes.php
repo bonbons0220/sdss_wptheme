@@ -21,9 +21,9 @@ function sdss_shortcodes_page() {
 <h2>SDSS Theme Information Page</h2>
 <h3>Menus</h3>
 <dl><dt>SDSS Menu Names:</dt>
-<dd>Menu names should begin and end with a slash, e.g. /dr12/, /dr12/algorithms/, /surveys/.<br>
-Menu names should be assigned according to the Parent Page you want them to show up on. For example, the menu /dr12/ will show up on all pages that start with /dr12/ including /dr12/, /dr12/data_access/, /dr12/spectro/, etc.<br>
-/dr12/spectro/ will show up on /dr12/spectro/ and all pages below, such as /dr12/spectro/overview/.
+<dd>Menu names should begin and end with a slash, e.g. /dr13/, /dr13/algorithms/, /surveys/.<br>
+Menu names should be assigned according to the Parent Page you want them to show up on. For example, the menu /dr13/ will show up on all pages that start with /dr13/ including /dr13/, /dr13/data_access/, /dr13/spectro/, etc.<br>
+/dr13/spectro/ will show up on /dr13/spectro/ and all pages below, such as /dr13/spectro/overview/.
 </dd>
 <dl><dt>SDSS Menu Locations:</dt>
 <dd>
