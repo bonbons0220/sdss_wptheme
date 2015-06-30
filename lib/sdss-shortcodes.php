@@ -77,6 +77,10 @@ function sdss_shortcodes_page() {
 <td>[sdss_boilerplate which="tex-acknowledgements"]</td>
 </tr>
 <tr valign="top">
+<th>SDSS Institional Affiliations</th>
+<td>[sdss_boilerplate which="affiliations"]</td>
+</tr>
+<tr valign="top">
 <th>
 SDSS Options page
 </th>
@@ -338,6 +342,9 @@ function sdss_boilerplate( $attr = array() ) {
 	if ( empty( $attr[ 'which' ] ) ) return "";
 	$which = $attr[ 'which' ];
 
+	if ( strcmp( 'affiliations' , $which ) === 0 ) {
+		return sdss_get_project_affiliations( true , 4 );
+	}
 	
 	$options  = get_option( 'sdss_boilerplate' );
 	
