@@ -5,7 +5,7 @@
       <h1 class="entry-title"><?php the_title(); ?></h1>
 </header>
 <div class="entry-content">
-<div class="row"><div class="col-xs-12 col-md-9">
+<div class="row"><div class="col-xs-12">
 <?php 
 if ( function_exists( 'get_cfc_meta' ) ) $this_cfc_meta = get_cfc_meta( $current_page -> post_type.'-meta' );
 
@@ -22,14 +22,7 @@ if (count($this_cfc_meta)) {
 } else {
 	the_content(); 
 }
-?></div><div class="col-xs-12 col-md-3"><?php
-$terms = get_the_terms( get_the_ID() , $current_page -> post_type.'-tags' );
-if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-foreach ( $terms as $term ) {
-	echo "<div class='h4'><div class='label'><a href=" . home_url() . '/' . $current_page -> post_type.'-tags' . '/' . sanitize_title($term->name) . ">" . $term->name . "</a></div></div>\n"; 
-}
- }?>
-</div></div>
+?></div></div>
 <div class="row">
 <div class="col-xs-12">
 <ol class="breadcrumb">
@@ -42,6 +35,5 @@ foreach ( $terms as $term ) {
 <footer>
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
 </footer>
-<?php comments_template('/templates/comments.php'); ?>
 </article>
 <?php endwhile; ?>
