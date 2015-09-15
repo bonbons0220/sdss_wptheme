@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   ?>
 
-<?php if (is_front_page()): ?>
+<?php if (is_front_page() && !defined( 'DATA_RELEASE' )): ?>
  <div class="wrap container-fluid" role="document">
 <?php else: ?>
     <div class="wrap container" role="document">
