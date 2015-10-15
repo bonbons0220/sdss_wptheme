@@ -82,6 +82,25 @@ function sdss_menu_message() {
 		$this->currentlocation  = '';
 		return false;
 	}
+
+	/**
+	 * Show the assigned menu at for this cpt, if the menu name is the cpt.
+	 */
+	public function show_cpt_menu( $thiscpt ) {
+		
+		//see if there are any menus to show in this location.
+		foreach ($this->menus_used as $this_menu ) {
+			
+			//the menu's slug will start with $thiscpt if it's used here
+			if ( strpos( $this_menu[0] , $thiscpt . '_' . get_post_type(  ) ) === 0 ) {
+					$this->currentlocation  = $this_menu[0];
+					return true;
+			}
+		}
+		
+		$this->currentlocation  = '';
+		return false;
+	}
 	
 	function get_menus_used(  )
     {

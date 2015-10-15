@@ -41,7 +41,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <?php 
 //show secondary nav menu
 $secondtier_menu = new sdss_nav_menus();
-
 if ( $secondtier_menu->show( 'secondtier' ) ) {
 
 	wp_nav_menu(array('theme_location' => $secondtier_menu->currentlocation, 'menu_class' => 'nav nav-pills nav-justified')); 
@@ -52,17 +51,20 @@ if ( $secondtier_menu->show( 'secondtier' ) ) {
 <main class="main <?php echo roots_main_class(); ?>" role="main">
 <?php include roots_template_path(); ?>
 </main><!-- /.main -->
-	<?php if (roots_display_sidebar()) : ?>
+	<?php if (roots_display_sidebar()) : 
+		echo "<!-- debug ". get_post_type(  ) ."-->";
+	?>
 	<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
 		<?php include roots_sidebar_path(); 
 
 		$sidebar_menu = new sdss_nav_menus();
-		if ( $sidebar_menu->show( 'sidebar' ) ) {
+		if ( $sidebar_menu->show( 'sidebar' ) || 
+			 $sidebar_menu->show_cpt_menu( 'cpt' ) ) {
 			echo "<div class='sdss-docs-sidebar'>";
 			wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
 			echo "</div>";
 
-		}
+		} 
 
 		?>
 		</aside><!-- /.sidebar -->

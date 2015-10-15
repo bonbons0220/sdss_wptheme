@@ -29,6 +29,9 @@ function roots_setup() {
     'sidebarmenu_tenth' => __('Sidebar Menu Tenth', 'roots'),
     'sidebarmenu_eleventh' => __('Sidebar Menu Eleventh', 'roots'),
     'sidebarmenu_twelfth' => __('Sidebar Menu Twelfth', 'roots'),
+    'sidebarmenu_thirteenth' => __('Sidebar Menu Thirteenth', 'roots'),
+    'sidebarmenu_fourteenth' => __('Sidebar Menu Fourteenth', 'roots'),
+    'cpt_releases' => __('CPT Press Releases Menu', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)

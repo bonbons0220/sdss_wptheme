@@ -19,4 +19,5 @@ require_once locate_template('/lib/scripts.php');         // Scripts and stylesh
 require_once locate_template('/lib/sdss-custom.php');          // Custom functions
 require_once locate_template('/lib/sdss-nav-menus.php');          // Custom functions
 require_once locate_template('/lib/sdss-shortcodes.php');          // Custom functions
+require_once locate_template('/lib/sdss-personnel.php');          // Load SDSS Personnel JSONs
 //require_once locate_template('/lib/sdss-search-forms.php');          // Custom functions
