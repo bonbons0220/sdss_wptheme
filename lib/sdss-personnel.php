@@ -1,7 +1,9 @@
 <?php
 /*
- * This file contains functions that import the json files for SDSS Personnel into the WP database.
+ * This file contains functions that import the json files for SDSS Personnel, Affiliations, Coco, Leadership, 
+ * Management Committee (MC), Members, Roles, and Publications into the WP database.
  * 
+ * This function runs whenever the Backend of the WordPress site is loaded.
  */
 add_action( 'init', 'sdss_process_jsons' );
 
@@ -20,6 +22,7 @@ function sdss_process_jsons() {
 			'mc', 
 			'members', 
 			'roles',
+			'publications',
 		);
 		foreach( $file_prefixes as $this_prefix ) {
 			
@@ -31,9 +34,7 @@ function sdss_process_jsons() {
 				
 				//Delete the files so we don't keep reading them.
 				if ( false === unlink( __DIR__ . "/../../../uploads/" . $this_prefix . ".txt" ) ) idies_comment(" Could not remove $this_prefix.txt ");
-			
 			}
-
 		}
 	}
 
@@ -172,4 +173,34 @@ function sdss_process_jsons() {
 		}
 		update_option( 'sdss_leaders' , $leaders_data );
 	}		
+
+	// Publications
+	if ( !empty( $publications ) ) {
+		foreach( $publications->publications as $this_publication ) {
+			$publications_data[$this_publication->publication_id] = array(
+				'authors' => $this_publication->authors ,
+				'journal_volume' => $this_publication->journal_volume,
+				'doi_url' => $this_publication->doi_url,
+				'doi' => $this_publication->doi,
+				'arxiv_url' => $this_publication->arxiv_url,
+				'arxiv' => $this_publication->arxiv,
+				'adsabs_url' => $this_publication->adsabs_url,
+				'adsabs' => $this_publication->adsabs,
+				'title' => $this_publication->title,
+				'status' => $this_publication->status,
+				'journal' => $this_publication->journal,
+				'journal_reference' => $this_publication->journal_reference,
+				'journal_year' => $this_publication->journal_year,
+			);
+		}
+		uasort( $publications_data , 'idies_sort_by_arxiv' );
+		update_option( 'sdss_publications' , $publications_data );
+	}		
+}
+
+// Custom User Associative Array Sorting Function
+// Reverse sort publications by arxiv value. 
+// The arXiv is unique to publication, so should never be the same!
+function idies_sort_by_arxiv( $a , $b ) {
+    return ( floatval( $a['arxiv'] ) < floatval( $b[ 'arxiv' ] ) ) ? 1 : -1;	
 }
