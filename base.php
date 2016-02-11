@@ -51,20 +51,23 @@ if ( $secondtier_menu->show( 'secondtier' ) ) {
 <main class="main <?php echo roots_main_class(); ?>" role="main">
 <?php include roots_template_path(); ?>
 </main><!-- /.main -->
-	<?php if (roots_display_sidebar()) : 
-		echo "<!-- debug ". get_post_type(  ) ."-->";
-	?>
+	<?php if (roots_display_sidebar()) : ?>
 	<aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-		<?php include roots_sidebar_path(); 
+		<?php 
 
 		$sidebar_menu = new sdss_nav_menus();
 		if ( $sidebar_menu->show( 'sidebar' ) || 
-			 $sidebar_menu->show_cpt_menu( 'cpt' ) ) {
+		
+			//Show the Custom SDSS Nav Menu for this Page
+			$sidebar_menu->show_cpt_menu( 'cpt' ) ) {
 			echo "<div class='sdss-docs-sidebar'>";
 			wp_nav_menu(array('theme_location' => $sidebar_menu->currentlocation, 'menu_class' => 'nav sdss-docs-sidenav', 'depth' => 0)); 
+						
 			echo "</div>";
-
 		} 
+		
+		// show primary and custom post type sidebar widgets after main menu
+		include roots_sidebar_path(); 
 
 		?>
 		</aside><!-- /.sidebar -->

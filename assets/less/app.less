@@ -315,7 +315,16 @@ table caption {
    Sidebar
    ========================================================================== */
 
-.sidebar { }
+.sidebar { 
+	.widget.releases {
+		padding-left: 20px;
+			font-size:1em;		
+		h2, h3, h4, .h2, .h3, .h4 {
+			color: @gray;
+			font-size:18px;
+		}
+	}
+}
 
 .doc-sidebar .affix {position:relative}
 .nav-doc {display:inline-block;margin-top:2rem;border:1px solid #ddd;border-radius:4px;list-style:none}

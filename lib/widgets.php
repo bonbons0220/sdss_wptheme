@@ -58,6 +58,15 @@ function roots_widgets_init() {
     'after_title'   => '</h3>',
   ));
 
+  register_sidebar(array(
+    'name'          => __('Releases', 'roots'),
+    'id'            => 'sidebar-releases',
+    'before_widget' => '<section class="widget %1$s %2$s releases">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h4 class="releases">',
+    'after_title'   => '</h4>',
+  ));
+
   // Widgets
   register_widget('Roots_Vcard_Widget');
 }
