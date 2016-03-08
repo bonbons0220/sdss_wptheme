@@ -2,9 +2,6 @@
 	<div class="navbar navbar-inverse navbar-static-top" >
 		<div class="container">
 			<div class="row">
-			<?php if ( 'development' == WP_ENV) : ?>
-				<div class="col-xs-12" style="background-color: yellow;"><h1>DR13</h1></div>
-			<?php endif; ?>
 				<div class="col-sm-3">
 					<div class="navbar-header">
 						<!-- Button for smallest screens -->

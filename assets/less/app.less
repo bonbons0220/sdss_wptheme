@@ -189,19 +189,6 @@ figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
 font-size: 85%;
 }
 
-// Hanging indent
-.reference {
-	text-indent: -10px;
-	margin-left: 10px;
-}
-.equation {
-	text-align: center;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	font-weight:600;
-}
-
-
 /* ==========================================================================
    Table-hover fix for spanning rows and columns. Insert blank rows and columns. 
    Give them the class "rowspan start", "rowspan next" or "rowspan last".
@@ -701,17 +688,76 @@ text-decoration:none;
 }
 
 /* ==========================================================================
- * TODO Highlighting
+ * HELPER CLASSES
    ========================================================================== */
+/* --------------------------------------------------------------------------
+ * TODO Highlighting
+   -------------------------------------------------------------------------- */
 .todo {
 	color: @state-todo-text;
 	background-color: @state-todo-bg;
 	border: solid 1px @state-todo-bg;
 }
 
-/* ==========================================================================
+/* --------------------------------------------------------------------------
+ * Hanging indent
+   -------------------------------------------------------------------------- */
+.reference {
+	text-indent: -10px;
+	margin-left: 10px;
+}
+
+/* --------------------------------------------------------------------------
+ * Center and pad equations
+   -------------------------------------------------------------------------- */
+.equation {
+	text-align: center;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	//font-weight:600;
+}
+
+/* --------------------------------------------------------------------------
+ * New for dr13 icon
+   -------------------------------------------------------------------------- */
+span.fordr13 {
+	display: inline-block;
+	margin: 2px;
+	&:before{ 
+		padding: 2px;
+		content: "New for DR13";
+		font-size: .5em;
+		font-weight: bold;
+		vertical-align: top;
+		color: white;
+		background-color: #6256a3;
+		border: solid 1px black;
+		border-radius: 4px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+ * Up to dr12 icon
+   -------------------------------------------------------------------------- */
+span.fordr12 {
+	display: inline-block;
+	margin: 2px;
+	&:before{ 
+		padding: 2px;
+		content: "Up to DR12";
+		font-size: .5em;
+		font-weight: bold;
+		vertical-align: top;
+		color: white;
+		background-color: gray;
+		border: solid 1px black;
+		border-radius: 4px;
+	}
+}
+
+/* --------------------------------------------------------------------------
  * Footnote Styling
-   ========================================================================== */
+   -------------------------------------------------------------------------- */
 .footnote {
 	vertical-align: super;
 	font-weight:bold;

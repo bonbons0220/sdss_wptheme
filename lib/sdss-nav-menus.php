@@ -71,8 +71,8 @@ function sdss_menu_message() {
 		//the menu's slug will start with $thislocation if it's used here
 		foreach ($this->menus_used as $this_menu ) {
 			if ( strpos( $this_menu[0] , $thislocation ) === 0 ) {
-				if ( ( defined( 'DATA_RELEASE' ) && strcmp( $thislocation , 'secondtier' ) === 0 ) 
-					|| ( strpos( $this->get_permalink() , $this_menu[2] ) === 0 ) )  {
+				//if ( ( defined( 'DATA_RELEASE' ) && strcmp( $thislocation , 'secondtier' ) === 0 ) || ( strpos( $this->get_permalink() , $this_menu[2] ) === 0 ) )  {
+				if ( strpos( $this->get_permalink() , $this_menu[2] ) === 0 ) {
 					$this->currentlocation  = $this_menu[0];
 					return true;
 				}
