@@ -13,10 +13,6 @@ body {font-size:100%; }
 
 .content.row {margin-bottom: 0px;}
 
-#acknowledgements {
-	font-size: .7em;
-}
-
 .home .main {
   padding: 0;
 }
@@ -690,6 +686,33 @@ text-decoration:none;
 /* ==========================================================================
  * HELPER CLASSES
    ========================================================================== */
+/* --------------------------------------------------------------------------
+ * Small Acknowledgements font
+   -------------------------------------------------------------------------- */
+#acknowledgements, .acknowledgements {
+	font-size: .7em;
+}
+
+/* --------------------------------------------------------------------------
+ * External link 
+   -------------------------------------------------------------------------- */
+li.external>a:after, 
+a.external:after,
+a[target="_blank"]:after {
+    content: ">";
+	font-family: FontAwesome;
+	font-size: 0.8em;
+    content: ' \f14c';
+    vertical-align: text-top;
+}
+
+a[target=_blank]:after {
+	font-family: FontAwesome;
+	font-size: 0.8em;
+    content: ' \f14c';
+    vertical-align: text-top;
+}
+
 /* --------------------------------------------------------------------------
  * TODO Highlighting
    -------------------------------------------------------------------------- */
