@@ -22,7 +22,7 @@ add_filter( 'user_can_richedit' , '__return_false', 50 );
 function sdss_get_project_affiliations( $return = false , $h2=2 ) {
 	
 	$h2 = "h" . intval($h2);
-	
+
 	// get the data from options 
 	if ( !( ( $project_data = get_option( 'sdss_project' ) ) && 
 		 ( $participations_data = get_option( 'sdss_participations' ) ) ) ) return false;

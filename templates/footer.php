@@ -5,5 +5,5 @@
 	</div>
 	</div>		
 </div>
-
+<?php if ( defined ( 'USEBACKUP' ) && USEBACKUP ) echo "<!-- BACKUP -->"; ?>
 <?php wp_footer(); ?>
