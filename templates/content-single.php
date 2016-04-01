@@ -3,13 +3,13 @@
 <article <?php post_class(); ?>>
 <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta'); ?>
+      <?php //get_template_part('templates/entry-meta'); ?>
 </header>
 <div class="entry-content">
 <div class="row"><div class="col-xs-12">
 <?php 
-if ( function_exists( 'get_cfc_meta' ) ) $this_cfc_meta = get_cfc_meta( $current_page -> post_type.'-meta' );
-
+if ( function_exists( 'get_cfc_meta' ) ) 
+	$this_cfc_meta = get_cfc_meta( $current_page -> post_type.'-meta' );
 if (count($this_cfc_meta)) {
 	?><div class="row"><div class="col-xs-12 col-md-6"><?php 
 	the_content(); 

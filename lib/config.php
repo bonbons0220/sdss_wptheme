@@ -55,6 +55,7 @@ function roots_display_sidebar() {
      */
     array(
       'is_404',
+      'is_attachment',
       'is_search',
       'is_front_page',
       array('is_page', 202),		//this is the data release page
