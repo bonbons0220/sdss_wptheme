@@ -117,6 +117,9 @@ For example, if you create a new boilerplate called <strong>Creative License</st
 <li>Place this directly below a heading and in front of and on same line as a paragraph. If precedes a paragraph, use 'clear' option.</li>
 </ul>
 </dd>
+<dt>SDSS Gallery: [SDSS_GALLERY]</dt>
+<dd>Show SDSS images in a gallery. Skip images tagged as NO-SHOW.
+</dd>
 <dt>To Top Link: [SDSS_TOTOP]</dt>
 <dd>Displays an up arrow and link to top of page. Useful for long pages. Place above headings or at and of page.
 </dd>
@@ -144,6 +147,7 @@ Story panel: <br>
 add_shortcode('SDSS_TOC','sdss_toc_inject');
 add_shortcode('SDSS_TOTOP','sdss_totop_inject');
 add_shortcode('SDSS_TODO','sdss_todo_showhide');
+add_shortcode('SDSS_GALLERY','sdss_gallery');
 add_shortcode('SDSS_FIGURE','sdss_figure_style');
 add_shortcode('SDSS_GROUP','sdss_group_style');
 add_shortcode('SDSS_STORY','sdss_story_style');
