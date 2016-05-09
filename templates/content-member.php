@@ -55,4 +55,10 @@ $leaders_data = get_option( 'sdss_leaders' );
 $members_data = get_option( 'sdss_members ' );
 $roles_data = get_option( 'sdss_roles' );
 
+// Fail Gracefully
+if ( empty( $leaders_data ) ) {
+	echo "<div class='label label-warning'>No data found</div>";
+	return;
+}
+
 show_leadership( $roles_data , $leaders_data, $members_data );

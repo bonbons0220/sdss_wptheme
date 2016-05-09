@@ -14,6 +14,12 @@ $this_fullname = $members_data[ $this_coco[ 'member_id' ] ][ 'fullname' ];
 $this_affil_title = get_affiliation( $this_coco, $affiliations_data, $participations_data );
 unset( $coco_data[ 'spokesperson' ] );
 
+// Fail Gracefully
+if ( empty( $coco_data ) ) {
+	echo "<div class='label label-warning'>No data found</div>";
+	return;
+}
+
 echo "<h2>The Collaboration Council</h2>\n";
 echo "<p>&nbsp;<br/>";
 echo "Chair (and SDSS-IV Spokesperson) <strong>" . $members_data[ $this_coco[ 'member_id' ] ][ 'fullname' ] . "</strong>";
@@ -23,13 +29,14 @@ echo"</p>\n";
 
 echo "<div class='center-block'><em>Current members of the Collaboration Council and member institutions they represent.</em></div>";
 
-echo "<dl class='dl-horizontal dl-horizontal-third'>\n";
-foreach($coco_data as $this_member_id=>$this_coco){
-	
-	echo "<dt>" . $members_data[ $this_member_id ][ 'fullname' ] . ": </dt>\n";
-	echo "<dd>" . get_affiliation( $this_coco, $affiliations_data, $participations_data ) . "</dd>\n";
 
-}
+echo "<dl class='dl-horizontal dl-horizontal-third'>\n";
+	foreach($coco_data as $this_member_id=>$this_coco){
+	
+		echo "<dt>" . $members_data[ $this_member_id ][ 'fullname' ] . ": </dt>\n";
+		echo "<dd>" . get_affiliation( $this_coco, $affiliations_data, $participations_data ) . "</dd>\n";
+
+	}
 echo "</dl>\n";
 
 function get_affiliation( $this_coco, $affiliations_data, $participations_data ){

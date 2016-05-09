@@ -2,6 +2,12 @@
 // get the data from options 
 $publications_data = get_option( 'sdss_publications' );
 
+// Fail Gracefully
+if ( empty( $publications_data ) ) {
+	echo "<div class='label label-warning'>No data found</div>";
+	return;
+}
+
 $indx = count( $publications_data );
 echo "<ul class='fa-ul'>";
 foreach ( $publications_data as $publication_id => $this_pub ) :  

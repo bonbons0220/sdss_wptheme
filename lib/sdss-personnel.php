@@ -9,7 +9,11 @@ add_action( 'init', 'sdss_process_jsons' );
 
 function sdss_process_jsons() {
 	
-	if ( false === ( $option  = get_option( 'sync_json_options' ) ) ) return;
+	if ( false === ( $option  = get_option( 'sync_json_options' ) ) ) {
+		//idies_debug('Option not found: sync_json_options');
+		return;
+	}
+	//die("sync-ing json files");
 	if ( 0 === strcmp( 'yes' , $option[0]['sync-json'] ) ) {
 		
 		//loop through the files to load
