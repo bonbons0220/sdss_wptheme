@@ -23,9 +23,9 @@ function sdss_menu_message() {
 			echo "<div class='updated'>";
 			echo "<dl><dt>SDSS Menu Names:</dt>\n";
 			echo "<dd>";
-			echo "Menu names should begin and end with a slash, e.g. /dr12/, /dr12/algorithms/, /surveys/.<br>\n";
-			echo "Menu names should be assigned according to the Parent Page you want them to show up on. For example, the menu /dr12/ will show up on all pages that start with /dr12/ including /dr12/, /dr12/data_access/, /dr12/spectro/, etc.<br>\n";
-			echo "/dr12/spectro/ will show up on all pages below /dr12/spectro/, such as /dr12/spectro/overview/, etc.\n";
+			echo "Menu names should begin and end with a slash, e.g. /dr13/, /dr13/algorithms/, /surveys/.<br>\n";
+			echo "Menu names should be assigned according to the Parent Page you want them to show up on. For example, the menu /dr13/ will show up on all pages that start with /dr13/ including /dr13/, /dr13/data_access/, /dr13/spectro/, etc.<br>\n";
+			echo "/dr13/spectro/ will show up on all pages below /dr13/spectro/, such as /dr13/spectro/overview/, etc.\n";
 			echo "</dd>\n";
 			echo "<dl><dt>SDSS Menu Locations:</dt>\n";
 			echo "<dd>";
@@ -70,11 +70,11 @@ function sdss_menu_message() {
 		
 		//the menu's slug will start with $thislocation if it's used here
 		foreach ($this->menus_used as $this_menu ) {
-			
 			if ( strpos( $this_menu[0] , $thislocation ) === 0 ) {
+				//if ( ( defined( 'DATA_RELEASE' ) && strcmp( $thislocation , 'secondtier' ) === 0 ) || ( strpos( $this->get_permalink() , $this_menu[2] ) === 0 ) )  {
 				if ( strpos( $this->get_permalink() , $this_menu[2] ) === 0 ) {
 					$this->currentlocation  = $this_menu[0];
-					return true;				
+					return true;
 				}
 			}
 		}

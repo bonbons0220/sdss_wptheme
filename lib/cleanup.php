@@ -228,7 +228,10 @@ function roots_nice_search_redirect() {
 
   $search_base = $wp_rewrite->search_base;
   if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
-    wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
+    $s = str_replace( ' ' , '+' , get_query_var('s'));
+	wp_redirect(home_url("/{$search_base}/" . $s ));
+	//bjs 3/8/2016  urlencode didn't like slashes and produced a broken link
+    //wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
     exit();
   }
 }

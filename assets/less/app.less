@@ -1,12 +1,9 @@
 /*!
  * Roots 6.5.2
+ * SDSS modifications
  */
 
 @import "bootstrap/bootstrap.less";
-
-
-
-
 
 /* ==========================================================================
    Base
@@ -15,10 +12,6 @@
 body {font-size:100%; }
 
 .content.row {margin-bottom: 0px;}
-
-#acknowledgements {
-	font-size: .7em;
-}
 
 .home .main {
   padding: 0;
@@ -206,19 +199,6 @@ figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
 #classic p {
 font-size: 85%;
 }
-
-// Hanging indent
-.reference {
-	text-indent: -10px;
-	margin-left: 10px;
-}
-.equation {
-	text-align: center;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	font-weight:600;
-}
-
 
 /* ==========================================================================
    Table-hover fix for spanning rows and columns. Insert blank rows and columns. 
@@ -728,8 +708,103 @@ text-decoration:none;
 }
 
 /* ==========================================================================
- * Footnote Styling
+ * HELPER CLASSES
    ========================================================================== */
+/* --------------------------------------------------------------------------
+ * Small Acknowledgements font
+   -------------------------------------------------------------------------- */
+#acknowledgements, .acknowledgements {
+	font-size: .7em;
+}
+
+/* --------------------------------------------------------------------------
+ * External link 
+   -------------------------------------------------------------------------- */
+li.external>a:after, 
+a.external:after,
+a[target="_blank"]:after {
+    content: ">";
+	font-family: FontAwesome;
+	font-size: 0.8em;
+    content: ' \f14c';
+    vertical-align: text-top;
+}
+
+a[target=_blank]:after {
+	font-family: FontAwesome;
+	font-size: 0.8em;
+    content: ' \f14c';
+    vertical-align: text-top;
+}
+
+/* --------------------------------------------------------------------------
+ * TODO Highlighting
+   -------------------------------------------------------------------------- */
+.todo {
+	color: @state-todo-text;
+	background-color: @state-todo-bg;
+	border: solid 1px @state-todo-bg;
+}
+
+/* --------------------------------------------------------------------------
+ * Hanging indent
+   -------------------------------------------------------------------------- */
+.reference {
+	text-indent: -10px;
+	margin-left: 10px;
+}
+
+/* --------------------------------------------------------------------------
+ * Center and pad equations
+   -------------------------------------------------------------------------- */
+.equation {
+	text-align: center;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	//font-weight:600;
+}
+
+/* --------------------------------------------------------------------------
+ * New for dr13 icon
+   -------------------------------------------------------------------------- */
+span.fordr13 {
+	display: inline-block;
+	margin: 2px;
+	&:before{ 
+		padding: 2px;
+		content: "New for DR13";
+		font-size: .5em;
+		font-weight: bold;
+		vertical-align: top;
+		color: white;
+		background-color: #6256a3;
+		border: solid 1px black;
+		border-radius: 4px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+ * Up to dr12 icon
+   -------------------------------------------------------------------------- */
+span.fordr12 {
+	display: inline-block;
+	margin: 2px;
+	&:before{ 
+		padding: 2px;
+		content: "Up to DR12";
+		font-size: .5em;
+		font-weight: bold;
+		vertical-align: top;
+		color: white;
+		background-color: gray;
+		border: solid 1px black;
+		border-radius: 4px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+ * Footnote Styling
+   -------------------------------------------------------------------------- */
 .footnote {
 	vertical-align: super;
 	font-weight:bold;
