@@ -109,9 +109,20 @@ h3 {
 
 //.nav-pills .spectra1>a {padding-top: 2px;}
 
-.btn-sdss:hover{color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
-
-.btn-sdss:hover, .btn-sdss:focus, .btn-sdss:active, .btn-sdss.active, .open .dropdown-toggle.btn-sdss {color: #ffffff; background: rgba(0,0,0,.9); transition: background 0.5s ease;border-left: 5px solid @brand-sdss;}
+.btn.btn-sdss {
+	transition: background 0.5s ease;
+	margin-bottom: 1px;
+}
+.btn-sdss:hover, 
+.btn-sdss:focus, 
+.btn-sdss:active, 
+.btn-sdss.active, 
+.open .dropdown-toggle.btn-sdss {
+	color: #ffffff; 
+	background: rgba(0,0,0,.9); 
+	transition: background 0.5s ease;
+	border-left: 5px solid @brand-sdss;
+}
 
 .btn-sdss-right {
 	float:right;
@@ -199,6 +210,7 @@ figcaption{font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;}
 #classic p {
 font-size: 85%;
 }
+
 
 /* ==========================================================================
    Table-hover fix for spanning rows and columns. Insert blank rows and columns. 
@@ -453,8 +465,14 @@ div.sdss-group-wrapper {
 		margin-bottom:0;
 	}
 	& div.sdss-group>div.panel-heading {
-		h1, h2, h3, h4, h5 {
-			margin-top:-0.5em;
+		h1, h2, h3, h4, h5, 
+		.h1, .h2, .h3, .h4, .h5 {
+			.panel-title;
+			.h4;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			margin-top: 0;
+			margin-bottom: 0;
 		}	
 	}
 }
@@ -466,13 +484,28 @@ div.sdss-group-wrapper.col-md-12 {
 	}
 
 div.sdss-wrapper, div.sdss-group-wrapper{
-	& .sdss-group-wrapper {padding-left: 5px; padding-right: 5px}
-	& .panel-heading {padding: 0px 10px;}
-	& .panel-body {padding: 10px;}
-	& .caption {background-color: #ecf0f1;}
-	& h1, .h1, h2, .h2, h3, .h3 {
-		margin-top: 10px;
-		margin-bottom: 10px;}
+	& .sdss-group-wrapper {
+		padding-left: 5px; 
+		padding-right: 5px
+	}
+	& .panel-heading {
+		padding: 0px 10px;
+	}
+	& .panel-body {
+		padding: 10px;
+	}
+	& .caption {
+		background-color: #ecf0f1;
+	}
+	h1, h2, h3, h4, h5, 
+	.h1, .h2, .h3, .h4, .h5	{
+		.panel-title;
+		.h4;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 	.btn-group-vertical {
 		width:100%;
 	}
@@ -586,7 +619,7 @@ div.sdss-wrapper, div.sdss-group-wrapper, div.sdss-summary{
 #toc-wrapper {
     min-width: 200px;
 	background: rgba(0,0,0,0.1);
-	margin: 0px 10px 5px 0px;
+	margin: 0px 10px 15px 0px;
 	float: left; 
 	border: darkgray solid thin;
 	border-radius: 4px;
@@ -695,7 +728,7 @@ text-decoration:none;
    ========================================================================== */
 .totop-wrapper {
 	font-family: @font-family-sans-serif;
-	margin: 10px 10px 10px 0px;
+	margin: 0px 10px 30px 0px;
 	width:100%;
 	font-size: 1.1em;
 	& a {

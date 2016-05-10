@@ -180,11 +180,11 @@ function sdss_clear(  ){
  */
 function sdss_totop_inject(  ) {
 
-	$injection =  sdss_clear() . '<div class="totop-wrapper" >'."\n";
-	$injection .= '<span class="well well-sm" >'."\n";
-	$injection .= '<a href="#">'."\n";
-	$injection .= '<span class="glyphicon glyphicon-circle-arrow-up">'."\n";
-	$injection .= '</span></a><span><a href="#">Back to Top</a></span>'."\n";
+	$injection =  sdss_clear() . '<div class="totop-wrapper" >';
+	$injection .= '<span class="well well-sm" >';
+	$injection .= '<a href="#">';
+	$injection .= '<span class="glyphicon glyphicon-circle-arrow-up">';
+	$injection .= '</span></a><span><a href="#">Back to Top</a></span>';
 	$injection .= '</span></div>' . sdss_clear();
 
 	return $injection;	
@@ -197,8 +197,8 @@ function sdss_todo_showhide( $attr, $content = null ) {
 	
 	if (empty($content)) return; //no CONTENT
 
-	$injection = ( defined('WP_DEBUG') && constant( 'WP_DEBUG' ) === true ) ?  '<div class="show" >' . "\n" : '<div class="hide" >' . "\n";
-	$injection .= '<div class="bg-todo">' . do_shortcode($content) . '</div>' . "\n" . '</div>';
+	$injection = ( defined('WP_DEBUG') && constant( 'WP_DEBUG' ) === true ) ?  '<div class="show" >' : '<div class="hide" >';
+	$injection .= '<div class="bg-todo">' . do_shortcode($content) . '</div>' . '</div>';
 	return $injection;	
 }
 
@@ -233,16 +233,16 @@ function sdss_group_style( $attr, $content = null ){
 	$group_align = (empty($attr['align'])) ? '' : ' align' . esc_attr($attr['align']) . ' ' ;
 	
 	//title/heading - can contain html like <h3></h3> etc
-	$group_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' . "\n" ;
+	$group_title = (empty($attr['title'])) ? '' : '<div class="panel-heading">' . $attr['title'] . '</div>' ;
 
 	//content
-	$group_content = (!empty($content)) ? '<div class="panel-body">' . "\n" . do_shortcode($content) . '</div>' . "\n" : '' ;
+	$group_content = (!empty($content)) ? '<div class="panel-body">' . do_shortcode($content) . '</div>' : '' ;
 
 	//wrap bodies 
-	$group_content =  '<div class="panel panel-default sdss-group " >' . "\n" . $group_title . $group_content . '</div>' . "\n" ; 
+	$group_content =  '<div class="panel panel-default sdss-group " >' . $group_title . $group_content . '</div>' ; 
 	
 	//assemble in wrapper
-	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . "\n" . $group_content . '</div>' . "\n";
+	$group_content = '<div class="sdss-group-wrapper ' . $group_align . $group_columns  . '" >' . $group_content . '</div>';
 	return $group_content;
 	
 }
@@ -336,12 +336,12 @@ function sdss_toc_inject( $attr = array()){
 	//$open = (in_array('open',$attr)) ? array( '' , 'in' ) : array( 'collapsed' , '') ;
 	//$clear = (in_array('clear',$attr)) ? '<span class="clearfix"></span>' : '' ;
 	$open = (empty($attr['open'])) ? array( 'collapsed' , '') : array( '' , 'in' ) ;
-	$injection = '<div id="toc-wrapper">'."\n";
-	$injection .= '<div class="tocify-title">'."\n";
+	$injection = '<div id="toc-wrapper">';
+	$injection .= '<div class="tocify-title">';
 	$injection .= '<a class="accordion-toggle ' . $open[0] . ' " data-toggle="collapse" href="#toc-body" ';
-	$injection .= 'aria-expanded="true" aria-controls="toc-body">Table&nbsp;of&nbsp;Contents</a>'."\n";
-	$injection .= '</div>'."\n";
-	$injection .= '<div id="toc-body" class="collapse ' . $open[1] . ' ">'."\n";
+	$injection .= 'aria-expanded="true" aria-controls="toc-body">Table&nbsp;of&nbsp;Contents</a>';
+	$injection .= '</div>';
+	$injection .= '<div id="toc-body" class="collapse ' . $open[1] . ' ">';
 	$injection .= '<div id="toc"' . $selectors . ">";
 	$injection .= '</div></div></div>';
 
