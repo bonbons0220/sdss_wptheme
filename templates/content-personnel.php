@@ -54,6 +54,7 @@ function show_leaders( $leaders , $members , $role_id ) {
 $leaders_data = get_option( 'sdss_leaders' );
 $members_data = get_option( 'sdss_members ' );
 $roles_data = get_option( 'sdss_roles' );
+$leaders_modified = get_option( 'sdss_leaders_modified' );
 
 // Fail Gracefully
 if ( empty( $leaders_data ) ) {
@@ -62,3 +63,4 @@ if ( empty( $leaders_data ) ) {
 }
 
 show_leadership( $roles_data , $leaders_data, $members_data );
+echo "<p class='modified'>Last modified: $leaders_modified</p>";

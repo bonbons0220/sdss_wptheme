@@ -2,6 +2,7 @@
 
 $members_data = get_option( 'sdss_members' );
 $coco_data = get_option( 'sdss_coco' );
+$coco_modified = get_option( 'sdss_coco_modified' );
 $roles_data = get_option( 'sdss_roles' );
 $affiliations_data = get_option( 'sdss_project' );
 $participations_data = get_option( 'sdss_participations' );
@@ -38,6 +39,7 @@ echo "<dl class='dl-horizontal dl-horizontal-third'>\n";
 
 	}
 echo "</dl>\n";
+echo "<p class='modified'>Last modified: $coco_modified</p>";
 
 function get_affiliation( $this_coco, $affiliations_data, $participations_data ){
 
@@ -59,11 +61,3 @@ function get_affiliation( $this_coco, $affiliations_data, $participations_data )
 		
 }
 echo '</div>';
-
-/*
-idies_debug($coco_data);
-idies_debug($members_data);
-idies_debug($affiliations_data);
-idies_debug($participations_data);
-*/
-

@@ -126,6 +126,7 @@ function sdss_process_jsons() {
 			);
 		}
 		update_option( 'sdss_affiliation' , $affiliation_data );
+		if ( !empty( $affiliations->modified ) ) update_option( 'sdss_affiliations_modified' , $affiliations->modified );
 	}
 
 	// Collaboration Council
@@ -142,6 +143,7 @@ function sdss_process_jsons() {
 			);
 		}
 		update_option( 'sdss_coco' , $coco_data );
+		if ( !empty( $coco->modified ) ) update_option( 'sdss_coco_modified' , $coco->modified );
 	}
 
 	// Architects
@@ -152,6 +154,7 @@ function sdss_process_jsons() {
 			);
 		}
 		update_option( 'sdss_architects' , $architects_data );
+		if ( !empty( $architects->modified ) ) update_option( 'sdss_architects_modified' , $architects->modified );
 	}
 
 	// Roles
@@ -176,6 +179,7 @@ function sdss_process_jsons() {
 			);
 		}
 		update_option( 'sdss_leaders' , $leaders_data );
+		if ( !empty( $leaders->modified ) ) update_option( 'sdss_leaders_modified' , $leaders->modified );
 	}		
 
 	// Publications
@@ -199,6 +203,8 @@ function sdss_process_jsons() {
 		}
 		uasort( $publications_data , 'idies_sort_by_arxiv' );
 		update_option( 'sdss_publications' , $publications_data );
+		if ( !empty( $publications->modified ) ) update_option( 'sdss_publications_modified' , $publications->modified );
+		
 	}		
 }
 

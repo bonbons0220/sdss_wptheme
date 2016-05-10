@@ -1,6 +1,7 @@
 <?php
 // get the data from options 
 $publications_data = get_option( 'sdss_publications' );
+$publications_modified = get_option( 'sdss_publications_modified' );
 
 // Fail Gracefully
 if ( empty( $publications_data ) ) {
@@ -31,4 +32,5 @@ foreach ( $publications_data as $publication_id => $this_pub ) :
 	echo '.</li>';
 endforeach; 
 echo '</ul>';
+echo "<p class='modified'>Last modified: $publications_modified</p>";
 ?>

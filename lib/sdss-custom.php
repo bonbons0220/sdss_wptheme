@@ -23,6 +23,8 @@ function sdss_get_project_affiliations( $return = false , $h2=2 ) {
 	
 	$h2 = "h" . intval($h2);
 
+	$affiliations_modified = get_option( 'sdss_affiliations_modified' );
+	
 	// get the data from options 
 	if ( !( ( $project_data = get_option( 'sdss_project' ) ) && 
 		 ( $participations_data = get_option( 'sdss_participations' ) ) ) ) return false;
@@ -52,11 +54,12 @@ function sdss_get_project_affiliations( $return = false , $h2=2 ) {
 	$result = "<$h2>Full Member Institutions</$h2>\n<ul>\n" . $full_member_list . "</ul>\n" . $result;
 
 	$result = "<div class='sdss-wrapper'>" . $result . "</div>";
+	$result .= "<p class='modified'>Last modified: $affiliations_modified</p>";
 
 	if ( $return ) return $result;
 	
 	echo $result;
-	return;
+	return true;
 	
 }
 
@@ -114,7 +117,6 @@ function idies_add_comment( $content  ) {
 function idies_comment( $var , $pagename="" ) {
 	
 	global $idies_debug_comment;
-	//$idies_debug_comment = empty( $idies_debug_comment ) ? array() : $idies_debug_comment ;
 	
 	$this_comment = "<!-- DEBUG \n";
 
