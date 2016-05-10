@@ -123,16 +123,32 @@ For example, if you create a new boilerplate called <strong>Creative License</st
 <dt>To Top Link: [SDSS_TOTOP]</dt>
 <dd>Displays an up arrow and link to top of page. Useful for long pages. Place above headings or at and of page.
 </dd>
-<dt>PANELS can be nested<br>
-Story panel: <br>
-[SDSS_STORY]<br>
-[/SDSS_STORY]</dt>
-<dd>Put a title above and a frame around a story. Specify # columns.
+<dt>Group panel: [SDSS_GROUP][/SDSS_GROUP]</dt>
+<dd>Groups can take the following attributes:<br>
+columns: default=12<br>
+align: default=left<br>
+title: default = ''<br>
+[SDSS_GROUP columns="10" align="right" title="&gt;h4 id='mystory'&lt;My Story&gt;/h4&lt;"][/SDSS_GROUP]
 </dd>
-<dt>Figure panel: <br>
-[SDSS_FIGURE]<br>
-[/SDSS_FIGURE]</dt>
-<dd>Put a title above and frame around and a caption below a figure. Specify # columns.
+<dt>Story panel: [SDSS_STORY][/SDSS_STORY]</dt>
+<dd>Stories can standalone, or can be inside of a group.<br>
+Stories cannot be nested inside of other stories.
+Stories can take the following attributes:<br>
+columns: default=6<br>
+align: default=left<br>
+title: default = ''<br>
+[SDSS_STORY columns="4" align="left" title="&gt;h3 id='yourstory'&lt;Your Story&gt;/h4&lt;"][/SDSS_STORY]
+</dd>
+<dt>Figure panel: [SDSS_FIGURE][/SDSS_FIGURE]</dt>
+<dd>Figures can be standalone, or can be inside of a story or group.<br>
+Figures can take the following attributes:<br>
+image: default '';
+link: default '';
+href: default '';
+columns: default '6' ;
+align: default 'left';
+alt: default '';
+title: default '':
 </dd>
 <dt>Show WCK Custom Fields: <br>
 [SDSS_SHOW_CFC for='type']</dt>
