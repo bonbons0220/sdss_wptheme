@@ -8,7 +8,7 @@
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
 						</button>
 						<div class="hidden-xs">
-							<a class="navbar-brand" href="<?php echo home_url(); ?>/">
+							<a class="navbar-brand" ="/">
 							<img src="/wp-content/uploads/2014/05/sdsslogowhite.png" alt="sdsslogo" class="img-responsive">
 							</a>
 						</div>
