@@ -90,43 +90,45 @@ h3 {
 
 .navbar-nav {
 	margin: 1em;
-}
+	
+	.dropdown-menu {
+		left:-5px; 
+		font-size: 13px; 
+		background-color: rgba(0, 0, 0, .7); 
+		border: 0px none; 
+		-webkit-border-radius: 0px; 
+		-moz-border-radius: 0px; 
+		border-radius: 0px; 
+		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); 
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+		
+		& > li > a { 
+			color:rgba(255, 255, 255, 1); 
+			padding:7px 20px; 
+			
+			&:hover,
+			&:focus,
+			&:hover{ 
+				background: rgba(255, 255, 255, .1); 
+				color:white; 
+			}
+		}
+		
+		& > .active > a,
+		& > .active > a:focus { 
+			background: none; 
+			color:#fff; 
+		}
+	}
 
-.navbar-nav .dropdown-menu {
-	left:-5px; 
-	font-size: 13px; 
-	background-color: rgba(0, 0, 0, .7); 
-	border: 0px none; 
-	-webkit-border-radius: 0px; 
-	-moz-border-radius: 0px; 
-	border-radius: 0px; 
-	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); 
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-}
-.navbar-nav .dropdown-menu > li > a { 
-	color:rgba(255, 255, 255, 1); 
-	padding:7px 20px; 
-}
+	.btn { 
+		border:1px solid rgba(255, 255, 255, .2); 
+		margin-left:5px; 
+		margin-top:5px; 
+		padding-top:10px; 
+		padding-bottom:10px; 
+	}
 
-.navbar-nav .dropdown-menu > li > a:hover,
-.navbar-nav .dropdown-menu > li > a:focus,
-.navbar-nav .dropdown-menu > .active > a:hover{ 
-	background: rgba(255, 255, 255, .1); 
-	color:white; 
-}
-
-.navbar-nav .dropdown-menu > .active > a,
-.navbar-nav .dropdown-menu > .active > a:focus { 
-	background: none; 
-	color:#fff; 
-}
-
-.navbar-nav .btn { 
-	border:1px solid rgba(255, 255, 255, .2); 
-	margin-left:5px; 
-	margin-top:5px; 
-	padding-top:10px; 
-	padding-bottom:10px; 
 }
 
 .navbar-nav a.btn:focus, 
@@ -1255,12 +1257,16 @@ a.external:after {
 }
 
 /* --------------------------------------------------------------------------
- * TODO Highlighting
+ * Highlighting
    -------------------------------------------------------------------------- */
 .todo {
 	color: @state-todo-text;
 	background-color: @state-todo-bg;
 	border: solid 1px @state-todo-bg;
+}
+.highlighter {
+	color: black;
+	background-color: yellow;
 }
 
 /* --------------------------------------------------------------------------
@@ -1576,6 +1582,9 @@ span.fordr12 {
 		width:263px 
 	} 
 }
+
+/*  Does nothing...
+
 @media (min-width: 400px) {
 	body {
 		font-size: 100%; 
@@ -1606,3 +1615,4 @@ span.fordr12 {
 		font-size: 100%; 
 	}
 }
+*/
