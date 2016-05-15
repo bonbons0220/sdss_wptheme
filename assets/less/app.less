@@ -177,17 +177,21 @@ h3 {
 	background: rgba(0,0,0,.9);
 }
 
-.nav-pills>li.retroactive>a {
-	color: inherit; 
-	border-left: 5px solid transparent; 
-	background: rgba(0,0,0,.1); 
-	border-bottom: 0px;
-	}
-.nav-pills>li.retroactive>a:hover {
-	color: #fff; 
-	background: rgba(0,0,0,.9); 
-	border-left: 5px solid @brand-sdss;
-}
+// bjs 05/15/2016
+// Removing retroactive classes for nav pills.
+// Only want to hightlight ancestor (retroactive) on 
+// primary navigation menu (nav-bar), not secondary (nav-pills)
+//.nav-pills>li.retroactive>a {
+//	color: inherit; 
+//	border-left: 5px solid transparent; 
+//	background: rgba(0,0,0,.1); 
+//	border-bottom: 0px;
+//}
+//.nav-pills>li.retroactive>a:hover {
+//	color: #fff; 
+//	background: rgba(0,0,0,.9); 
+//	border-left: 5px solid @brand-sdss;
+//}
 
 .btn.btn-sdss {
 	transition: background 0.5s ease;
@@ -1357,6 +1361,15 @@ span.fordr12 {
 	vertical-align: super;
 	font-weight:bold;
 	color:@brand-info;
+}
+/* --------------------------------------------------------------------------
+ * FAST sidebar 
+   -------------------------------------------------------------------------- */
+.fast-sidebar {
+	img {
+		width: 80px;
+		height: auto;
+	}
 }
 
 /* ==========================================================================

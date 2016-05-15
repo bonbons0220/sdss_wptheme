@@ -392,19 +392,25 @@ function sdss_show_fast(  ){
 	// Make sure WCK Pro Installed
 	if ( !function_exists( 'get_cfc_meta' ) )  return "<!-- WCK Pro not installed. Cannot show FAST Teams -->";
 	$result = "";
+	//$align=array('pull-left','pull-right');
 	$align=array('pull-left','pull-right');
-	$i=0;
+	$i=1;
 	
 	$this_cfc_all_meta = get_cfc_meta( 'fast-team' );
 	if ( !empty( $this_cfc_all_meta ) ) :
-		$result = '<div class="row">';
+		//$result = '<div class="row">';
+		$result = '<div class="fast-sidebar">';
 		foreach( $this_cfc_all_meta as $this_cfc_meta) :
-			$result .=  "<div class='col-xs-12'><div class='well well-sm'>";
+			//$result .=  "<div class='col-xs-12'><div class='well well-sm'>";
+			$result .=  "<div class='well well-sm'>";
 			$result .= "<h3><a href='" . $this_cfc_meta['link'] . "'>" . $this_cfc_meta['title'] . "</a></h3>";
-			$result .= "<div class='" . $align[$i] . "'>" . wp_get_attachment_image($this_cfc_meta['logo']) . "</div>";
+			$result .= "<div class='" . $align[$i] . "'><a href='" . $this_cfc_meta['link'] . "'>";
+			$result .= wp_get_attachment_image($this_cfc_meta['logo']);
+			$result .= "</a></div>";
 			$result .= wpautop ( $this_cfc_meta['description'] );
-			$result .= "<div class='clearfix'></div></div></div>";
-			$i = 1-$i;
+			//$result .= "<div class='clearfix'></div></div></div>";
+			$result .= "<div class='clearfix'></div></div>";
+			//$i = 1-$i;
 		endforeach;
 		$result .=  "</div>";
 	endif;
