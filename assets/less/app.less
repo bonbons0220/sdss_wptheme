@@ -660,7 +660,8 @@ table caption {
    ========================================================================== */
 
 .sidebar { 
-	.widget.releases {
+	.widget.releases,
+	.widget .releases {
 		padding-left: 20px;
 			font-size:1em;		
 		h2, h3, h4, .h2, .h3, .h4 {
@@ -724,18 +725,24 @@ table caption {
 .sdss-docs-sidebar.affix {
 	position:static;
 } 
-.sdss-docs-sidenav {
+.sdss-docs-sidebar .sdss-docs-sidenav,
+.widget_nav_menu .menu {
 	margin-top:20px; 
 	margin-bottom:20px;
 } 
-.sdss-docs-sidebar .nav>li>a {
+.widget_nav_menu .menu>li {
+	list-style: none;
+}
+.sdss-docs-sidebar .nav>li>a,
+.widget_nav_menu .menu>li>a {
 	display:block;
 	font-size:1em;
 	font-weight:500;
 	color:#999;
 	padding:4px 20px;
 } 
-.sdss-docs-sidebar .nav .heading>a {
+.sdss-docs-sidebar .nav .heading>a,
+.widget_nav_menu .menu .heading>a {
 	pointer-events: none;
 	cursor: default;
 	color: #888;
@@ -743,7 +750,9 @@ table caption {
  }
 
 .sdss-docs-sidebar .nav>li>a:hover,
-.sdss-docs-sidebar .nav>li>a:focus {
+.sdss-docs-sidebar .nav>li>a:focus,
+.widget_nav_menu .menu>li>a:hover,
+.widget_nav_menu .menu>li>a:focus {
 	padding-left:19px;
 	color:@brand-sdss;
 	text-decoration:none;
@@ -752,18 +761,23 @@ table caption {
 } 
 .sdss-docs-sidebar .nav>.active>a,
 .sdss-docs-sidebar .nav>.active:hover>a,
-.sdss-docs-sidebar .nav>.active:focus>a {
+.sdss-docs-sidebar .nav>.active:focus>a,
+.widget_nav_menu .menu>.active>a,
+.widget_nav_menu .menu>.active:hover>a,
+.widget_nav_menu .menu>.active:focus>a {
 	padding-left:18px;
 	font-weight:700;
 	color:@brand-sdss;
 	background-color:transparent;
 	border-left:2px solid @brand-sdss; 
 }
-.sdss-docs-sidebar .nav .nav {
+.sdss-docs-sidebar .nav .nav,
+.widget_nav_menu .menu .menu {
 	display:none;
 	padding-bottom:10px;
 } 
-.sdss-docs-sidebar .nav .nav>li>a {
+.sdss-docs-sidebar .nav .nav>li>a,
+.widget_nav_menu .menu .menu>li>a {
 	padding-top:1px;
 	padding-bottom:1px;
 	padding-left:30px;
@@ -771,20 +785,31 @@ table caption {
 	font-weight:400; 
 } 
 .sdss-docs-sidebar .nav .nav>li>a:hover,
-.sdss-docs-sidebar .nav .nav>li>a:focus {
+.sdss-docs-sidebar .nav .nav>li>a:focus,
+.widget_nav_menu .menu .menu>li>a:hover,
+.widget_nav_menu .menu .menu>li>a:focus {
 	padding-left:29px 
 } 
 .sdss-docs-sidebar .nav .nav>.active>a,
 .sdss-docs-sidebar .nav .nav>.active:hover>a,
-.sdss-docs-sidebar .nav .nav>.active:focus>a {
+.sdss-docs-sidebar .nav .nav>.active:focus>a,
+.widget_nav_menu .menu .menu>.active>a,
+.widget_nav_menu .menu .menu>.active:hover>a,
+.widget_nav_menu .menu .menu>.active:focus>a {
 	font-weight:500;
 	padding-left:28px 
 }
-.nav>li.indent {
+.nav>li.indent,
+.menu>li.indent {
 	padding-left: 0px;
 	margin-left:20px;
 } 
-
+.widget_nav_menu .menu {
+	font-size: 16px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
 .back-to-top {
 	margin-top:10px;
 	margin-bottom: 10px;
@@ -821,7 +846,8 @@ table caption {
 	margin-bottom: 10px;
 }
 
-.press{
+.press,
+.releases {
     margin-bottom: .75em;
     background-color: #FFF;
     overflow: hidden;
@@ -1564,7 +1590,8 @@ span.fordr12 {
 	.sdss-docs-sidebar.affix-bottom {
 		position:absolute 
 	} 
-	.sdss-docs-sidebar.affix-bottom .sdss-docs-sidenav,.sdss-docs-sidebar.affix .sdss-docs-sidenav {
+	.sdss-docs-sidebar.affix-bottom .sdss-docs-sidenav,
+	.sdss-docs-sidebar.affix .sdss-docs-sidenav {
 		margin-top:0;
 		margin-bottom:0 
 	} 

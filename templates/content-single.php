@@ -23,12 +23,14 @@ if (count($this_cfc_meta)) {
 } else {
 	the_content(); 
 }
+$this_type = ( strcmp( "post" , $current_page -> post_type ) === 0 ) ? "Press Releases" : $current_page -> post_type ;
+$this_slug = sanitize_title( $this_type, "post" );
 ?></div></div>
 <div class="row">
 <div class="col-xs-12">
 <ol class="breadcrumb">
-  <li><a href="<?php echo home_url(); ?>">SDSS</a></li>
-  <li><a href="<?php echo home_url() . '/' . $current_page -> post_type ; ?>"><?php echo ucfirst($current_page -> post_type); ?></a></li>
+  <li><a href="/">SDSS</a></li>
+  <li><a href="<?php echo '/' . $this_slug ; ?>"><?php echo $this_type; ?></a></li>
   <li><?php echo $current_page -> post_title; ?></li>
 </ol>
 </div></div></div>
