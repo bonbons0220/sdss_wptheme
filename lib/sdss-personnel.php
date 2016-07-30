@@ -199,6 +199,9 @@ function sdss_process_jsons() {
 				'journal' => $this_publication->journal,
 				'journal_reference' => $this_publication->journal_reference,
 				'journal_year' => $this_publication->journal_year,
+				'category' => $this_publication->category,
+				'survey' => $this_publication->survey,
+				'identifier' => $this_publication->identifier,
 			);
 		}
 		uasort( $publications_data , 'idies_sort_by_arxiv' );

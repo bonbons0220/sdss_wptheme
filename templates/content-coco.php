@@ -1,3 +1,4 @@
+<?php the_content(); ?>
 <?php
 
 $members_data = get_option( 'sdss_members' );

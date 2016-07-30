@@ -1,10 +1,13 @@
 <?php
 /**
- * Custom functions
+ * Custom functions for SDSS
+ */
+
+/**
+ * FILTERS
  */
 
 add_filter('roots_wrap_base', 'roots_wrap_base_cpts'); // Add our function to the roots_wrap_base filter
-
 function roots_wrap_base_cpts($templates) {
 	$cpt = get_post_type(); // Get the current post type
 	if ($cpt) {
@@ -13,7 +16,133 @@ function roots_wrap_base_cpts($templates) {
 	return $templates; // Return our modified array with base-$cpt.php at the front of the queue
 }
 
+// Don't let users use Visual content editing - it screws up special characters.
 add_filter( 'user_can_richedit' , '__return_false', 50 );
+
+function sdss_add_attachment_gallery( $form_fields, $post ) {
+	
+	//Show In SDSS Gallery Checkbox
+    $value = (bool) get_post_meta( $post->ID, '_gallery', true );
+    $checked = ($value) ? 'checked' : '';
+    $form_fields['gallery'] = array(
+		'label' => __( 'Show in SDSS Gallery' ),
+        'input' => 'html',
+		'html' => "<input type='checkbox' " . 
+					" $checked " . 
+					"name='attachments[{$post->ID}][gallery]' " .
+					"id='attachments-".$post->ID."-gallery' " .
+					">",
+        'value' => $value,
+	);
+	
+	// License / Image Use textarea
+    $form_fields['license'] = array(
+		'label' => __( 'License' ),
+        'input' => 'html',
+		'html' => "<textarea class='widefat'" . 
+					"name='attachments[{$post->ID}][license]' " .
+					"id='attachments-".$post->ID."-license' " .
+					">" . get_post_meta($post->ID, "_license", true ) .
+					"</textarea>",
+		'extra_rows' => array("row1" => "<em>Only fill in License field if not under the SDSS General Image Use Policy.<em><br>&nbsp;") ,
+	);
+	
+    $form_fields['credit'] = array(
+		'label' => __( 'Image Credit' ),
+        'input' => 'html',
+		'html' => "<textarea class='widefat'" . 
+					"name='attachments[{$post->ID}][credit]' " .
+					"id='attachments-".$post->ID."-credit' " .
+					">" . get_post_meta($post->ID, "_credit", true ) .
+					"</textarea>",
+	);
+	
+	
+    return $form_fields;
+}
+add_filter( 'attachment_fields_to_edit', 'sdss_add_attachment_gallery', 10, 2 );
+
+function sdss_save_attachment_gallery( $attachment_id ) {
+    
+	$gallery = ( isset( $_REQUEST['attachments'][$attachment_id]['gallery'] ) &&
+				( $_REQUEST['attachments'][$attachment_id]['gallery'] == 'on' ) ) 
+				? '1' : '0';
+	update_post_meta( $attachment_id, '_gallery', $gallery );
+    if ( isset( $_REQUEST['attachments'][$attachment_id]['license'] ) ) {
+        $license = $_REQUEST['attachments'][$attachment_id]['license'] ;
+        update_post_meta( $attachment_id, '_license', $license );
+    }
+    if ( isset( $_REQUEST['attachments'][$attachment_id]['credit'] ) ) {
+        $credit = $_REQUEST['attachments'][$attachment_id]['credit'] ;
+        update_post_meta( $attachment_id, '_credit', $credit );
+    }
+}
+add_action( 'edit_attachment', 'sdss_save_attachment_gallery' );
+
+/*
+ * Insert a comment on a page. 
+ * Doesn't work yet... --Bonnie
+ */
+add_filter( 'the_content', 'idies_add_comment' );
+function idies_add_comment( $content  ) {
+	
+	global $idies_debug_comment;
+
+	if (!( WP_DEBUG ) || empty( $idies_debug_comment ) ) return $content;
+	
+	
+	foreach( $idies_debug_comment as $this_comment ) {
+	
+		if ( empty( $this_comment[ 'page' ] ) ) {
+		
+			$content .= $content . $idies_debug_comment ;
+			
+		} elseif ( $GLOBALS[ 'post' ]->post_name == $this_comment[ 'page' ] ) {
+			$content .= $content . $this_comment[ 'comment' ] ;
+		}
+	}
+	return $content;
+}
+
+/**
+ * ACTIONS
+ */
+//function sdss_add_categories_to_attachments() {
+//    register_taxonomy_for_object_type( 'category', 'attachment' );
+//}
+//add_action( 'init' , 'sdss_add_categories_to_attachments' );
+
+// apply tags to attachments
+function sdss_add_tags_to_attachments() {
+    register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+}
+add_action( 'init' , 'sdss_add_tags_to_attachments' );
+
+/**
+ * USEFUL FUNCTIONS
+ */
+
+/*
+ * Create a comment to insert on a page. 
+ * Doesn't work yet... --Bonnie
+ */
+function idies_comment( $var , $pagename="" ) {
+	
+	global $idies_debug_comment;
+	
+	$this_comment = "<!-- DEBUG \n";
+
+	if (is_object($var)) :
+		$this_comment .= var_export( $var , true );
+	else :
+		$this_comment .= print_r( $var , true );
+	endif;
+
+	$this_comment .= "\n -->\n";
+	$idies_debug_comment[] = array( 'page'=>$pagename , 'comment'=>$this_comment );
+
+	return;
+}
 
 /*
  * Display the affiliations and participation group information.
@@ -85,51 +214,5 @@ function idies_debug( $var ) {
         return;
 }
 
-/*
- * Insert a comment on a page. 
- * Doesn't work yet... --Bonnie
- */
-add_filter( 'the_content', 'idies_add_comment' );
-function idies_add_comment( $content  ) {
-	
-	global $idies_debug_comment;
-
-	if (!( WP_DEBUG ) || empty( $idies_debug_comment ) ) return $content;
-	
-	
-	foreach( $idies_debug_comment as $this_comment ) {
-	
-		if ( empty( $this_comment[ 'page' ] ) ) {
-		
-			$content .= $content . $idies_debug_comment ;
-			
-		} elseif ( $GLOBALS[ 'post' ]->post_name == $this_comment[ 'page' ] ) {
-			$content .= $content . $this_comment[ 'comment' ] ;
-		}
-	}
-	return $content;
-}
-
-/*
- * Create a comment to insert on a page. 
- * Doesn't work yet... --Bonnie
- */
-function idies_comment( $var , $pagename="" ) {
-	
-	global $idies_debug_comment;
-	
-	$this_comment = "<!-- DEBUG \n";
-
-	if (is_object($var)) :
-		$this_comment .= var_export( $var , true );
-	else :
-		$this_comment .= print_r( $var , true );
-	endif;
-
-	$this_comment .= "\n -->\n";
-	$idies_debug_comment[] = array( 'page'=>$pagename , 'comment'=>$this_comment );
-
-	return;
-}
 
 ?>

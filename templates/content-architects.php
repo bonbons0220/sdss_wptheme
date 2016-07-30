@@ -1,5 +1,5 @@
+<?php the_content(); ?>
 <?php
-
 // get the data from options 
 $members_data = get_option( 'sdss_members ' );
 $architects_data = get_option( 'sdss_architects ' );

@@ -19,7 +19,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   <![endif]-->
 <?php 
-if ( ( 'development' == WP_ENV ) && defined( 'DATA_RELEASE' ) ) : 
+//if ( ( 'development' == WP_ENV ) && defined( 'DATA_RELEASE' ) ) : 
+if ( 0 ) : 
 ?>
 	<div class="wrap container-fluid" role="document">
 		<div class="content row">

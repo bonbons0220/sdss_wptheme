@@ -45,15 +45,42 @@ function sdss_shortcodes_page() {
 <td>Menus that start with CPT will display in the sidebar for that Custom Post Type. These may need to be added in the backend as needed.</td>
 </tr>
 <tr>
-<th valign="top" rowspan="3">CSS Styles:</th>
-<td><strong>indent</strong>: Indents a sidebar menu item with the CSS style 'indent'.
+<th valign="top">SDSS CSS Styles:</th>
+<td><strong>indent</strong>: Indents a sidebar menu item with the CSS style 'indent'.<br>
+&nbsp;<br>
+<strong>heading</strong>: Create a non-navigable item with a bold font with the CSS style 'heading'.<br>
+&nbsp;<br>
+<strong>disable</strong>: Use the class 'disable' to disable any menu item.<br>
+&nbsp;<br>
+<strong>no-overflow</strong>: Surround a wide table with &lt;div class='no-overflow'&gt;&lt;table...&gt;...&lt;/table&gt;&lt;/div&gt; to add a horizontal scrollbar.<br>
+&nbsp;<br>
+<strong>external</strong>: Add an externl-link type arrow to a link with &lt;a class="external"&gt; or &lt;li class="external"&gt;&lt;a&gt;. Note that this should also cause the link to open in a new window.<br>
+&nbsp;<br>
+<strong>acknowledgements</strong>: Make the font 70%  smaller with this class. <br>
+Example: &lt;span class="acknowledgements"&gt;...&lt;span&gt;<br>
+&nbsp;<br>
+<strong>highlighter</strong>: Highlight text black on yellow. <br>
+Example: &lt;span class="highlighter"&gt;...&lt;span&gt;<br>
+&nbsp;<br>
+<strong>reference</strong>: Paragraph with hanging indent. <br>
+Example: &lt;p class="reference"&gt;...&lt;p&gt;<br>
+&nbsp;<br>
+<strong>equation</strong>: Center and pad equations. <br>
+Example: &lt;p class="equation"&gt;...&lt;p&gt;<br>
+&nbsp;<br>
+<strong>updateddr13</strong>: adds a 'Updated for DR13' badge to a span. <br>
+Example: &lt;span class="updateddr13"&gt;...&lt;span&gt;<br>
+&nbsp;<br>
+<strong>fordr13</strong>: adds a 'New for DR13' badge to a span. <br>
+Example: &lt;span class="fordr13"&gt;...&lt;span&gt;<br>
+&nbsp;<br>
+<strong>fordr12</strong>: adds an 'Up to DR12' badge to a span. <br>
+Example: &lt;span class="fordr12"&gt;...&lt;span&gt;<br>
+&nbsp;<br>
+<strong>todo</strong>: Highlight a "To Do" note with this class. Can be used with &lt;span&gt;, &lt;div&gt;, or &lt;p&gt;. <br>
+Note that when testng goes live, the display for anything with a class "todo" will be set to none, rendering it invisible.<br>
+&nbsp;<br>
 </td>
-</tr>
-<tr>
-<td><strong>heading</strong>: Create a non-navigable item with a bold font with the CSS style 'heading'.</td>
-</tr>
-<tr>
-<td><strong>disable</strong>: Use the style 'disable' to disable any menu item.</td>
 </tr>
 <tr>
 <th valign="top">Menus for Custom Post Types [CPT]</th>
@@ -118,13 +145,16 @@ For example, if you create a new boilerplate called <strong>Creative License</st
 </ul>
 </dd>
 <dt>SDSS Gallery: [SDSS_GALLERY]</dt>
-<dd>Show SDSS images in a gallery. Skip images tagged as NO-SHOW.
+<dd><em>Show Media which have Show In Gallery checked.</em><br>
+SDSS_GALLERY can take the following attributes:<br>
+tags: A csv list of tags to show. Default=''<br>
+order: How to order the images. Default='rand'. Other possible values are 'title', 'date'.
 </dd>
 <dt>To Top Link: [SDSS_TOTOP]</dt>
 <dd>Displays an up arrow and link to top of page. Useful for long pages. Place above headings or at and of page.
 </dd>
 <dt>Group panel: [SDSS_GROUP][/SDSS_GROUP]</dt>
-<dd>Groups can take the following attributes:<br>
+<dd>SDSS_GROUP can take the following attributes:<br>
 columns: default=12<br>
 align: default=left<br>
 title: default = ''<br>
@@ -156,6 +186,9 @@ title: default '':
 The function to display the custom fields must be written for each Custom Field Type.<br>
 Currently supported Custom Field types:
 <ul><li>type='FAST'</li></ul></dd>
+<dt>SDSS Technical Publications: [SDSS_TECHPUBS category='Technical Paper in Journal' identifier='SDSS-IV Paper' ]</dt>
+<dd>
+</dd>
 </dl>
 </div>
 <?php
@@ -177,6 +210,7 @@ add_shortcode('SDSS_VIDEO','sdss_video_style');
 add_shortcode('SDSS_CLEAR','sdss_clear');
 add_shortcode('SDSS_SUMMARY','sdss_summary_style');
 add_shortcode('SDSS_SHOW_CFC','sdss_show_cfc');
+add_shortcode('SDSS_TECHPUBS','sdss_techpubs');
 
 add_shortcode('sdss_boilerplate','sdss_boilerplate');
 
@@ -398,19 +432,22 @@ function sdss_show_fast(  ){
 	
 	$this_cfc_all_meta = get_cfc_meta( 'fast-team' );
 	if ( !empty( $this_cfc_all_meta ) ) :
-		//$result = '<div class="row">';
 		$result = '<div class="fast-sidebar">';
 		foreach( $this_cfc_all_meta as $this_cfc_meta) :
-			//$result .=  "<div class='col-xs-12'><div class='well well-sm'>";
 			$result .=  "<div class='well well-sm'>";
-			$result .= "<h3><a href='" . $this_cfc_meta['link'] . "'>" . $this_cfc_meta['title'] . "</a></h3>";
-			$result .= "<div class='" . $align[$i] . "'><a href='" . $this_cfc_meta['link'] . "'>";
+			$result .= ( strlen( $this_cfc_meta['link'] ) > 0 ) ? 
+				"<h3><a href='" . $this_cfc_meta['link'] . "'>" . $this_cfc_meta['title'] . "</a></h3>" : 
+				"<h3>" . $this_cfc_meta['title'] . "</h3>" ;
+			$result .= ( strlen( $this_cfc_meta['link'] ) > 0 ) ? 
+				"<div class='" . $align[$i] . "'><a href='" . $this_cfc_meta['link'] . "'>" :
+				"<div class='" . $align[$i] . "'>";
 			$result .= wp_get_attachment_image($this_cfc_meta['logo']);
-			$result .= "</a></div>";
+			$result .= ( strlen( $this_cfc_meta['link'] ) > 0 ) ? 
+				"</a></div>" :
+				"</div>";
 			$result .= wpautop ( $this_cfc_meta['description'] );
-			//$result .= "<div class='clearfix'></div></div></div>";
+
 			$result .= "<div class='clearfix'></div></div>";
-			//$i = 1-$i;
 		endforeach;
 		$result .=  "</div>";
 	endif;
@@ -431,6 +468,166 @@ function sdss_show_cfc( $attr ){
 			break;
 	}
 	
+	return $result;
+}
+
+// Custom User Associative Array Sorting Function
+// Sort technical publications by 
+// 		'identifier': reverse alphabetical, will work for SDSS-VIII down to SDSS-I
+//		then by 
+//		'survey': alphabetical
+//
+function idies_sort_technical( $a , $b ) {
+    if ( $a['identifier'] == $b[ 'identifier' ] ) :
+		if ( $a['survey'] == $b[ 'survey' ] ) :
+			return ( floatval( $a['arxiv'] ) < floatval( $b[ 'arxiv' ] ) ) ? 1 : -1;	
+		else :
+			return ( $a['survey'] <  $b[ 'survey' ] ) ? 1 : -1;	
+		endif;
+	else :
+		return ( $a['identifier'] >  $b[ 'identifier' ] ) ? 1 : -1;	
+	endif;
+}
+
+/** 
+ * get_technical
+ * Get Technical publications in $category, 
+ * with identifier starting with $identifier
+ * and list under $h2
+ **/
+function get_technical( $category, $identifier ){
+	$technical_data = array();
+
+	// get the data from options 
+	$publications_data = get_option( 'sdss_publications' );
+	$publications_modified = get_option( 'sdss_publications_modified' );
+
+	foreach ( $publications_data as $this_pub ) :  
+
+		if ( ( $category == $this_pub[ 'category' ] ) && 
+			 ( !strpos( $this_pub[ 'identifier' ] , $identifier ) ) ) {
+			$this_pub[ 'identifier' ] = $identifier;
+			$technical_data[] = $this_pub;
+		}
+	endforeach;
+	uasort( $technical_data , 'idies_sort_technical' );
+
+	return $technical_data;
+}
+
+/** 
+ * show_technical
+ * Show nicely formatted Technical publications 
+ **/
+function show_technical( $technical_data, $identifier="" ){
+	
+	$this_survey = "";
+	$result = "";
+
+	foreach ( $technical_data as $this_pub ) : 
+	 
+		if ( $this_survey == ''  ) {
+			$this_survey = $this_pub['survey'];
+			$result .= "<h3 id=" . sanitize_title( $identifier . "-" . $this_survey ) . ">" . $this_survey . "</h3>"
+				. "<ul class='fa-ul'>";
+		} elseif ( $this_survey != $this_pub[ 'survey' ] ) {
+			$this_survey = $this_pub['survey'];
+			$result .= "</ul>" 
+				. "<h3 id=" . sanitize_title( $identifier . "-" . $this_survey ) . ">" . $this_survey . "</h3>"
+				. "<ul class='fa-ul'>";
+		}
+		
+		// default url to use for publication title
+		$dflt_url = ( !empty( $this_pub[ 'adsabs_url' ] ) ) ? $this_pub[ 'adsabs_url' ] : 
+					( !empty( $this_pub[ 'doi_url' ] ) ) ? $this_pub[ 'doi_url' ] : 
+					( !empty( $this_pub[ 'arxiv_url' ] ) ) ? $this_pub[ 'arxiv_url' ] : false ;
+					
+		$result .=  "<li><i class='fa-li fa fa-book'></i>";
+		//if ( $dflt_url ) $result .=  "<a target='_blank' href='$dflt_url' >";
+		//$result .=  "<strong>" . $this_pub[ 'title' ] . "</strong>";
+		//if ( $dflt_url ) $result .=  "</a><br>";
+		
+		// Deal with v long author list. If more than 3, list 3 and add et al
+		$authors = ( substr_count ( $this_pub[ 'authors' ] , ", " ) > 2 ) ?
+			implode( ", " , array_slice( explode ( ", " , $this_pub[ 'authors' ] ) , 0 , 3 ) ) . ", <em>et al</em>" :
+			( ( substr_count ( $this_pub[ 'authors' ] , ", " ) == 2 ) ?
+			implode( ", " , array_slice( explode ( ", " , $this_pub[ 'authors' ] ) , 0 , 3 ) ) :
+			$this_pub['authors'] );
+		
+		$result .=  $authors .  '. ' ;
+		$result .=  '"' . $this_pub[ 'title' ] . '", ';
+		if ( $this_pub[ 'journal_reference' ]) {
+			$result .=  $this_pub[ 'journal_reference' ];
+		} else {
+			$result .=  '<em>' . $this_pub[ 'status' ] . '</em>';
+		}	
+		if ( !empty($this_pub[ 'adsabs' ] ) ) $result .=  "; <a href='" . $this_pub[ 'adsabs_url' ] . "' target='_blank'>adsabs:" . $this_pub[ 'adsabs' ] . "</a>";
+		if ( !empty($this_pub[ 'doi' ] ))  $result .=  "; <a href='" . $this_pub[ 'doi_url' ] . "' target='_blank'>doi:" . $this_pub[ 'doi' ] . "</a>";
+		if ( !empty($this_pub[ 'arxiv_url' ] ) ) $result .=  "; <a href='" . $this_pub[ 'arxiv_url' ] . "' target='_blank'>arXiv:" . $this_pub[ 'arxiv' ] . "</a>";
+		$result .=  '.</li>';
+	endforeach;
+	$result .=  '</ul>';
+
+	return $result;
+}
+
+/** 
+ * sdss_techpubs
+ * Show Technical publications with attributes that start with $identifier
+ **/
+function sdss_techpubs( $attr ){
+
+	$category = ( empty( $attr[ 'category' ] ) ) ? 'Technical Paper in Journal' : $attr[ 'category' ] ; 
+	$identifier = ( empty( $attr[ 'identifier' ] ) ) ? 'SDSS-IV ' : $attr[ 'identifier' ] ; 
+	
+	$technical_data = get_technical( $category , $identifier );
+	if ( empty( $technical_data ) ) return '' ;
+	$result = show_technical( $technical_data, $identifier );
+	
+	return $result;
+}
+
+/** 
+ * sdss_gallery
+ * Show Gallery of SDSS Pics
+ **/
+function sdss_gallery( $attr ){
+	
+	$tags = ( empty( $attr[ 'tags' ] ) ) ? '' : $attr[ 'tags' ]; 
+	$order = ( empty( $attr[ 'order' ] ) ) ? 'rand' : $attr[ 'order' ]; 
+	
+	$args = array( 
+		'post_type' => 'attachment', 
+		'posts_per_page' => -1,
+		'orderby' => $order, 
+		'post_status' => 'any', 
+		'post_parent' => null ,
+		'meta_key'         => '_gallery',
+		'meta_value'         => 1,
+		'tag' 				=> $tags,
+	); 
+	$attachments = get_posts( $args );
+	$result = '';
+	?>
+	<div class="row">
+	<?php
+	if ( $attachments ) {
+		foreach ( $attachments as $post ) {
+			setup_postdata( $post );
+			$result .= "<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3'>";
+			$result .= "<div class='thumbnail sdss-thumbnail'>";
+			$result .= "<div class='caption'><h2 class='text-center'><small>";
+			$result .= get_the_title( $post->ID);
+			$result .="</small></h2></div>";
+			$result .= wp_get_attachment_link( $post->ID, 'thumbnail', true ) ;
+			$result .=  get_the_excerpt( $post->ID );
+			$result .= "</div></div>";
+		}
+		wp_reset_postdata();
+	}
+	?>    
+	</div>	
+	<?php
 	return $result;
 }
 

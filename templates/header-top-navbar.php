@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="col-sm-9">
-					<div class="navbar-collapse collapse"  role="navigation">
+					<div class="navbar-collapse collapse pull-right" role="navigation">
 						<?php
 						if (has_nav_menu('primary_navigation')) :
 						  wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav pull-right'));
@@ -28,7 +28,13 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12 col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8">
+				<div class="col-sm-3 text-left">
+					<span class="data-release"><?php 
+					echo "This&nbsp;is&nbsp;" . DATA_RELEASE . ".";
+					if ( !defined('LATEST') ) echo "<br><small><em>Go&nbsp;to&nbsp;the&nbsp;latest&nbsp;<a href='//www.sdss.org' target='_blank'>Data&nbsp;Release</a>.</em></small>"; 
+					?></span>
+				</div>
+				<div class="col-sm-9 col-md-4 col-md-offset-5 text-right">
 				<?php get_search_form(); ?>
 				</div>
 			</div>

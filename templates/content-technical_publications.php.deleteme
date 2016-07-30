@@ -1,18 +1,56 @@
-<?php the_content(); ?>
 <?php
+the_content();
+return;
+
 // get the data from options 
 $publications_data = get_option( 'sdss_publications' );
 $publications_modified = get_option( 'sdss_publications_modified' );
 
+$identifiers=array();
+$technical_data=array();
+foreach ( $publications_data as $this_pub ) :  
+	if ( $this_pub[ 'category' ] == "Technical Paper in Journal") $technical_data[] = $this_pub;
+	if ( !in_array( $this_pub[ 'identifier' ] , $identifiers ) ) $identifiers[] = $this_pub[ 'identifier' ] ;
+endforeach;
+uasort( $technical_data , 'idies_sort_technical' );
+
 // Fail Gracefully
-if ( empty( $publications_data ) ) {
-	echo "<div class='label label-warning'>No data found</div>";
+if ( empty( $technical_data ) ) {
+	echo "<div class='label label-warning'>No technical publications found</div>";
+	the_content();
 	return;
 }
 
-$indx = count( $publications_data );
-echo "<ul class='fa-ul'>";
-foreach ( $publications_data as $publication_id => $this_pub ) :  
+$this_h2 = "";
+$this_h3 = "";
+$show_content=true;
+foreach ( $technical_data as $this_pub ) : 
+ 
+	$next_h2 = "<h2><small>" . substr( $this_pub[ 'identifier' ] , 0, strpos( $this_pub[ 'identifier' ] , " " ) ) . "</small></h2>";
+	$next_h3 = "<h3><small>" . $this_pub[ 'survey' ] . "</small></h3>";
+
+	// first one
+	if ( strlen( $this_h2 ) == 0 ) {
+		$this_h2 = $next_h2;
+		$this_h3 = $next_h3;
+		echo $this_h2;
+		echo $this_h3;
+		echo "<ul class='fa-ul'>";
+	// Start of new SDSS Phase
+	} elseif ( $this_h2 != $next_h2) {
+		$this_h2 = $next_h2;
+		$this_h3 = $next_h3;
+		echo $this_h2;
+		echo $this_h3;
+		echo "</ul><ul class='fa-ul'>";
+		$show_content=false;
+	// Start of new Survey (MaNGA, etc)
+	} elseif ( $this_h3 != $next_h3 ) {
+		$this_h3 = $next_h3;
+		echo $this_h3;
+		echo "</ul><ul class='fa-ul'>";
+	}
+	
 	// default url to use for publication title
 	$dflt_url = ( !empty( $this_pub[ 'adsabs_url' ] ) ) ? $this_pub[ 'adsabs_url' ] : 
 				( !empty( $this_pub[ 'doi_url' ] ) ) ? $this_pub[ 'doi_url' ] : 
@@ -34,4 +72,5 @@ foreach ( $publications_data as $publication_id => $this_pub ) :
 endforeach; 
 echo '</ul>';
 echo "<p class='modified'>Last modified: $publications_modified</p>";
+if ( $show_content ) the_content();
 ?>
