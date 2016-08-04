@@ -5,10 +5,9 @@
       <h1 class="entry-title"><?php the_title(); ?></h1>
 </header>
 <div class="entry-content">
-<div class="row"><div class="col-xs-12">
-<?php 
-the_content(); 
-?></div></div>
+<div class="row">
+<div class="col-xs-12">.<?php the_content(); ?></div>
+</div>
 <div class="row">
 <div class="col-xs-12">
 <ol class="breadcrumb">

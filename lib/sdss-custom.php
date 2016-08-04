@@ -19,6 +19,7 @@ function roots_wrap_base_cpts($templates) {
 // Don't let users use Visual content editing - it screws up special characters.
 add_filter( 'user_can_richedit' , '__return_false', 50 );
 
+add_filter( 'attachment_fields_to_edit', 'sdss_add_attachment_gallery', 10, 2 );
 function sdss_add_attachment_gallery( $form_fields, $post ) {
 	
 	//Show In SDSS Gallery Checkbox
@@ -60,8 +61,8 @@ function sdss_add_attachment_gallery( $form_fields, $post ) {
 	
     return $form_fields;
 }
-add_filter( 'attachment_fields_to_edit', 'sdss_add_attachment_gallery', 10, 2 );
 
+add_action( 'edit_attachment', 'sdss_save_attachment_gallery' );
 function sdss_save_attachment_gallery( $attachment_id ) {
     
 	$gallery = ( isset( $_REQUEST['attachments'][$attachment_id]['gallery'] ) &&
@@ -77,7 +78,6 @@ function sdss_save_attachment_gallery( $attachment_id ) {
         update_post_meta( $attachment_id, '_credit', $credit );
     }
 }
-add_action( 'edit_attachment', 'sdss_save_attachment_gallery' );
 
 /*
  * Insert a comment on a page. 
@@ -102,6 +102,20 @@ function idies_add_comment( $content  ) {
 		}
 	}
 	return $content;
+}
+
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+	 	 
+	// add mime types
+	$existing_mimes['fits'] = 'application/fits'; 
+
+	// remove mime types
+	//unset( $existing_mimes['exe'] );
+	
+	// and return the new full result
+	return $existing_mimes;
+	 
 }
 
 /**

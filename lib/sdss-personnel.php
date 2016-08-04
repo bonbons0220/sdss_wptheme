@@ -37,7 +37,7 @@ function sdss_process_jsons() {
 				$$this_prefix = json_decode( $$this_prefix );
 				
 				//Delete the files so we don't keep reading them.
-				if ( false === unlink( __DIR__ . "/../../../uploads/" . $this_prefix . ".txt" ) ) idies_comment(" Could not remove $this_prefix.txt ");
+				if ( false === unlink( __DIR__ . "/../../../uploads/" . $this_prefix . ".txt" ) ) idies_debug(" Could not remove $this_prefix.txt ");
 			}
 		}
 	}

@@ -11,8 +11,13 @@
 	the_excerpt();
 	echo "</div>\n";
 	echo "<div class='description pull-left'>";
-	//echo wp_get_attachment_link( $current_page->ID , 'full' , true , true , 'Download' );
 	the_content() ;
+	echo '<div class="row">';
+	if ( $the_credit = get_post_meta( $current_page->ID, '_credit', true ) ) 
+		echo '<div class="col-xs-12">Image Credit: ' . $the_credit . '<br>&nbsp;</div>';
+	if ( $the_license = get_post_meta( $current_page->ID, '_license', true ) ) 
+		echo '<div class="col-xs-12 acknowledgements">' . $the_license . '<br>&nbsp;</div>';
+	echo '</div>';
 	echo "</div>\n";
 	
 ?></div></div></div>

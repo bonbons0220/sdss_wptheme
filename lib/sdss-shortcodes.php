@@ -104,8 +104,8 @@ Note that when testng goes live, the display for anything with a class "todo" wi
 <td>[sdss_boilerplate which="tex-acknowledgements"]</td>
 </tr>
 <tr valign="top">
-<th>SDSS Institional Affiliations</th>
-<td>[sdss_boilerplate which="affiliations"]</td>
+<th>SDSS Image Use Policy</th>
+<td>[sdss_boilerplate which="image-use-policy"]</td>
 </tr>
 <tr valign="top">
 <th>
@@ -189,6 +189,13 @@ Currently supported Custom Field types:
 <dt>SDSS Technical Publications: [SDSS_TECHPUBS category='Technical Paper in Journal' identifier='SDSS-IV Paper' ]</dt>
 <dd>
 </dd>
+<dt>Show Contact Info: <br>
+[SDSS_CONTACT role='role' field='field']</dt>
+<dd>Show Contact information for a role. <br>
+The 'role' attribute is the position in question. It is case sensitive and must match the role as listed on the Key People page<br>
+The 'field' attribute is the type of information to show, and can be either 'fullname' or 'affiliation'.<br>
+Example: [SDSS_CONTACT role='Director' field='fullname']
+</dd>
 </dl>
 </div>
 <?php
@@ -211,6 +218,7 @@ add_shortcode('SDSS_CLEAR','sdss_clear');
 add_shortcode('SDSS_SUMMARY','sdss_summary_style');
 add_shortcode('SDSS_SHOW_CFC','sdss_show_cfc');
 add_shortcode('SDSS_TECHPUBS','sdss_techpubs');
+add_shortcode('SDSS_CONTACT','sdss_contact');
 
 add_shortcode('sdss_boilerplate','sdss_boilerplate');
 
@@ -629,6 +637,54 @@ function sdss_gallery( $attr ){
 	</div>	
 	<?php
 	return $result;
+}
+
+/** 
+ * sdss_contact
+ * Show Contact Information for a Key SDSS-IV person.
+ **/
+function sdss_contact( $attr ){
+	
+	$result = '';
+	if ( empty( $attr[ 'role' ] ) || ( empty( $attr[ 'field' ] ) ) ) return '';
+	if ( ! in_array( $attr[ 'field' ] , array( 'fullname' , 'affiliation' ) ) ) return ''; 
+	
+	$role = $attr[ 'role' ]; 
+	$field = $attr[ 'field' ]; 
+	
+	$role_id=-1;
+	$member_id=-1;
+	
+	$roles_data = get_option( 'sdss_roles' );
+	foreach( $roles_data as $this_role_key=>$this_role ) {
+		if ( $this_role['role'] == $role ) {
+			$role_id = $this_role_key;
+			break;
+		}
+	}
+	if ($role_id == -1 ) return "No '$role' found";
+	
+	$leaders_data = get_option( 'sdss_leaders' );
+	foreach( $leaders_data as $this_leader ) {
+		if ( ( $this_leader['role_id'] == $role_id) && 
+				( $this_leader['current'] ) ) {
+			$member_id = $this_leader['member_id'];
+			break;
+		}
+	}
+	if ($member_id == -1 ) return "Member not found '$member_id' found";
+
+	$members_data = get_option( 'sdss_members ' );
+	$affiliation_data = get_option( 'sdss_affiliation ' );
+
+	if ( array_key_exists( $member_id , $members_data ) ) {
+		$fullname = $members_data[$member_id]['fullname'];
+		$affiliation_id = $members_data[$member_id]['affiliation_id'];
+		$affiliation = ( array_key_exists( $affiliation_id , $affiliation_data ) ) ? $affiliation_data[$affiliation_id]['title'] : '' ;
+	} else {
+		$fullname = 'TBD';
+	}
+	return $$field;
 }
 
 ?>
