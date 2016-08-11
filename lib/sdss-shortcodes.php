@@ -647,7 +647,7 @@ function sdss_contact( $attr ){
 	
 	$result = '';
 	if ( empty( $attr[ 'role' ] ) || ( empty( $attr[ 'field' ] ) ) ) return '';
-	if ( ! in_array( $attr[ 'field' ] , array( 'fullname' , 'affiliation' ) ) ) return ''; 
+	if ( ! in_array( $attr[ 'field' ] , array( 'fullname' , 'affiliation' , 'email' ) ) ) return ''; 
 	
 	$role = $attr[ 'role' ]; 
 	$field = $attr[ 'field' ]; 
@@ -672,13 +672,19 @@ function sdss_contact( $attr ){
 			break;
 		}
 	}
-	if ($member_id == -1 ) return "Member not found '$member_id' found";
+	if ($member_id == -1 ) {
+		$fullname = "TBD";
+		$email = "";
+		$affiliation = "";
+		return $$field;
+	}
 
 	$members_data = get_option( 'sdss_members ' );
 	$affiliation_data = get_option( 'sdss_affiliation ' );
 
 	if ( array_key_exists( $member_id , $members_data ) ) {
 		$fullname = $members_data[$member_id]['fullname'];
+		$email = ( !empty( $members_data[$member_id]['email'] ) ) ? $members_data[$member_id]['email'] : '' ;
 		$affiliation_id = $members_data[$member_id]['affiliation_id'];
 		$affiliation = ( array_key_exists( $affiliation_id , $affiliation_data ) ) ? $affiliation_data[$affiliation_id]['title'] : '' ;
 	} else {

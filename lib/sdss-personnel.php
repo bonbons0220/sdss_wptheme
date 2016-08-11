@@ -87,6 +87,7 @@ function sdss_process_jsons() {
 				$members_data[ $this_member->member_id ] = array(
 					'affiliation_id' => $this_member->affiliation_id ,
 					'fullname' => $this_member->fullname , 
+					'email' => $this_member->email , 
 					'mc' => false ,
 				);
 			}
