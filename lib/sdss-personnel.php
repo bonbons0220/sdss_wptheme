@@ -16,7 +16,7 @@ function sdss_process_jsons() {
 	//die("sync-ing json files");
 	if ( 0 === strcmp( 'yes' , $option[0]['sync-json'] ) ) {
 		
-		//loop through the files to load
+		//the json files to read
 		$file_prefixes = array( 
 			'project', 
 			'affiliations', 
@@ -28,8 +28,9 @@ function sdss_process_jsons() {
 			'roles',
 			'publications',
 		);
+		
 		foreach( $file_prefixes as $this_prefix ) {
-			
+		
 			// read data if file exists
 			$$this_prefix = @file_get_contents( __DIR__ . "/../../../uploads/" . $this_prefix . ".txt" );
 			if ( !(false === ( $$this_prefix ) ) ) {
@@ -79,10 +80,11 @@ function sdss_process_jsons() {
 
 	}
 	
-	// members
+	// members (people's basic info)
 	if ( !empty( $members )|| !empty( $coco ) || !empty( $mc ) ) {
+	
+		// set members data
 		if ( !empty( $members ) ) {
-		
 			foreach( $members->members as $this_member ) {
 				$members_data[ $this_member->member_id ] = array(
 					'affiliation_id' => $this_member->affiliation_id ,
@@ -91,9 +93,9 @@ function sdss_process_jsons() {
 					'mc' => false ,
 				);
 			}
+
+		// get members data
 		} else {
-		
-			//need members data
 			$members_data = get_option( 'sdss_members ' );
 		}
 
@@ -107,11 +109,11 @@ function sdss_process_jsons() {
 			foreach( $mc->mc as $this_mc ) {
 				if ( array_key_exists ( $this_mc->member_id , $members_data ) ) $members_data[ $this_mc->member_id ]['mc'] = true;
 			}
-		} 
 		
-		//update members if any of these was uploaded
-		update_option( 'sdss_members' , $members_data );
-	
+			//update members if any of these was uploaded
+			update_option( 'sdss_members' , $members_data );
+			
+		}
 	} 
 
 	// All affiliations
