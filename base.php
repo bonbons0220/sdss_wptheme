@@ -14,7 +14,7 @@
     }
   ?>
 
-<?php if (is_front_page()): ?>
+<?php if ( defined( 'LATEST' ) && is_front_page()): ?>
 	<div class="wrap container-fluid" role="document">
 <?php else: ?>
 	<div class="wrap container" role="document">
