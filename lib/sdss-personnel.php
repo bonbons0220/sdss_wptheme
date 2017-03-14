@@ -138,6 +138,10 @@ function sdss_process_jsons() {
 		$coco_data['spokesperson']['member_id'] = $coco->spokesperson->member_id;
 		$coco_data['spokesperson']['affiliation_id'] = @$coco->spokesperson->affiliation_id;
 		$coco_data['spokesperson']['participation_id'] = @$coco->spokesperson->participation_id;
+
+		$coco_data['lessthan3']['member_id'] = $coco->lessthan3->member_id;
+		$coco_data['lessthan3']['affiliation_id'] = @$coco->lessthan3->affiliation_id;
+		$coco_data['lessthan3']['participation_id'] = @$coco->lessthan3->participation_id;
 		
 		foreach( $coco->coco as $this_coco ) {
 			$coco_data[ $this_coco->member_id ] = array(

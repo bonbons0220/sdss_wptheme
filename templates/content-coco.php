@@ -10,11 +10,13 @@ $participations_data = get_option( 'sdss_participations' );
 
 echo '<div class="sdss-wrapper">';
 
-//find the info about the project spokesperson
-$this_coco = $coco_data[ 'spokesperson' ];
-$this_fullname = $members_data[ $this_coco[ 'member_id' ] ][ 'fullname' ];
-$this_affil_title = get_affiliation( $this_coco, $affiliations_data, $participations_data );
+//Project Spokesperson
+$this_spokesperson = $coco_data[ 'spokesperson' ];
 unset( $coco_data[ 'spokesperson' ] );
+
+// <3 Representative
+$lessthan3 = $coco_data[ 'lessthan3' ];
+unset( $coco_data[ 'lessthan3' ] );
 
 // Fail Gracefully
 if ( empty( $coco_data ) ) {
@@ -24,8 +26,8 @@ if ( empty( $coco_data ) ) {
 
 echo "<h2>The Collaboration Council</h2>\n";
 echo "<p>&nbsp;<br/>";
-echo "Chair (and SDSS-IV Spokesperson) <strong>" . $members_data[ $this_coco[ 'member_id' ] ][ 'fullname' ] . "</strong>";
-if ( $affil_title = get_affiliation( $this_coco, $affiliations_data, $participations_data ) )
+echo "Chair (and SDSS-IV Spokesperson) <strong>" . $members_data[ $this_spokesperson[ 'member_id' ] ][ 'fullname' ] . "</strong>";
+if ( $affil_title = get_affiliation( $this_spokesperson, $affiliations_data, $participations_data ) )
 	echo " ( $affil_title ).";
 echo"</p>\n";
 
@@ -40,6 +42,13 @@ echo "<dl class='dl-horizontal dl-horizontal-third'>\n";
 
 	}
 echo "</dl>\n";
+
+echo "<p>&nbsp;<br/>";
+echo "Council Representative for all Institutions with less than 3 slots <strong>" . $members_data[ $lessthan3[ 'member_id' ] ][ 'fullname' ] . "</strong>";
+if ( $affil_title = get_affiliation( $lessthan3, $affiliations_data, $participations_data ) )
+	echo " ( $affil_title ).";
+echo"</p>\n";
+
 echo "<p class='modified'>Last modified: $coco_modified</p>";
 
 function get_affiliation( $this_coco, $affiliations_data, $participations_data ){
